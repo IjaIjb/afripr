@@ -1,0 +1,28 @@
+
+/* ckeditor-styles.css */
+.ck-editor__editable {
+    min-height: 200px !important;
+    max-height: 400px !important;
+  }
+  
+  .ck.ck-editor {
+    width: 100% !important;
+  }
+  
+  .ck-editor-container {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  
+  /* Additional styles to ensure visibility */
+  .ck.ck-content {
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+    border-radius: 0 0 5px 5px !important;
+  }
+  
+  .ck.ck-toolbar {
+    border: 1px solid #ccc !important;
+    border-bottom: none !important;
+    border-radius: 5px 5px 0 0 !important;
+  }

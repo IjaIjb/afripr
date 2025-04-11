@@ -1,0 +1,54 @@
+/* quill-styles.css */
+.blog-editor-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Ensure proper sizing of editor */
+.quill {
+  height: auto;
+}
+
+.ql-container {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Set minimum editor height */
+.ql-editor {
+  min-height: 200px;
+  font-size: 16px;
+  padding: 12px 15px;
+}
+
+/* Improve toolbar appearance */
+.ql-toolbar.ql-snow {
+  border-radius: 4px 4px 0 0;
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 4px 4px;
+  border-color: #e5e7eb;
+}
+
+/* Style placeholder text */
+.ql-editor.ql-blank::before {
+  font-style: normal;
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+/* Fix for modal issues */
+.react-responsive-modal-modal .blog-editor-wrapper {
+  width: 100%;
+}
+
+/* Ensure editor stays within modal */
+.react-responsive-modal-modal .quill,
+.react-responsive-modal-modal .ql-container,
+.react-responsive-modal-modal .ql-editor {
+  max-width: 100%;
+}

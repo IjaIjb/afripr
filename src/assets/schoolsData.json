@@ -1,0 +1,2926 @@
+[
+  {
+    
+    "name": "Australia", "details":[
+      {"name": "Australian Catholic University"},
+      {"name": "Australian National University"},
+      {"name": "Deakin University"},
+      {"name": "Edith Cowan University"},
+      {"name": "Griffith University"},
+      {"name": "James Cook University"},
+      {"name": "Macquarie University"},
+      {"name": "Monash University"},
+      {"name": "Queensland University of Technology"},
+      {"name": "Swinburne University of Technology"},
+      {"name": "University of Canberra"},
+      {"name": "University of New England - Australia"},
+      {"name": "University of Sydney"},
+      {"name": "University of Tasmania"},
+      {"name": "University of Technology Sydney"},
+      {"name": "University of Western Australia"},
+      {"name": "University of Wollongong"},
+      {"name": "Western Sydney University"}
+    ]
+  },
+  {
+     "name": "Belgium", "details": [
+        {"name": "Antwerp Management School"},
+        {"name": "Vlerick Business School"}
+    ]
+  },
+  {
+    "name":  "Canada", "details": [ 
+       {"name": "Brock University"},
+    {"name": "Carleton University"},
+    {"name": "Ecole de Technologie Superieure"},
+    {"name": "Lakehead University"},
+    {"name": "Laurentian University"},
+    {"name": "Laval University"},
+    {"name": "McGill University"},
+    {"name": "McMaster University"},
+    {"name": "Ontario Tech University"},
+    {"name": "Queen's University"},
+    {"name": "Simon Fraser University"},
+    {"name": "Toronto Metropolitan University"},
+    {"name": "Trent University"},
+    {"name": "University of British Columbia"},
+    {"name": "University of Calgary"},
+    {"name": "University of Guelph"},
+    {"name": "University of Lethbridge"},
+    {"name": "University of Montreal"},
+    {"name": "University of Sherbrooke"},
+    {"name": "University of Toronto"},
+    {"name": "University of Victoria"},
+    {"name": "University of Waterloo"},
+    {"name": "University of Windsor"},
+    {"name": "Western University"},
+    {"name": "York University"},
+  
+        {
+          "name": "Brock University",
+          "Website": "https://brocku.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "Carleton University",
+          "Website": "https://carleton.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "Dalhousie University",
+          "Website": "https://www.dal.ca/",
+          "Province": "Nova Scotia"
+        },
+        {
+          "name": "Lakehead University",
+          "Website": "https://www.lakeheadu.ca/",
+          "Province": "Ontario"
+        },
+        {
+          "name": "McMaster University",
+          "Website": "https://www.mcmaster.ca/",
+          "Province": "Ontario"
+        },
+        {
+          "name": "Northeastern University Canada",
+          "Website": "https://toronto.northeastern.edu/",
+          "Province": "Ontario"
+        },
+        {
+          "name": "Queens University at Kingston",
+          "Website": "https://www.queensu.ca/",
+          "Province": "Ontario"
+        },
+        {
+          "name": "Toronto Metropolitan University",
+          "Website": "https://www.torontomu.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "Trent University",
+          "Website": "https://www.trentu.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Guelph",
+          "Website": "https://www.uoguelph.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Lethbridge",
+          "Website": "https://www.uleth.ca/",
+          "State": "Alberta"
+        },
+        {
+          "name": "University of Manitoba",
+          "Website": "https://umanitoba.ca/",
+          "State": "Manitoba"
+        },
+        {
+          "name": "University of New Brunswick",
+          "Website": "https://www.unb.ca/",
+          "State": "New Brunswick"
+        },
+        {
+          "name": "University of Ottawa",
+          "Website": "https://www.uottawa.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Saskatchewan",
+          "Website": "https://www.usask.ca/",
+          "State": "Saskatoon"
+        },
+        {
+          "name": "University of Toronto",
+          "Website": "https://www.utoronto.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of New Brunswick",
+          "Website": "https://www.unb.ca/",
+          "State": "New Brunswick"
+        },
+        {
+          "name": "University of Ottawa",
+          "Website": "https://www.uottawa.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Saskatchewan",
+          "Website": "https://www.usask.ca/",
+          "State": "Saskatoon"
+        },
+        {
+          "name": "University of Toronto",
+          "Website": "https://www.utoronto.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Victoria",
+          "Website": "https://www.uvic.ca/",
+          "State": "British Columbia"
+        },
+        {
+          "name": "University of Waterloo",
+          "Website": "https://uwaterloo.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "University of Windsor",
+          "Website": "https://www.uwindsor.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "Western University - University of Western Ontario",
+          "Website": "https://www.uwo.ca/",
+          "State": "Ontario"
+        },
+        {
+          "name": "Wilfrid Laurier University",
+          "Website": "https://www.wlu.ca/",
+          "State": "Ontario"
+        }
+    
+
+    ]
+  },{
+     "name": "China", "details": [
+      {"name": "China Europe International Business School"},
+      {"name": "Fudan University"},
+      {"name": "Shanghai Jiao Tong University"}
+    ]},
+    {
+     "name": "Denmark", "details": [
+        {"name": "Copenhagen Business School"}
+    ]},
+    {
+    "name":  "France", "details": [
+        {"name": "Audencia Business School"},
+        {"name": "Burgundy School of Business"},
+        {"name": "Ecole Polytechnique"},
+        {"name": "EDHEC Business School"},
+        {"name": "EM Normandie Business School"},
+        {"name": "Emlyon Business School"},
+        {"name": "ESCP Europe Business School"},
+        {"name": "ESSEC Business School"},
+        {"name": "Grenoble Ecole de Management"},
+        {"name": "HEC Paris"},
+        {"name": "ICN Business School"},
+      {"name": "IESEG"},
+        {"name": "INSEAD"},
+        {"name": "KEDGE Business School"},
+      {"name": "Montpellier Business School"},
+        {"name": "NEOMA Business School"},
+        {"name": "Paris School of Business"},
+        {"name": "Rennes School of Business"},
+        {"name": "SKEMA Business School"},
+        {"name": "TBS Education"},
+        {"name": "Université PSL"},
+        {"name": "Université Paris-Dauphine"},
+        {"name": "Université Paris 1 Panthéon-Sorbonne"},
+        {
+          "name": "INSEAD - France",
+          "Website": "https://www.insead.edu/",
+          "City": "Paris"
+        }
+
+    ]},
+    {
+     "name": "Germany", "details": [
+      {"name": "Carl von Ossietzky Universitat Oldenburg"},
+      {"name": "Constructor University"},
+      {"name": "ESMT Berlin"},
+      {"name": "Frankfurt School of Finance and Management"},
+      {"name": "Hamburg University of Technology"},
+      {"name": "HHL Leipzig"},
+      {"name": "Mannheim Business School"},
+      {"name": "Technical University of Munich"},
+      {"name": "University of Duisburg-Essen"},
+      {"name": "WHU - Otto Beisheim"}
+    ]},
+    {
+     "name": "India", "details": [
+        {"name": "Indian Institute of Management Bangalore"},
+        {"name": "Indian Institute of Management Calcutta"},
+        {"name": "Indian Institute of Management Lucknow"},
+        {"name": "Indian Institute of Technology Bombay"},
+        {"name": "Indian Institute of Technology Delhi"},
+        {"name": "Indian School of Business"}
+    ]},
+    {
+    "name":  "Ireland", "details": [
+        {"name": "University College Dublin"}
+    ]},
+   { 
+     "name": "Italy", "details": [
+        {"name": "POLIMI Graduate School of Management"},
+        {"name": "SDA Bocconi School of Management"}
+    ]},
+   { 
+     "name": "Japan", "details": [
+        {"name": "Hitotsubashi University"},
+        {"name": "Keio University"},
+        {"name": "Kyoto University"},
+        {"name": "Nagoya University"},
+        {"name": "Osaka University"},
+        {"name": "Rikkyo University"},
+        {"name": "Sophia University"},
+        {"name": "University of Tokyo"},
+        {"name": "Waseda University"}
+    ]},
+    { 
+      "name": "Hong Kong", "details": [
+        {"name": "Chinese University of Hong Kong"},
+        {"name": "Hong Kong University of Science and Technology"},
+        {"name": "University of Hong Kong"}
+     ]},
+    {
+     "name": "Netherlands", "details": [
+      {"name": "Delft University of Technology"},
+      {"name": "Eindhoven University of Technology"},
+        {"name": "Erasmus University"},
+        {"name": "Leiden University"},
+        {"name": "Maastricht University"},
+        {"name": "Nyenrode Business Universiteit"},
+        {"name": "Rotterdam School of Management"},
+        {"name": "TIAS School for Business and Society"},
+        {"name": "Tilburg University"},
+        {"name": "University of Amsterdam"},
+        {"name": "University of Groningen"},
+        {"name": "University of Twente"},
+        {"name": "Vrije Universiteit Amsterdam"}
+    ]},
+    {
+      "name": "PUERTO RICO", "details": [
+        {"name": "University of Puerto Rico"}
+     ]},
+    {
+     "name": "New Zealand", "details": [
+        {"name": "University of Auckland"},
+        {"name": "University of Otago"}
+    ]},
+    {
+     "name": "Singapore", "details": [
+        {"name": "National University of Singapore"},
+        {"name": "Nanyang Technological University"},
+        {
+          "name": "INSEAD - Singapore",
+          "Website": "https://www.insead.edu/campuses/asia",
+          "Address": "1 Ayer Rajah Ave"
+        }
+    ]},
+    {
+    "name":  "South Africa", "details": [
+        {"name": "University of Cape Town"}
+    ]},
+    {
+     "name": "South Korea", "details": [
+        {"name": "Korea University"},
+        {"name": "Seoul National University"},
+        {"name": "Yonsei University"}
+    ]},
+    {
+     "name": "Spain", "details": [
+        {"name": "EADA Business School"},
+        {"name": "Ramon Llull University"},
+        {"name": "University of Navarra"}
+    ]},
+    {
+     "name": "Switzerland", "details": [
+        {"name": "IMD Business School"},
+        {"name": "University of St. Gallen"}
+    ]},
+    {
+      "name": "Portugal", "details": [
+        {"name": "The Lisbon MBA"},
+        {"name": "University of Porto"}
+     ]},
+    {
+     "name": "United Kingdom", "details": [
+      {"name": "Aberystwyth University"},
+      {"name": "Alliance Manchester Business School"},
+      {"name": "Anglia Ruskin University"},
+      {"name": "Aston University"},
+      {"name": "Bangor University"},
+      {"name": "Birkbeck University of London"},
+      
+      {"name": "Brunel University"},
+      {"name": "Cardiff University"},
+      {"name": "City, University of London"},
+      {"name": "Coventry University"},
+      {"name": "Cranfield University"},
+      {"name": "De Montfort University"},
+      {"name": "Durham University"},
+      {"name": "Edinburgh Napier University"},
+      {"name": "Glasgow Caledonian University"},
+      {"name": "Goldsmiths University of London"},
+      {"name": "Henley Business School"},
+      {"name": "Imperial College London"},
+      {"name": "Keele University"},
+      {"name": "King's College London"},
+      {"name": "Kingston University"},
+      {"name": "Lancaster University"},
+      {"name": "Leeds Beckett University"},
+      {"name": "Liverpool John Moores University"},
+      {"name": "Liverpool School of Tropical Medicine"},
+      {"name": "London Business School"},
+      {"name": "London School of Economics"},
+      {"name": "London School of Hygiene & Tropical Medicine"},
+      {"name": "Loughborough University"},
+      {"name": "Newcastle University"},
+      {"name": "Northumbria University"},
+      {"name": "Nottingham Trent University"},
+      {"name": "Oxford Brookes University"},
+      {"name": "Queen Mary University of London"},
+      {"name": "Queen’s University Belfast"},
+      {"name": "Roehampton University"},
+      {"name": "Royal Holloway University of London"},
+      {"name": "Royal Veterinary College"},
+      {"name": "Sheffield Hallam"},
+      {"name": "St George’s, University of London"},
+      {"name": "Swansea University"},
+      {"name": "The University of Edinburgh"},
+      {"name": "University College London (UCL)"},
+      {"name": "University of Aberdeen"},
+      {"name": "University of Bath"},
+      {"name": "University of Birmingham"},
+      {"name": "University of Bradford"},
+      {"name": "University of Brighton"},
+      {"name": "University of Bristol"},
+      {"name": "University of Cambridge"},
+      {"name": "University of Central Lancashire"},
+      {"name": "University of Derby"},
+      {"name": "University of Dundee"},
+      {"name": "University of East Anglia"},
+      {"name": "University of Essex"},
+      {"name": "University of Exeter"},
+      {"name": "University of Glasgow"},
+      {"name": "University of Greenwich"},
+      {"name": "University of Hertfordshire"},
+      {"name": "University of Huddersfield"},
+      {"name": "University of Hull"},
+      {"name": "University of Kent"},
+      {"name": "University of Leeds"},
+      {"name": "University of Leicester"},
+      {"name": "University of Lincoln"},
+      {"name": "University of Liverpool"},
+      {"name": "University of London School Oriental and African Studies (SOAS)"},
+      {"name": "University of Nottingham"},
+      {"name": "University of Oxford"},
+      {"name": "University of Plymouth"},
+      {"name": "University of Portsmouth"},
+      {"name": "University of Reading"},
+      {"name": "University of Sheffield"},
+      {"name": "University of Southampton"},
+      {"name": "University of St Andrews"},
+      {"name": "University of Stirling"},
+      {"name": "University of Strathclyde"},
+      {"name": "University of Surrey"},
+      {"name": "University of Sussex"},
+      {"name": "University of the West of England"},
+      {"name": "University of the West of Scotland"},
+      {"name": "University of Ulster"},
+      {"name": "University of Warwick"},
+      {"name": "University of Westminster"},
+      {"name": "University of Wolverhampton"},
+      {"name": "University of York"}
+    ]},
+    {
+      "name":  "United States", "details": [
+        {"name": "Air Force Institute of Technology"},
+        {"name": "Alabama A&M University"},
+        {"name": "Alfred University"},
+        {"name": "American University"},
+        {"name": "Appalachian State University"},
+        {"name": "Arizona State University"},
+        {"name": "Auburn University"},
+        {"name": "Augusta University"},
+        {"name": "Babson College"},
+        {"name": "Baylor College of Medicine"},
+        {"name": "Baylor University"},
+        {"name": "Belmont University"},
+        {"name": "Bentley University"},
+        {"name": "Binghamton University - SUNY"},
+        {"name": "Boise State University"},
+        {"name": "Boston College"},
+        {"name": "Boston University"},
+        {"name": "Bowie State University"},
+        {"name": "Bowling Green State University"},
+        {"name": "Brandeis University"},
+        {"name": "Brigham Young University"},
+        {"name": "California Institute of Technology"},
+        {"name": "California State University - Long Beach"},
+        {"name": "California State University - Northridge"},
+        {"name": "Canisius University"},
+        {"name": "Carnegie Mellon University"},
+        {"name": "Case Western Reserve University"},
+        {"name": "Central Michigan University"},
+        {"name": "Chapman University"},
+        {"name": "Claremont Graduate University"},
+        {"name": "Clark Atlanta University"},
+        {"name": "Clark University"},
+        {"name": "Clarkson University"},
+        {"name": "Clemson University"},
+        {"name": "Cleveland State University"},
+        {"name": "College of Charleston"},
+        {"name": "College of William & Mary"},
+        {"name": "Colorado School of Mines"},
+        {"name": "Colorado School of Public Health"},
+        {"name": "Colorado State University"},
+        {"name": "Columbia University"},
+        {"name": "Cornell University"},
+        {"name": "CUNY - Baruch College"},
+        {"name": "CUNY - City College"},
+        {"name": "CUNY - John Jay College of Criminal Justice"},
+        {"name": "CUNY - School of Public Health"},
+        {"name": "CUNY - The Graduate Center"},
+        {"name": "Dakota State University"},
+        {"name": "Dartmouth College"},
+        {"name": "Delaware State University"},
+        {"name": "DePaul University"},
+        {"name": "Drexel University"},
+        {"name": "Duke University"},
+        {"name": "Duquesne University"},
+        {"name": "East Carolina University"},
+        {"name": "East Tennessee State University"},
+        {"name": "Eastern Michigan University"},
+        {"name": "Eastern Virginia Medical School"},
+        {"name": "Embry-Riddle Aeronautical University"},
+        {"name": "Emory University"},
+        {"name": "Florida A&M University"},
+        {"name": "Florida Atlantic University"},
+        {"name": "Florida Institute of Technology"},
+        {"name": "Florida International University"},
+        {"name": "Florida State University"},
+        {"name": "Fordham University"},
+        {"name": "George Mason University"},
+        {"name": "George Washington University"},
+        {"name": "Georgetown University"},
+        {"name": "Georgia Institute of Technology"},
+        {"name": "Georgia Southern University"},
+        {"name": "Georgia State University"},
+        {"name": "Governors State University - University Park"},
+        {"name": "Hampton University"},
+        {"name": "Harvard University"},
+        {"name": "Hofstra University"},
+        {"name": "Howard University"},
+        {"name": "Hult International Business School"},
+        {"name": "Icahn School of Medicine at Mount Sinai"},
+        {"name": "Illinois Institute of Technology"},
+        {"name": "Indiana State University"},
+        {"name": "Indiana University"},
+        {"name": "Indiana University - Purdue University Indianapolis"},
+        {"name": "Iowa State University"},
+        {"name": "Jackson State University"},
+        {"name": "John Carroll University"},
+        {"name": "Johns Hopkins University"},
+        {"name": "Kansas State University"},
+        {"name": "Keck Graduate Institute"},
+        {"name": "Kent State University"},
+        {"name": "La Salle University"},
+        {"name": "Lake Erie College of Osteopathic Medicine"},
+        {"name": "Lamar University"},
+        {"name": "Lawrence Technological University"},
+        {"name": "Lehigh University"},
+        {"name": "Lincoln Memorial University"},
+        {"name": "Lipscomb University"},
+        {"name": "Loma Linda University"},
+        {"name": "Long Island University - Brooklyn"},
+        {"name": "Louisiana State University"},
+        {"name": "Louisiana State University - Baton Rouge"},
+        {"name": "Louisiana State University - Shreveport"},
+        {"name": "Louisiana Tech University"},
+        {"name": "Loyola Marymount University"},
+        {"name": "Loyola University Chicago"},
+        {"name": "Loyola University Maryland"},
+        {"name": "Marquette University"},
+        {"name": "Massachusetts Institute of Technology"},
+        {"name": "Medical College of Wisconsin"},
+        {"name": "Medical University of South Carolina"},
+        {"name": "Mercer University"},
+        {"name": "Miami University"},
+        {"name": "Michigan State University"},
+        {"name": "Michigan Technological University"},
+        {"name": "Middle Tennessee State University"},
+        {"name": "Midwestern University"},
+        {"name": "Millsaps College"},
+        {"name": "Mississippi State University"},
+        {"name": "Missouri University of Science & Technology"},
+        {"name": "Montana State University"},
+        {"name": "Morehouse College"},
+        {"name": "Morgan State University"},
+        {"name": "New Jersey Institute of Technology"},
+        {"name": "New Mexico Institute of Mining & Technology"},
+        {"name": "New Mexico State University"},
+        {"name": "New York Medical College"},
+        {"name": "New York University"},
+        {"name": "North Carolina A&T State University"},
+        {"name": "North Carolina State University"},
+        {"name": "North Dakota State University"},
+        {"name": "Northeastern University"},
+        {"name": "Northern Arizona University"},
+        {"name": "Northern Illinois University"},
+        {"name": "Northern Illinois University"},
+        {"name": "Northwestern University"},
+        {"name": "Nova Southeastern University"},
+        {"name": "Oakland University Rochester"},
+        {"name": "Ohio State University"},
+        {"name": "Ohio University"},
+        {"name": "Oklahoma State University"},
+        {"name": "Old Dominion University"},
+        {"name": "Oregon Health and Science University"},
+        {"name": "Oregon State University"},
+        {"name": "Pace University"},
+        {"name": "Pacific Lutheran University"},
+        {"name": "Pennsylvania State University"},
+        {"name": "Pepperdine University"},
+        {"name": "Portland State University"},
+        {"name": "Prairie View A&M University"},
+        {"name": "Princeton University"},
+        {"name": "Purdue University"},
+        {"name": "Quinnipiac University"},
+        {"name": "Rensselaer Polytechnic Institute"},
+        {"name": "Rice University"},
+        {"name": "Rochester Institute of Technology"},
+        {"name": "Rollins College"},
+        {"name": "Rosalind Franklin University of Medicine and Science"},
+        {"name": "Rush University"},
+        {"name": "Rutgers University/The State University of New Jersey"},
+        {"name": "Saint Louis University"},
+        {"name": "San Diego State University"},
+        {"name": "San Francisco State University"},
+        {"name": "Santa Clara University"},
+        {"name": "Seton Hall University"},
+        {"name": "South Dakota School of Mines and Technology"},
+        {"name": "South Dakota State University"},
+        {"name": "Southern Illinois University - Carbondale"},
+        {"name": "Southern Methodist University"},
+        {"name": "St. John's University"},
+        {"name": "Stanford University"},
+        {"name": "Stevens Institute of Technology"},
+        {"name": "Stony Brook University"},
+        {"name": "Suffolk University"},
+        {"name": "SUNY College of Environmental Science and Forestry"},
+        {"name": "SUNY Downstate Health Sciences University"},
+        {"name": "SUNY Polytechnic Institute"},
+        {"name": "SUNY Upstate Medical University"},
+        {"name": "Syracuse University"},
+        {"name": "Temple University"},
+        {"name": "Tennessee State University"},
+        {"name": "Tennessee Technological University"},
+        {"name": "Texas A&M University - Corpus Christi"},
+        {"name": "Texas A&M University - Kingsville"},
+        {"name": "Texas Christian University"},
+        {"name": "Texas State University"},
+        {"name": "Texas Tech University"},
+        {"name": "The Catholic University of America"},
+        {"name": "The New School"},
+        {"name": "Thomas Jefferson University"},
+        {"name": "Touro University California"},
+        {"name": "Towson University"},
+        {"name": "Tufts University"},
+        {"name": "Tulane University"},
+        {"name": "University at Albany (SUNY)"},
+        {"name": "University at Buffalo"},
+        {"name": "University of Akron"},
+        {"name": "University of Alabama"},
+        {"name": "University of Alabama at Birmingham"},
+        {"name": "University of Alabama in Huntsville"},
+        {"name": "University of Alaska - Fairbanks"},
+        {"name": "University of Arizona"},
+        {"name": "University of Arkansas"},
+        {"name": "University of Arkansas - Little Rock"},
+        {"name": "University of Bridgeport"},
+        {"name": "University of California - Merced"},
+        {"name": "University of California Berkeley"},
+        {"name": "University of California Davis"},
+        {"name": "University of California Irvine"},
+        {"name": "University of California Los Angeles"},
+        {"name": "University of California Riverside"},
+        {"name": "University of California San Diego"},
+        {"name": "University of California San Francisco"},
+        {"name": "University of California Santa Barbara"},
+        {"name": "University of California Santa Cruz"},
+        {"name": "University of Central Florida"},
+        {"name": "University of Chicago"},
+        {"name": "University of Cincinnati"},
+        {"name": "University of Colorado"},
+        {"name": "University of Colorado - Boulder"},
+        {"name": "University of Colorado - Colorado Springs"},
+        {"name": "University of Colorado - Denver"},
+        {"name": "University of Connecticut"},
+        {"name": "University of Dayton"},
+        {"name": "University of Delaware"},
+        {"name": "University of Denver"},
+        {"name": "University of Detroit Mercy"},
+        {"name": "University of Florida"},
+        {"name": "University of Georgia"},
+        {"name": "University of Hawaii at Manoa"},
+        {"name": "University of Houston"},
+        {"name": "University of Idaho"},
+        {"name": "University of Illinois at Chicago"},
+        {"name": "University of Illinois Springfield"},
+        {"name": "University of Illinois Urbana-Champaign"},
+        {"name": "University of Iowa"},
+        {"name": "University of Kansas"},
+        {"name": "University of Kansas Medical Center"},
+        {"name": "University of Kentucky"},
+        {"name": "University of Louisiana at Lafayette"},
+        {"name": "University of Louisville"},
+        {"name": "University of Maine"},
+        {"name": "University of Maryland"},
+        {"name": "University of Maryland Baltimore County"},
+        {"name": "University of Massachusetts - Amherst"},
+        {"name": "University of Massachusetts - Boston"},
+        {"name": "University of Massachusetts - Dartmouth"},
+        {"name": "University of Massachusetts - Lowell"},
+        {"name": "University of Memphis"},
+        {"name": "University of Miami"},
+        {"name": "University of Michigan"},
+        {"name": "University of Michigan - Dearborn"},
+        {"name": "University of Minnesota"},
+        {"name": "University of Mississippi"},
+        {"name": "University of Missouri"},
+        {"name": "University of Missouri - Kansas City"},
+        {"name": "University of Missouri - St. Louis"},
+        {"name": "University of Montana"},
+        {"name": "University of Nebraska"},
+        {"name": "University of Nebraska - Lincoln"},
+        {"name": "University of Nebraska - Omaha"},
+        {"name": "University of Nevada - Las Vegas"},
+        {"name": "University of Nevada - Reno"},
+        {"name": "University of New England United States"},
+        {"name": "University of New Hampshire - Durham"},
+        {"name": "University of New Haven"},
+        {"name": "University of New Mexico"},
+        {"name": "University of New Orleans"},
+        {"name": "University of North Carolina - Chapel Hill"},
+        {"name": "University of North Carolina - Charlotte"},
+        {"name": "University of North Carolina - Greensboro"},
+        {"name": "University of North Carolina - Wilmington"},
+        {"name": "University of North Dakota"},
+        {"name": "University of North Florida"},
+        {"name": "University of North Texas"},
+        {"name": "University of North Texas Health Science Center"},
+        {"name": "University of Northern Colorado"},
+        {"name": "University of Notre Dame"},
+        {"name": "University of Oklahoma"},
+        {"name": "University of Oklahoma Health Sciences Center"},
+        {"name": "University of Oregon"},
+        {"name": "University of Pennsylvania"},
+        {"name": "University of Pittsburgh"},
+        {"name": "University of Richmond"},
+        {"name": "University of Rochester"},
+        {"name": "University of San Diego"},
+        {"name": "University of San Francisco"},
+        {"name": "University of Scranton"},
+        {"name": "University of South Alabama"},
+        {"name": "University of South Carolina"},
+        {"name": "University of South Dakota"},
+        {"name": "University of South Florida"},
+        {"name": "University of Southern California"},
+        {"name": "University of Southern Mississippi"},
+        {"name": "University of Tennessee - Chattanooga"},
+        {"name": "University of Tennessee - Knoxville"},
+        {"name": "University of Tennessee Health Science Center"},
+        {"name": "University of Texas at Arlington"},
+        {"name": "University of Texas at Austin"},
+        {"name": "University of Texas at Dallas"},
+        {"name": "University of Texas at El Paso"},
+        {"name": "University of Texas at San Antonio"},
+        {"name": "University of Texas Health Science Center at Houston"},
+        {"name": "University of Texas Health Science Center at San Antonio"},
+        {"name": "University of Texas Medical Branch"},
+        {"name": "University of Texas Southwestern Medical Center"},
+        {"name": "University of the Incarnate Word"},
+        {"name": "University of Toledo"},
+        {"name": "University of Tulsa"},
+        {"name": "University of Utah"},
+        {"name": "University of Virginia"},
+        {"name": "University of Washington"},
+        {"name": "University of Wisconsin - Milwaukee"},
+        {"name": "University of Wisconsin-Madison"},
+        {"name": "University of Wyoming"},
+        {"name": "Utah State University"},
+        {"name": "Vanderbilt University"},
+        {"name": "Villanova University"},
+        {"name": "Virginia Commonwealth University"},
+        {"name": "Virginia Tech"},
+        {"name": "Wake Forest University"},
+        {"name": "Washington & Lee University"},
+        {"name": "Washington State University"},
+        {"name": "Wayne State University"},
+        {"name": "Wesleyan University"},
+        {"name": "West Virginia University"},
+        {"name": "Western Michigan University"},
+        {"name": "Western University of Health Sciences"},
+        {"name": "Wichita State University"},
+        {"name": "Willamette University"},
+        {"name": "Worcester Polytechnic Institute"},
+        {"name": "Wright State University"},
+        {"name": "Yale University"},
+        {"name": "Yeshiva University"},
+    
+            {
+                "name": "A. T. Still University of Health Sciences",
+                "Website": "https://www.atsu.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Adelphi University",
+                "Website": "https://www.adelphi.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Albany College of Pharmacy and Health Sciences",
+                "Website": "https://www.acphs.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Albany Medical College",
+                "Website": "https://www.amc.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Allen College",
+                "Website": "https://www.allencollege.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "American University",
+                "Website": "https://www.american.edu/",
+                "State": "DC"
+              },
+              {
+                "name": "American University of Antigua (AUA) College of Medicine",
+                "Website": "https://www.auamed.org/",
+                "State": "New York"
+              },
+              {
+                "name": "Amherst College",
+                "Website": "https://www.amherst.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Appalachian State University",
+                "Website": "https://www.appstate.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Arcadia University",
+                "Website": "https://www.arcadia.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Arizona State University",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Arizona State University- Downtown Phoenix",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Arizona State University- Polytechnic",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Arizona State University- Skysong",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Arizona State University- West",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Auburn University",
+                "Website": "https://www.auburn.edu/",
+                "State": "Alabama"
+              },
+              {
+                "name": "Babson College",
+                "Website": "https://www.babson.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Ball State University",
+                "Website": "https://www.bsu.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "Barnard College",
+                "Website": "https://www.barnard.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Baruch College of the City University of New York",
+                "Website": "https://www.baruch.cuny.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Bates College",
+                "Website": "https://www.bates.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "Baylor College of Medicine",
+                "Website": "https://www.bcm.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Baylor University",
+                "Website": "https://www.baylor.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Bellin College",
+                "Website": "https://www.bellincollege.edu/",
+                "State": "Wisconsin"
+              },
+              {
+                "name": "Belmont University",
+                "Website": "https://www.belmont.edu",
+                "State": "Tennessee"
+              },
+              {
+                "name": "Bentley University",
+                "Website": "https://www.bentley.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Berry College",
+                "Website": "https://www.berry.edu",
+                "State": "Georgia"
+              },
+              {
+                "name": "Biola University",
+                "Website": "https://www.biola.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Bon Secours Memorial College of Nursing",
+                "Website": "https://bonsecours.com/st-petersburg",
+                "State": "Virginia"
+              },
+              {
+                "name": "Boston College",
+                "Website": "https://www.bc.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Boston University",
+                "Website": "https://www.bu.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Bowdoin College",
+                "Website": "https://www.bowdoin.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "Bradley University",
+                "Website": "https://www.bradley.edu",
+                "State": "Illinois"
+              },
+              {
+                "name": "Brandeis University",
+                "Website": "https://www.brandeis.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Brigham Young University – Provo | BYU",
+                "Website": "https://www.byu.edu/",
+                "State": "Utah"
+              },
+              {
+                "name": "Brown University",
+                "Website": "https://www.brown.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "Bryan College of Health Sciences",
+                "Website": "https://www.bryanhealthcollege.edu/bcohs/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "Bryant University",
+                "Website": "https://www.bryant.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "Bryn Mawr College",
+                "Website": "https://www.brynmawr.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Bucknell University",
+                "Website": "https://www.bucknell.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Butler University",
+                "Website": "https://www.butler.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "CUNY City College",
+                "Website": "https://www.ccny.cuny.edu",
+                "State": "New York"
+              },
+              {
+                "name": "California Institute of Technology",
+                "Website": "https://www.caltech.edu/",
+                "State": "California"
+              },
+              {
+                "name": "California Polytechnic State University-San Luis Obispo - Cal Poly",
+                "Website": "https://www.calpoly.edu/",
+                "State": "California"
+              },
+              {
+                "name": "California State University - Fullerton",
+                "Website": "http://www.fullerton.edu/",
+                "State": "California"
+              },
+              {
+                "name": "California State University - Long Beach",
+                "Website": "https://www.csulb.edu/",
+                "State": "California"
+              },
+              {
+                "name": "California State University - Los Angeles",
+                "Website": "https://www.calstatela.edu/",
+                "State": "California"
+              },
+              {
+                "name": "California State University Maritime Academy",
+                "Website": "https://www.csum.edu",
+                "State": "California"
+              },
+              {
+                "name": "Calvin College",
+                "Website": "https://www.calvin.edu",
+                "State": "Michigan"
+              },
+              {
+                "name": "Carleton College",
+                "Website": "https://www.carleton.edu/",
+                "State": "Minnesota"
+              },
+              {
+                "name": "Carnegie Mellon University",
+                "Website": "https://www.cmu.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Case Western Reserve University",
+                "Website": "https://case.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Catholic University of America",
+                "Website": "https://www.catholic.edu/index.html",
+                "State": "DC"
+              },
+              {
+                "name": "Centra College of Nursing",
+                "Website": "https://www.centrahealth.com/",
+                "State": "Colorado"
+              },
+              {
+                "name": "Centre College",
+                "Website": "https://www.centre.edu/",
+                "State": "Kentucky"
+              },
+              {
+                "name": "Chapman University",
+                "Website": "https://www.chapman.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Chatham University",
+                "Website": "https://www.chatham.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Claremont Graduate University",
+                "Website": "https://www.cgu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Claremont McKenna College",
+                "Website": "https://www.cmc.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Clark University",
+                "Website": "https://www.clarku.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Clarkson College",
+                "Website": "https://www.clarksoncollege.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "Clarkson University",
+                "Website": "https://www.clarkson.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Clemson University",
+                "Website": "https://www.clemson.edu/",
+                "State": "South Carolina"
+              },
+              {
+                "name": "Colby College",
+                "Website": "https://www.colby.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "Colgate University",
+                "Website": "https://www.colgate.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "College of Charleston",
+                "Website": "https://www.cofc.edu/",
+                "State": "South Carolina"
+              },
+              {
+                "name": "College of William and Mary",
+                "Website": "https://www.wm.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "College of the Holy Cross",
+                "Website": "https://www.holycross.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Colorado College",
+                "Website": "https://www.coloradocollege.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "Colorado School of Mines",
+                "Website": "https://www.mines.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "Colorado State University-Fort Collins",
+                "Website": "https://www.colostate.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Columbia College of Nursing",
+                "Website": "https://www.ccis.edu/degrees/departments/nursing",
+                "State": "Wisconsin"
+              },
+              {
+                "name": "Columbia University",
+                "Website": "https://www.columbia.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Connecticut College",
+                "Website": "https://www.conncoll.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "Cooper Union for the Advancement of Science and Art",
+                "Website": "https://www.cooper.edu",
+                "State": "New York"
+              },
+              {
+                "name": "Cornell University",
+                "Website": "https://www.cornell.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Creighton University",
+                "Website": "https://www.creighton.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "Denver College of Nursing",
+                "Website": "https://www.denvercollegeofnursing.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "DePaul University",
+                "Website": "https://www.depaul.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "DeSales University",
+                "Website": "https://www.desales.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Denison University",
+                "Website": "https://denison.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Depauw University",
+                "Website": "https://www.depauw.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "Des Moines University-Osteopathic Medical Center",
+                "Website": "https://www.dmu.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "Dickinson College",
+                "Website": "https://www.dickinson.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Dordt College",
+                "Website": "https://www.dordt.edu",
+                "State": "Iowa"
+              },
+              {
+                "name": "Drake University",
+                "Website": "https://www.drake.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "Drexel University",
+                "Website": "https://drexel.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Duke University",
+                "Website": "https://www.duke.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Duquesne University",
+                "Website": "https://www.duq.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Eastern Virginia Medical School",
+                "Website": "https://www.evms.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Edgewood College",
+                "Website": "https://www.edgewood.edu/",
+                "State": "Wisconsin"
+              },
+              {
+                "name": "Elon University",
+                "Website": "https://www.elon.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Emerson College",
+                "Website": "https://www.emerson.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Emory University",
+                "Website": "http://www.emory.edu/home/index.html",
+                "State": "Georgia"
+              },
+              {
+                "name": "Fairfield University",
+                "Website": "https://www.fairfield.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "Florida Atlantic University",
+                "Website": "https://www.fau.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "Florida International University",
+                "Website": "https://www.fiu.edu",
+                "State": "Florida"
+              },
+              {
+                "name": "Florida State University - FSU",
+                "Website": "https://www.fsu.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "Fordham University",
+                "Website": "https://www.fordham.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Franklin and Marshall College",
+                "Website": "https://www.fandm.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Frontier Nursing University",
+                "Website": "https://frontier.edu/",
+                "State": "Kentucky"
+              },
+              {
+                "name": "Furman University",
+                "Website": "https://www.furman.edu",
+                "State": "South Carolina"
+              },
+              {
+                "name": "Gannon University",
+                "Website": "https://www.gannon.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "George Mason University",
+                "Website": "https://www2.gmu.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "George Washington University - GWU",
+                "Website": "https://www.gwu.edu/",
+                "State": "DC"
+              },
+              {
+                "name": "Georgetown University",
+                "Website": "https://www.georgetown.edu/",
+                "State": "DC"
+              },
+              {
+                "name": "Georgia Institute of Technology - Georgia Tech",
+                "Website": "https://www.gatech.edu/",
+                "State": "Georgia"
+              },
+              {
+                "name": "Gettysburg College",
+                "Website": "https://www.gettysburg.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Goldfarb School of Nursing at Barnes-Jewish College",
+                "Website": "https://www.barnesjewishcollege.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Gonzaga University",
+                "Website": "https://www.gonzaga.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Grand Valley State University",
+                "Website": "https://www.gvsu.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "Grinnell College",
+                "Website": "https://www.grinnell.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "Hamilton College",
+                "Website": "https://www.hamilton.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Harvard University",
+                "Website": "https://www.harvard.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Harvey Mudd College",
+                "Website": "https://www.hmc.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Haverford College",
+                "Website": "https://www.haverford.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "High Point University",
+                "Website": "https://www.highpoint.edu",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Hofstra University",
+                "Website": "https://www.hofstra.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Howard University",
+                "Website": "https://www.howard.edu/",
+                "State": "DC"
+              },
+              {
+                "name": "Hult International Business School",
+                "Website": "https://www.hult.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Hunter College of the City - University of New York",
+                "Website": "https://hunter.cuny.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Illinois Institute of Technology",
+                "Website": "https://www.iit.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Illinois State University",
+                "Website": "https://illinoisstate.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Indiana University - Bloomington",
+                "Website": "https://www.iu.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "Indiana University-Purdue University-Indianapolis",
+                "Website": "https://www.iupui.edu",
+                "State": "Indiana"
+              },
+              {
+                "name": "Iowa State University",
+                "Website": "https://www.iastate.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "James Madison University - JMU",
+                "Website": "https://www.jmu.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Jefferson College of Health Sciences",
+                "Website": "https://www.jchs.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "John Carroll University",
+                "Website": "https://jcu.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Johns Hopkins University",
+                "Website": "https://www.jhu.edu/",
+                "State": "Maryland"
+              },
+              {
+                "name": "Jones Graduate School of Business (Rice University)",
+                "Website": "https://www.rice.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Kansas State University",
+                "Website": "https://www.k-state.edu",
+                "State": "Kansas"
+              },
+              {
+                "name": "Keck Graduate Institute",
+                "Website": "https://www.kgi.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Kenyon College",
+                "Website": "https://www.kenyon.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Kettering College",
+                "Website": "https://kc.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "La Salle University",
+                "Website": "https://www.lasalle.edu",
+                "City": "Philadelphia",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Lafayette College",
+                "Website": "https://www.lafayette.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Lakeview College of Nursing",
+                "Website": "https://www.lakeviewcol.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Lancaster General College of Nursing & Health Sciences",
+                "Website": "https://www.pacollege.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Lehigh University",
+                "Website": "https://www.lehigh.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Lesley University",
+                "Website": "https://lesley.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Lipscomb University",
+                "Website": "https://www.lipscomb.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "Loma Linda University",
+                "Website": "https://home.llu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Loyola Marymount University",
+                "Website": "https://www.lmu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Loyola University Maryland",
+                "Website": "https://www.loyola.edu/",
+                "State": "Maryland"
+              },
+              {
+                "name": "Loyola University New Orleans",
+                "Website": "https://www.loyno.edu/",
+                "State": "Louisiana"
+              },
+              {
+                "name": "Loyola University of Chicago",
+                "Website": "https://www.luc.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "MGH Institute of Health Professions",
+                "Website": "https://www.mghihp.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Macalester College",
+                "Website": "https://www.macalester.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "Maine Maritime Academy",
+                "Website": "https://www.mainemaritime.edu",
+                "State": "Maine"
+              },
+              {
+                "name": "Manhattan College",
+                "Website": "https://manhattan.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Marquette University",
+                "Website": "https://www.marquette.edu/",
+                "State": "Wisconsin"
+              },
+              {
+                "name": "Massachusetts College of Pharmacy & Health Sciences",
+                "Website": "https://www.mcphs.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Massachusetts Institute of Technology - MIT",
+                "Website": "https://web.mit.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Massachusetts Maritime Academy",
+                "Website": "https://www.maritime.edu",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "McMaster University",
+                "Website": "https://www.mcmaster.ca/",
+                "Province": "Ontario"
+              },
+              {
+                "name": "Medical University of South Carolina",
+                "Website": "https://www.musc.edu/",
+                "State": "South Carolina"
+              },
+              {
+                "name": "Mercer University",
+                "Website": "https://www.mercer.edu/",
+                "State": "Georgia"
+              },
+              {
+                "name": "Miami University",
+                "Website": "http://miamioh.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Michigan State University",
+                "Website": "https://msu.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "Michigan Technological University",
+                "Website": "https://www.mtu.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "Middlebury College",
+                "Website": "https://www.middlebury.edu/",
+                "State": "Vermont"
+              },
+              {
+                "name": "Midwestern University",
+                "Website": "https://www.midwestern.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Missouri University of Science and Technology",
+                "Website": "https://www.mst.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Montclair State University",
+                "Website": "https://www.montclair.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "Mount Carmel College of Nursing",
+                "Website": "https://www.mccn.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Mount Holyoke College",
+                "Website": "https://www.mtholyoke.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Mount Sinai School of Medicine",
+                "Website": "https://icahn.mssm.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Nebraska Methodist College of Nursing and Allied Health",
+                "Website": "https://www.methodistcollege.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "New Jersey Institute of Technology",
+                "Website": "https://www.njit.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "New York Institute of Technology - Old Westbury",
+                "Website": "https://www.nyit.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "New York Law School",
+                "Website": "https://www.nyls.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "New York Medical College",
+                "Website": "https://www.nymc.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "New York University - NYU",
+                "Website": "https://www.nyu.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "North Carolina State University",
+                "Website": "https://www.ncsu.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Northwestern College",
+                "Website": "https://www.nwciowa.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "Northwestern University",
+                "Website": "https://www.northwestern.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Nova Southeastern University",
+                "Website": "https://www.nova.edu/index.html",
+                "State": "Florida"
+              },
+              {
+                "name": "Oberlin College",
+                "Website": "https://www.oberlin.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Occidental College",
+                "Website": "https://www.oxy.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Ohio Northern University",
+                "Website": "https://www.onu.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Ohio State University - OSU",
+                "Website": "https://www.osu.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "Oklahoma State University-Main Campus",
+                "Website": "https://www.okstate.edu/",
+                "State": "Oklahoma"
+              },
+              {
+                "name": "Oregon Health & Science University",
+                "Website": "https://www.ohsu.edu/xd/",
+                "State": "Oregon"
+              },
+              {
+                "name": "Oregon State University",
+                "Website": "https://oregonstate.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "Pace University - New York",
+                "Website": "https://www.pace.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Pacific University",
+                "Website": "https://www.pacificu.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "Pennsylvania State University",
+                "Website": "https://www.psu.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Pepperdine University",
+                "Website": "https://www.pepperdine.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Philadelphia College of Osteopathic Medicine",
+                "Website": "https://www.pcom.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Philadelphia University",
+                "Website": "https://www.philau.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Phillips Beth Israel School of Nursing",
+                "Website": "https://www.mountsinai.org/locations/beth-israel/pson",
+                "State": "New York"
+              },
+              {
+                "name": "Pitzer College",
+                "Website": "https://www.pitzer.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Pomona College",
+                "Website": "https://www.pomona.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Princeton University",
+                "Website": "https://www.princeton.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "Providence College",
+                "Website": "https://www.providence.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "Purdue University",
+                "Website": "https://www.purdue.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "Rensselaer Polytechnic Institute",
+                "Website": "https://www.rpi.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Research College of Nursing",
+                "Website": "http://researchcollege.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Resurrection University",
+                "Website": "https://www.resu.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Rhode Island School of Design",
+                "Website": "https://www.risd.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "Rhodes College",
+                "Website": "https://www.rhodes.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "Rice University",
+                "Website": "https://www.rice.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Robert Morris University",
+                "Website": "https://www.rmu.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Rochester Institute of Technology",
+                "Website": "https://www.rit.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Rollins College",
+                "Website": "https://www.rollins.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "Rosalind Franklin University of Medicine and Science",
+                "Website": "https://www.rosalindfranklin.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Roseman University of Health Sciences",
+                "Website": "https://www.roseman.edu/",
+                "State": "Nevada"
+              },
+              {
+                "name": "Rowan University",
+                "Website": "https://www.rowan.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "Rush University",
+                "Website": "https://www.rushu.rush.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Rutgers University",
+                "Website": "https://www.rutgers.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "SUNY College of Environmental Science and Forestry",
+                "Website": "https://www.esf.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "SUNY Downstate Medical Center",
+                "Website": "https://www.downstate.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "SUNY at Albany",
+                "Website": "https://www.albany.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "SUNY at Binghamton",
+                "Website": "https://www.binghamton.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "SUNY at Stony Brook",
+                "Website": "https://www.sunysb.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Saint Francis Medical Center College of Nursing",
+                "Website": "https://www.sfmccon.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Saint Francis University",
+                "Website": "https://www.francis.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Saint John Fisher College",
+                "Website": "https://www.sjfc.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Saint Louis University-Main Campus",
+                "Website": "https://www.slu.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Saint Luke s College of Health Sciences",
+                "Website": "https://www.rockhurst.edu/saint-lukes-college",
+                "State": "Missouri"
+              },
+              {
+                "name": "Saint Mary s College of California",
+                "Website": "https://www.stmarys-ca.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Samford University",
+                "Website": "https://www.samford.edu/",
+                "State": "Alabama"
+              },
+              {
+                "name": "Samuel Merritt University",
+                "Website": "https://www.samuelmerritt.edu/",
+                "State": "California"
+              },
+              {
+                "name": "San Diego State University - SDSU",
+                "Website": "https://www.sdsu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Santa Clara University",
+                "Website": "https://www.scu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Scripps College",
+                "Website": "https://www.scrippscollege.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Seattle Pacific University",
+                "Website": "https://spu.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Seattle University",
+                "Website": "https://www.seattleu.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Sentara College of Health Sciences",
+                "Website": "https://www.sentara.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Seton Hall University",
+                "Website": "https://www.shu.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "Seton Hill University",
+                "Website": "https://www.setonhill.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Sewanee - The University of the South",
+                "Website": "https://new.sewanee.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "Shenandoah University",
+                "Website": "https://www.su.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Simmons College",
+                "Website": "https://www.simmons.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Skidmore College",
+                "Website": "https://www.skidmore.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Smith College",
+                "Website": "https://www.smith.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Soka University of America",
+                "Website": "https://www.soka.edu/",
+                "State": "California"
+              },
+              {
+                "name": "South Dakota School of Mines and Technology",
+                "Website": "https://www.sdsmt.edu/",
+                "State": "South Dakota"
+              },
+              {
+                "name": "South Dakota State University",
+                "Website": "https://www.sdstate.edu/",
+                "State": "South Dakota"
+              },
+              {
+                "name": "Southern Methodist University - SMU",
+                "Website": "https://www.smu.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "St John's University-New York",
+                "Website": "https://www.stjohns.edu",
+                "State": "New York"
+              },
+              {
+                "name": "St Louis College of Pharmacy",
+                "Website": "https://www.stlcop.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "St Luke's College",
+                "Website": "https://www.stlukescollege.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "St. James School of Medicine | Saint James School of Medicine",
+                "Website": "https://www.sjsm.org/",
+                "State": "Illinois"
+              },
+              {
+                "name": "Stanford University",
+                "Website": "https://www.stanford.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Stetson University",
+                "Website": "https://www.stetson.edu/home/",
+                "State": "Florida"
+              },
+              {
+                "name": "Stevens Institute of Technology",
+                "Website": "https://www.stevens.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "Stonehill College",
+                "Website": "https://www.stonehill.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Suffolk University",
+                "Website": "https://www.suffolk.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Swarthmore College",
+                "Website": "https://www.swarthmore.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Syracuse University",
+                "Website": "https://www.syracuse.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Taylor University",
+                "Website": "https://www.taylor.edu",
+                "State": "Indiana"
+              },
+              {
+                "name": "Teachers College at Columbia University",
+                "Website": "https://www.tc.columbia.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Temple University",
+                "Website": "https://www.temple.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Texas A&M University",
+                "Website": "https://www.tamu.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Texas Christian University - TCU",
+                "Website": "https://www.tcu.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Texas Tech University",
+                "Website": "https://www.ttu.edu",
+                "State": "Texas"
+              },
+              {
+                "name": "Texas Tech University Health Sciences Center",
+                "Website": "https://www.ttuhsc.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The Citadel",
+                "Website": "https://www.citadel.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "The College of New Jersey",
+                "Website": "https://tcnj.edu/",
+                "State": "New Jersey"
+              },
+              {
+                "name": "The New School",
+                "Website": "https://www.newschool.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "The University of Alabama",
+                "Website": "https://www.ua.edu/",
+                "State": "Alabama"
+              },
+              {
+                "name": "The University of Texas Health Science - San Antonio",
+                "Website": "https://www.uthscsa.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Texas Health Science Center at Houston",
+                "Website": "https://www.uth.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Texas MD Anderson Cancer Center",
+                "Website": "https://www.mdanderson.org/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Texas Medical Branch",
+                "Website": "https://www.utmb.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Texas Rio Grande Valley",
+                "Website": "https://www.utrgv.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Texas at Dallas",
+                "Website": "https://www.utdallas.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "The University of Virginia's College at Wise",
+                "Website": "https://www.uvawise.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Thomas Aquinas College",
+                "Website": "https://thomasaquinas.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Thomas Jefferson University",
+                "Website": "https://www.jefferson.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Thunderbird School of Global Management",
+                "Website": "https://www.asu.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "Touro University California",
+                "Website": "https://tu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Towson University",
+                "Website": "https://www.towson.edu",
+                "State": "Maryland"
+              },
+              {
+                "name": "Trinity College",
+                "Website": "https://www.trincoll.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "Trinity University",
+                "Website": "https://new.trinity.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "Truman State University",
+                "Website": "https://www.truman.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Tufts University",
+                "Website": "https://www.tufts.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Tulane University",
+                "Website": "https://tulane.edu/",
+                "State": "Louisiana"
+              },
+              {
+                "name": "Union College",
+                "Website": "https://www.union.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Union University",
+                "Website": "https://www.uu.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "United States Merchant Marine Academy",
+                "Website": "https://www.usmma.edu",
+                "State": "New York"
+              },
+              {
+                "name": "University at Buffalo",
+                "Website": "https://www.buffalo.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "University of Alabama at Birmingham",
+                "Website": "https://www.uab.edu",
+                "State": "Alabama"
+              },
+              {
+                "name": "University of Arizona",
+                "Website": "https://www.arizona.edu/",
+                "State": "Arizona"
+              },
+              {
+                "name": "University of Arkansas",
+                "Website": "https://www.uark.edu",
+                "State": "Arkansas"
+              },
+              {
+                "name": "University of Arkansas for Medical Sciences",
+                "Website": "https://www.uams.edu/",
+                "State": "Arkansas"
+              },
+              {
+                "name": "University of California - Berkeley",
+                "Website": "https://www.berkeley.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Davis",
+                "Website": "https://www.ucdavis.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Irvine",
+                "Website": "https://www.uci.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Los Angeles - UCLA",
+                "Website": "https://www.ucla.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Merced",
+                "Website": "https://www.ucmerced.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Riverside",
+                "Website": "https://www.ucr.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - San Diego - UCSD",
+                "Website": "https://www.ucsd.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - San Francisco - UCSF",
+                "Website": "https://www.ucsf.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Santa Barbara - UCSB",
+                "Website": "https://www.ucsb.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California - Santa Cruz",
+                "Website": "https://www.ucsc.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of California College of Law San Francisco",
+                "Website": "https://www.uchastings.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of Central Florida",
+                "Website": "https://www.ucf.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "University of Chicago (incl. Booth)",
+                "Website": "https://www.uchicago.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "University of Cincinnati-Main Campus",
+                "Website": "https://www.uc.edu",
+                "State": "Ohio"
+              },
+              {
+                "name": "University of Colorado Denver",
+                "Website": "http://www.ucdenver.edu/pages/ucdwelcomepage.aspx",
+                "State": "Colorado"
+              },
+              {
+                "name": "University of Colorado at Boulder",
+                "Website": "https://www.colorado.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "University of Colorado at Colorado Springs",
+                "Website": "https://www.uccs.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "University of Connecticut - Uconn",
+                "Website": "https://uconn.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "University of Dayton",
+                "Website": "https://www.udayton.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "University of Delaware",
+                "Website": "https://www.udel.edu/",
+                "State": "Delaware"
+              },
+              {
+                "name": "University of Denver",
+                "Website": "https://www.du.edu/",
+                "State": "Colorado"
+              },
+              {
+                "name": "University of Detroit Mercy",
+                "Website": "https://www.udmercy.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "University of Florida",
+                "Website": "https://www.ufl.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "University of Georgia",
+                "Website": "https://www.uga.edu/",
+                "State": "Georgia"
+              },
+              {
+                "name": "University of Hartford",
+                "Website": "https://www.hartford.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "University of Hawaii at Manoa",
+                "Website": "https://manoa.hawaii.edu/",
+                "State": "Hawaii"
+              },
+              {
+                "name": "University of Houston",
+                "Website": "https://www.uh.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Idaho",
+                "Website": "https://www.uidaho.edu",
+                "State": "Idaho"
+              },
+              {
+                "name": "University of Illinois at Chicago",
+                "Website": "https://www.uic.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "University of Illinois at Urbana-Champaign",
+                "Website": "https://illinois.edu/",
+                "State": "Illinois"
+              },
+              {
+                "name": "University of Iowa",
+                "Website": "https://uiowa.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "University of Kansas",
+                "Website": "https://www.ku.edu/",
+                "State": "Kansas"
+              },
+              {
+                "name": "University of Kentucky",
+                "Website": "https://www.uky.edu",
+                "State": "Kentucky"
+              },
+              {
+                "name": "University of La Verne",
+                "Website": "https://laverne.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of Louisville",
+                "Website": "https://www.louisville.edu",
+                "State": "Kentucky"
+              },
+              {
+                "name": "University of Maine",
+                "Website": "https://umaine.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "University of Maryland - Baltimore",
+                "Website": "https://www.umaryland.edu/",
+                "State": "Maryland"
+              },
+              {
+                "name": "University of Maryland - Baltimore County",
+                "Website": "https://www.umbc.edu/",
+                "State": "Maryland"
+              },
+              {
+                "name": "University of Maryland - College Park",
+                "Website": "https://www.umd.edu/",
+                "State": "Maryland"
+              },
+              {
+                "name": "University of Massachusetts Amherst - UMass Amherst",
+                "Website": "https://www.umass.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "University of Massachusetts Medical School (UMMS)",
+                "Website": "https://www.umassmed.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "University of Massachusetts-Lowell",
+                "Website": "https://www.uml.edu",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "University of Miami",
+                "Website": "https://welcome.miami.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "University of Michigan - Ann Arbor",
+                "Website": "https://umich.edu/",
+                "State": "Michigan"
+              },
+              {
+                "name": "University of Minnesota - Twin Cities",
+                "Website": "https://twin-cities.umn.edu/",
+                "State": "Minnesota"
+              },
+              {
+                "name": "University of Missouri - Columbia",
+                "Website": "https://www.missouri.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "University of Mount Union",
+                "Website": "https://www.mountunion.edu/",
+                "State": "Ohio"
+              },
+              {
+                "name": "University of Nebraska - Lincoln",
+                "Website": "https://www.unl.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "University of Nebraska Medical Center",
+                "Website": "https://www.unmc.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "University of New England",
+                "Website": "https://www.une.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "University of New Hampshire",
+                "Website": "https://www.unh.edu/",
+                "State": "New Hampshire"
+              },
+              {
+                "name": "University of North Carolina Wilmington",
+                "Website": "https://www.uncw.edu",
+                "State": "North Carolina"
+              },
+              {
+                "name": "University of North Carolina at Chapel Hill - UNC",
+                "Website": "https://www.unc.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "University of North Dakota",
+                "Website": "https://www.und.edu/",
+                "State": "North Dakota"
+              },
+              {
+                "name": "University of North Texas Health Science Center at Fort Worth",
+                "Website": "https://www.unthsc.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Northern Iowa",
+                "Website": "https://uni.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "University of Notre Dame",
+                "Website": "https://www.nd.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "University of Oklahoma",
+                "Website": "https://www.ou.edu/",
+                "State": "Oklahoma"
+              },
+              {
+                "name": "University of Oregon",
+                "Website": "https://www.uoregon.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "University of Pennsylvania (including Wharton)",
+                "Website": "https://www.upenn.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of Pittsburgh",
+                "Website": "https://www.pitt.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of Portland",
+                "Website": "https://www.up.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "University of Puerto Rico-Medical Sciences",
+                "Website": "https://www.rcm.upr.edu/",
+                "State": "Puerto Rico"
+              },
+              {
+                "name": "University of Rhode Island",
+                "Website": "https://www.uri.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "University of Richmond",
+                "Website": "https://www.richmond.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "University of Rochester",
+                "Website": "https://www.rochester.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "University of Saint Joseph",
+                "Website": "https://www.usj.edu",
+                "State": "Connecticut"
+              },
+              {
+                "name": "University of San Diego - USD",
+                "Website": "https://www.sandiego.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of San Francisco",
+                "Website": "https://www.usfca.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of Scranton",
+                "Website": "https://www.scranton.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of South Carolina - Columbia",
+                "Website": "https://www.sc.edu/",
+                "State": "South Carolina"
+              },
+              {
+                "name": "University of South Dakota",
+                "Website": "https://www.usd.edu/",
+                "State": "South Dakota"
+              },
+              {
+                "name": "University of South Florida",
+                "Website": "https://www.usf.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "University of Southern California - USC",
+                "Website": "https://www.usc.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of St. Thomas",
+                "Website": "https://www.stthomas.edu/",
+                "State": "Minnesota"
+              },
+              {
+                "name": "University of Tennessee - Knoxville",
+                "Website": "http://tennessee.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "University of Texas Southwestern Medical Center at Dallas",
+                "Website": "https://www.utsouthwestern.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Texas at Austin - UT Austin",
+                "Website": "https://www.utexas.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Tulsa",
+                "Website": "https://utulsa.edu/",
+                "State": "Oklahoma"
+              },
+              {
+                "name": "University of Utah",
+                "Website": "https://www.utah.edu/",
+                "State": "Utah"
+              },
+              {
+                "name": "University of Nebraska Medical Center",
+                "Website": "https://www.unmc.edu/",
+                "State": "Nebraska"
+              },
+              {
+                "name": "University of New England",
+                "Website": "https://www.une.edu/",
+                "State": "Maine"
+              },
+              {
+                "name": "University of New Hampshire",
+                "Website": "https://www.unh.edu/",
+                "State": "New Hampshire"
+              },
+              {
+                "name": "University of North Carolina Wilmington",
+                "Website": "https://www.uncw.edu",
+                "State": "North Carolina"
+              },
+              {
+                "name": "University of North Carolina at Chapel Hill - UNC",
+                "Website": "https://www.unc.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "University of North Dakota",
+                "Website": "https://www.und.edu/",
+                "State": "North Dakota"
+              },
+              {
+                "name": "University of North Texas Health Science Center at Fort Worth",
+                "Website": "https://www.unthsc.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Northern Iowa",
+                "Website": "https://uni.edu/",
+                "State": "Iowa"
+              },
+              {
+                "name": "University of Notre Dame",
+                "Website": "https://www.nd.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "University of Oklahoma",
+                "Website": "https://www.ou.edu/",
+                "State": "Oklahoma"
+              },
+              {
+                "name": "University of Oregon",
+                "Website": "https://www.uoregon.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "University of Pennsylvania (including Wharton)",
+                "Website": "https://www.upenn.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of Pittsburgh",
+                "Website": "https://www.pitt.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of Portland",
+                "Website": "https://www.up.edu/",
+                "State": "Oregon"
+              },
+              {
+                "name": "University of Puerto Rico-Medical Sciences",
+                "Website": "https://www.rcm.upr.edu/",
+                "State": "Puerto Rico"
+              },
+              {
+                "name": "University of Rhode Island",
+                "Website": "https://www.uri.edu/",
+                "State": "Rhode Island"
+              },
+              {
+                "name": "University of Richmond",
+                "Website": "https://www.richmond.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "University of Rochester",
+                "Website": "https://www.rochester.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "University of Saint Joseph",
+                "Website": "https://www.usj.edu",
+                "State": "Connecticut"
+              },
+              {
+                "name": "University of San Diego - USD",
+                "Website": "https://www.sandiego.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of San Francisco",
+                "Website": "https://www.usfca.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of Scranton",
+                "Website": "https://www.scranton.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "University of South Carolina - Columbia",
+                "Website": "https://www.sc.edu/",
+                "State": "South Carolina"
+              },
+              {
+                "name": "University of South Dakota",
+                "Website": "https://www.usd.edu/",
+                "State": "South Dakota"
+              },
+              {
+                "name": "University of South Florida",
+                "Website": "https://www.usf.edu/",
+                "State": "Florida"
+              },
+              {
+                "name": "University of Southern California - USC",
+                "Website": "https://www.usc.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of St. Thomas",
+                "Website": "https://www.stthomas.edu/",
+                "State": "Minnesota"
+              },
+              {
+                "name": "University of Tennessee - Knoxville",
+                "Website": "http://tennessee.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "University of Texas Southwestern Medical Center at Dallas",
+                "Website": "https://www.utsouthwestern.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Texas at Austin - UT Austin",
+                "Website": "https://www.utexas.edu/",
+                "State": "Texas"
+              },
+              {
+                "name": "University of Tulsa",
+                "Website": "https://utulsa.edu/",
+                "State": "Oklahoma"
+              },
+              {
+                "name": "University of Utah",
+                "Website": "https://www.utah.edu/",
+                "State": "Utah"
+              },
+              {
+                "name": "University of Vermont",
+                "Website": "https://www.uvm.edu/",
+                "State": "Vermont"
+              },
+              {
+                "name": "University of Virginia",
+                "Website": "https://www.virginia.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "University of Washington- Seattle",
+                "Website": "https://www.washington.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "University of Wisconsin - Madison",
+                "Website": "https://www.wisc.edu/",
+                "State": "Wisconsin"
+              },
+              {
+                "name": "University of Wyoming",
+                "Website": "https://www.uwyo.edu/",
+                "State": "Wyoming"
+              },
+              {
+                "name": "University of the Pacific",
+                "Website": "https://www.pacific.edu/",
+                "State": "California"
+              },
+              {
+                "name": "University of the Potomac",
+                "Website": "https://potomac.edu/",
+                "State": "DC"
+              },
+              {
+                "name": "University of the Sciences",
+                "Website": "https://www.usciences.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Utah College of Dental Hygiene",
+                "Website": "https://www.ucdh.edu/",
+                "State": "Utah"
+              },
+              {
+                "name": "Valparaiso University",
+                "Website": "https://www.valpo.edu/",
+                "State": "Indiana"
+              },
+              {
+                "name": "Vanderbilt University",
+                "Website": "https://www.vanderbilt.edu/",
+                "State": "Tennessee"
+              },
+              {
+                "name": "Vassar College",
+                "Website": "https://www.vassar.edu/",
+                "State": "New York"
+              },
+              {
+                "name": "Villanova University",
+                "Website": "https://www1.villanova.edu/university.html",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "Virginia Commonwealth University",
+                "Website": "https://www.vcu.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Virginia Polytechnic Institute and State University",
+                "Website": "https://vt.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Wake Forest University",
+                "Website": "https://www.wfu.edu/",
+                "State": "North Carolina"
+              },
+              {
+                "name": "Washington State University",
+                "Website": "https://www.wsu.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Washington University in St Louis",
+                "Website": "https://www.wustl.edu/",
+                "State": "Missouri"
+              },
+              {
+                "name": "Washington and Lee University",
+                "Website": "https://www.wlu.edu/",
+                "State": "Virginia"
+              },
+              {
+                "name": "Wellesley College",
+                "Website": "https://www.wellesley.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Wesleyan University",
+                "Website": "https://www.wesleyan.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "Western University of Health Sciences",
+                "Website": "https://www.westernu.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Western Washington University",
+                "Website": "https://www.wwu.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Whitman College",
+                "Website": "https://www.whitman.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Whitworth University",
+                "Website": "https://www.whitworth.edu/",
+                "State": "Washington"
+              },
+              {
+                "name": "Widener University - Main Campus",
+                "Website": "https://www.widener.edu/",
+                "State": "Pennsylvania"
+              },
+              {
+                "name": "William Jessup University",
+                "Website": "https://jessup.edu/",
+                "State": "California"
+              },
+              {
+                "name": "Williams College",
+                "Website": "https://www.williams.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Worcester Polytechnic Institute",
+                "Website": "https://www.wpi.edu/",
+                "State": "Massachusetts"
+              },
+              {
+                "name": "Yale University",
+                "Website": "https://www.yale.edu/",
+                "State": "Connecticut"
+              },
+              {
+                "name": "Yeshiva University",
+                "Website": "https://www.yu.edu/",
+                "State": "New York"
+              }
+    
+       
+      ]}
+
+
+]
