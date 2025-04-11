@@ -9,7 +9,7 @@ import { AdminApis } from '../../../apis/adminApi/adminApi';
 import AdminDashboardLayout from '../../../component/AdminDashboardLayout';
 import LoadingSpinner from '../../../component/UI/LoadingSpinner';
 // Import the CKEditor component
-// Types
+// Types 
 // interface Payment {
 //   id: string;
 //   title: string;
