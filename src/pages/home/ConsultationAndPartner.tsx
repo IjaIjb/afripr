@@ -69,7 +69,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
                   alt="josa"
                   className="w-[50%] lg:w-full"
                 /> */}
-              <a href="https://lab.fi/en/lab-separate-application" target="_blank">
+              <a href="https://lab.fi/en/lab-separate-application" rel="noreferrer" target="_blank">
                 <img
                   src="/images/lab-logo.svg"
                   alt="afripro"
@@ -77,7 +77,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
                 />
 
 </a>
-<a href="/" target="_blank">
+<a href="/" target="_blank" rel="noreferrer">
           <img
                 src="./images/logoerfg-removebg-preview.png"
                 className="w-[160px] h-[20%] lg:h-[30%] lg:w-[200px]"
@@ -86,7 +86,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
               />
 
 </a>
-<a href="https://www.seamk.fi/en/" target="_blank">
+<a href="https://www.seamk.fi/en/" target="_blank" rel="noreferrer">
            <img
                   src="/images/f9c1a37a-seamk-logo-valkoinen.svg"
                   alt="finest-future"
@@ -94,7 +94,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
                 />
 
 </a>
-<a href="https://www.takk.fi/fi/etusivu" target="_blank">
+<a href="https://www.takk.fi/fi/etusivu" target="_blank" rel="noreferrer">
        <img
                   src="/images/takk-logo-removebg.png"
                   alt="takk"
@@ -102,7 +102,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
                 />
 
 </a>
-<a href="https://www.uwasa.fi/fi" target="_blank">
+<a href="https://www.uwasa.fi/fi" target="_blank" rel="noreferrer">
         <img
                   src="/images/vaasa.png"
                   alt="takk"
@@ -110,7 +110,7 @@ AfriProEdu offers free counseling sessions to help prospective students navigate
                 />
 
 </a>
-                <a  target="_blank" href="https://www.lut.fi/fi">
+                <a  target="_blank" rel="noreferrer" href="https://www.lut.fi/fi">
                  <img
                   src="/images/lut1.png"
                   alt="takk"

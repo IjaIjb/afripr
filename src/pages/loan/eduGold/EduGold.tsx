@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../../component/Navbar";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -32,13 +32,13 @@ const EduGold = () => {
   const onCloseModal = () => setOpen(false);
   const onCloseSuccessModal = () => setOpenSuccess(false);
    
-      const [isLoading, setIsLoading] = useState(false);
+      // const [isLoading, setIsLoading] = useState(false);
       const [payment, setPayment] = useState<any>(null);
       
       useEffect(() => {
         const fetchPaymentData = async () => {
           try {
-            setIsLoading(true);
+            // setIsLoading(true);
             const response = await AdminApis.getPaymentById("f746b9ed-5a4c-4ef7-9281-25b95e5e796d");
            console.log(response)
             if (response?.data) {
@@ -48,15 +48,15 @@ const EduGold = () => {
             console.error('Error fetching payment:', error);
             toast.error("Failed to load payment data");
           } finally {
-            setIsLoading(false);
+            // setIsLoading(false);
           }
         };
         
         // if () {
           fetchPaymentData();
         // }
-      }, ["f746b9ed-5a4c-4ef7-9281-25b95e5e796d"]);
-console.log(payment)
+      }, []);
+// console.log(payment)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -184,12 +184,12 @@ console.log(payment)
     }
   };
 
-  const handlePayment = async () => {
-    setLoading(true);
-    setError(null);
+  // const handlePayment = async () => {
+  //   setLoading(true);
+  //   setError(null);
     
 
-  };
+  // };
 
   const handleSubmit2 = (e:any) => {
     e.preventDefault();

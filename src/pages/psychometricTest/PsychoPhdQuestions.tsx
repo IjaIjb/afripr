@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from '../../component/Navbar';
 import { AdminApis } from '../../apis/adminApi/adminApi';
 import { ToastContainer, toast } from "react-toastify";
@@ -54,7 +54,7 @@ const PsychoPhdQuestions = () => {
   const navigate = useNavigate();
   const programId = location.state?.programId;
   
-  const [subcategories, setSubcategories] = useState<SubCategory[]>([]);
+  // const [subcategories, setSubcategories] = useState<SubCategory[]>([]);
   const [questionsGroupedBySubcategory, setQuestionsGroupedBySubcategory] = useState<SubcategoryQuestions[]>([]);
   const [loadingData, setLoadingData] = useState<boolean>(true);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, SelectedAnswer>>({});
@@ -64,38 +64,6 @@ const PsychoPhdQuestions = () => {
   const [submittingAnswers, setSubmittingAnswers] = useState<boolean>(false);
   const [submissionComplete, setSubmissionComplete] = useState<boolean>(false);
   
-  useEffect(() => {
-    if (programId) {
-      fetchSubcategoriesAndQuestions();
-    } else {
-      toast.error("Program ID not found. Please go back and select a program.");
-      setLoadingData(false);
-    }
-  }, [programId]);
-
-  // Log when program results are ready
-  useEffect(() => {
-    if (submissionComplete && programResults) {
-      console.log("Program results ready for navigation:", programResults);
-    }
-  }, [submissionComplete, programResults]);
-
-  // Debug logging for questions and selected answers
-  useEffect(() => {
-    console.log("Total subcategories:", questionsGroupedBySubcategory.length);
-    console.log("Current selected answers:", selectedAnswers);
-    
-    // Log the number of answers selected for each subcategory
-    questionsGroupedBySubcategory.forEach((subcat, index) => {
-      const questionsInSubcat = subcat.questions.length;
-      const answeredInSubcat = subcat.questions.filter(q => 
-        selectedAnswers[q.questionId] !== undefined
-      ).length;
-      
-      console.log(`Subcategory ${index + 1} (${subcat.name}): ${answeredInSubcat}/${questionsInSubcat} questions answered`);
-    });
-  }, [questionsGroupedBySubcategory, selectedAnswers]);
-
   const fetchSubcategoriesAndQuestions = async () => {
     setLoadingData(true);
     try {
@@ -108,7 +76,7 @@ const PsychoPhdQuestions = () => {
           (subcategory: SubCategory) => subcategory.question_types_id === programId
         );
         
-        setSubcategories(filteredSubcategories);
+        // setSubcategories(filteredSubcategories);
         
         // Then fetch all questions
         const questionsResponse = await AdminApis.getPsychometricQuestion();
@@ -149,6 +117,40 @@ const PsychoPhdQuestions = () => {
       setLoadingData(false);
     }
   };
+  
+  useEffect(() => {
+    if (programId) {
+      fetchSubcategoriesAndQuestions();
+    } else {
+      toast.error("Program ID not found. Please go back and select a program.");
+      setLoadingData(false);
+    }
+  }, [programId, fetchSubcategoriesAndQuestions]);
+
+  // Log when program results are ready
+  useEffect(() => {
+    if (submissionComplete && programResults) {
+      console.log("Program results ready for navigation:", programResults);
+    }
+  }, [submissionComplete, programResults]);
+
+  // Debug logging for questions and selected answers
+  useEffect(() => {
+    console.log("Total subcategories:", questionsGroupedBySubcategory.length);
+    console.log("Current selected answers:", selectedAnswers);
+    
+    // Log the number of answers selected for each subcategory
+    questionsGroupedBySubcategory.forEach((subcat, index) => {
+      const questionsInSubcat = subcat.questions.length;
+      const answeredInSubcat = subcat.questions.filter(q => 
+        selectedAnswers[q.questionId] !== undefined
+      ).length;
+      
+      console.log(`Subcategory ${index + 1} (${subcat.name}): ${answeredInSubcat}/${questionsInSubcat} questions answered`);
+    });
+  }, [questionsGroupedBySubcategory, selectedAnswers]);
+
+
 
   const handleNext = () => {
     // Check if all questions in the current step have answers

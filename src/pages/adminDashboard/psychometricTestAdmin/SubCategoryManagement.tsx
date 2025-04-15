@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AdminApis } from '../../../apis/adminApi/adminApi';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from '../../../component/UI/LoadingSpinner';
 import { FaPlus, FaTrash, FaTimes, FaExclamationTriangle, FaEdit } from 'react-icons/fa';
@@ -40,19 +40,8 @@ const SubCategoryManagement: React.FC<SubCategoryManagementProps> = ({
 
   // State for delete confirmation
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
-  const [subcategoryToDelete, setSubcategoryToDelete] = useState<string>("");
-  const [isDeleting, setIsDeleting] = useState<boolean>(false);
-
-  // Fetch subcategories when program type changes
-  useEffect(() => {
-    if (activeProgramId) {
-      fetchSubcategories();
-    } else {
-      setSubcategories([]);
-      setActiveSubcategory("");
-      setActiveSubcategoryId("");
-    }
-  }, [activeProgramId]);
+  // const [subcategoryToDelete, setSubcategoryToDelete] = useState<string>("");
+  // const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
   const fetchSubcategories = async () => {
     if (!activeProgramId) return;
@@ -87,6 +76,19 @@ const SubCategoryManagement: React.FC<SubCategoryManagementProps> = ({
       setLoading(false);
     }
   };
+  
+  // Fetch subcategories when program type changes
+  useEffect(() => {
+    if (activeProgramId) {
+      fetchSubcategories();
+    } else {
+      setSubcategories([]);
+      setActiveSubcategory("");
+      setActiveSubcategoryId("");
+    }
+  }, [activeProgramId, fetchSubcategories]);
+
+
 
   const handleSubcategoryChange = (subcategoryName: string, subcategoryId: string) => {
     setActiveSubcategory(subcategoryName);
@@ -116,7 +118,7 @@ const SubCategoryManagement: React.FC<SubCategoryManagementProps> = ({
 
   // Open delete confirmation
   const openDeleteConfirmation = (subcategoryId: string) => {
-    setSubcategoryToDelete(subcategoryId);
+    // setSubcategoryToDelete(subcategoryId);
     setShowDeleteModal(true);
   };
 
@@ -373,19 +375,21 @@ const SubCategoryManagement: React.FC<SubCategoryManagementProps> = ({
               <button
                 onClick={() => {
                   setShowDeleteModal(false);
-                  setSubcategoryToDelete("");
+                  // setSubcategoryToDelete("");
                 }}
                 className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
-                disabled={isDeleting}
+                // disabled={isDeleting}
               >
                 Cancel
               </button>
               <button
                 // onClick={confirmDeleteSubcategory}
-                disabled={isDeleting}
+                // disabled={isDeleting}
                 className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 disabled:bg-red-300"
               >
-                {isDeleting ? <LoadingSpinner /> : "Delete"}
+                {
+                // isDeleting ? <LoadingSpinner /> : 
+                "Delete"}
               </button>
             </div>
           </div>

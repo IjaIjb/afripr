@@ -3,7 +3,7 @@ import Navbar from "../../component/Navbar";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { UserApis } from "../../apis/userApi/userApi";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import schoolsData from "../../assets/schoolsData.json"; // Adjust path as needed
 import countryList from "../../assets/country-list.json"; // Adjust path as needed

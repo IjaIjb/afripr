@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../component/Navbar";
-import { FaRegBookmark, FaFilter } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -64,11 +64,11 @@ const ListOfPrograms = () => {
   }, [location]);
 
   // Clear results handler - for testing
-  const clearResults = () => {
-    localStorage.removeItem('psychometricResults');
-    setProgramResults([]);
-    toast.info("Program results cleared");
-  };
+  // const clearResults = () => {
+  //   localStorage.removeItem('psychometricResults');
+  //   setProgramResults([]);
+  //   toast.info("Program results cleared");
+  // };
 
   // Filter programs based on active tab
   const getFilteredPrograms = () => {

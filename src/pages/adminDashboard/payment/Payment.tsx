@@ -2,14 +2,14 @@
 // PaymentManagement.tsx
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+// import { FaEdit, FaTrash } from 'react-icons/fa';
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { AdminApis } from '../../../apis/adminApi/adminApi';
 import AdminDashboardLayout from '../../../component/AdminDashboardLayout';
 import LoadingSpinner from '../../../component/UI/LoadingSpinner';
 // Import the CKEditor component
-// Types 
+// Types
 // interface Payment {
 //   id: string;
 //   title: string;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../component/Navbar";
-import { FaArrowLeft, FaUserGraduate } from "react-icons/fa6";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa6";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AdminApis } from "../../apis/adminApi/adminApi";
 
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProgramOverview = () => {
@@ -15,13 +15,13 @@ const ProgramOverview = () => {
       // const { courseName } = useParams();
       // Access the id passed via stat
       const id = location.state?.id;
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const [program, setProgram] = useState<any>([]);
     
         useEffect(() => {
             const fetchCourseData = async () => {
                 try {
-                    setIsLoading(true);
+                    // setIsLoading(true);
                     const response = await AdminApis.getCourseById(id);
                     if (response?.data) {
                         const courseData = response.data;
@@ -43,7 +43,7 @@ const ProgramOverview = () => {
                     console.error('Error fetching course:', error);
                     toast.error("Failed to load course data");
                 } finally {
-                    setIsLoading(false);
+                    // setIsLoading(false);
                 }
             };
             

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../component/Navbar";
-import { FaAngleRight, FaArrowLeft } from "react-icons/fa6";
+import {  FaArrowLeft } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { AdminApis } from "../../apis/adminApi/adminApi";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PsychometricTestPrograms = () => {

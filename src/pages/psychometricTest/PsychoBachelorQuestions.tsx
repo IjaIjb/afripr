@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from '../../component/Navbar';
 import { AdminApis } from '../../apis/adminApi/adminApi';
 import { ToastContainer, toast } from "react-toastify";
@@ -64,38 +64,6 @@ const PsychoBachelorQuestions = () => {
   const [submittingAnswers, setSubmittingAnswers] = useState<boolean>(false);
   const [submissionComplete, setSubmissionComplete] = useState<boolean>(false);
   
-  useEffect(() => {
-    if (programId) {
-      fetchSubcategoriesAndQuestions();
-    } else {
-      toast.error("Program ID not found. Please go back and select a program.");
-      setLoadingData(false);
-    }
-  }, [programId]);
-
-  // Log when program results are ready
-  useEffect(() => {
-    if (submissionComplete && programResults) {
-      console.log("Program results ready for navigation:", programResults);
-    }
-  }, [submissionComplete, programResults]);
-
-  // Debug logging for questions and selected answers
-  useEffect(() => {
-    console.log("Total subcategories:", questionsGroupedBySubcategory.length);
-    console.log("Current selected answers:", selectedAnswers);
-    
-    // Log the number of answers selected for each subcategory
-    questionsGroupedBySubcategory.forEach((subcat, index) => {
-      const questionsInSubcat = subcat.questions.length;
-      const answeredInSubcat = subcat.questions.filter(q => 
-        selectedAnswers[q.questionId] !== undefined
-      ).length;
-      
-      console.log(`Subcategory ${index + 1} (${subcat.name}): ${answeredInSubcat}/${questionsInSubcat} questions answered`);
-    });
-  }, [questionsGroupedBySubcategory, selectedAnswers]);
-
   const fetchSubcategoriesAndQuestions = async () => {
     setLoadingData(true);
     try {
@@ -149,6 +117,40 @@ const PsychoBachelorQuestions = () => {
       setLoadingData(false);
     }
   };
+
+  useEffect(() => {
+    if (programId) {
+      fetchSubcategoriesAndQuestions();
+    } else {
+      toast.error("Program ID not found. Please go back and select a program.");
+      setLoadingData(false);
+    }
+  }, [programId, fetchSubcategoriesAndQuestions]);
+
+  // Log when program results are ready
+  useEffect(() => {
+    if (submissionComplete && programResults) {
+      console.log("Program results ready for navigation:", programResults);
+    }
+  }, [submissionComplete, programResults]);
+
+  // Debug logging for questions and selected answers
+  useEffect(() => {
+    console.log("Total subcategories:", questionsGroupedBySubcategory.length);
+    console.log("Current selected answers:", selectedAnswers);
+    
+    // Log the number of answers selected for each subcategory
+    questionsGroupedBySubcategory.forEach((subcat, index) => {
+      const questionsInSubcat = subcat.questions.length;
+      const answeredInSubcat = subcat.questions.filter(q => 
+        selectedAnswers[q.questionId] !== undefined
+      ).length;
+      
+      console.log(`Subcategory ${index + 1} (${subcat.name}): ${answeredInSubcat}/${questionsInSubcat} questions answered`);
+    });
+  }, [questionsGroupedBySubcategory, selectedAnswers]);
+
+
 
   const handleNext = () => {
     // Check if all questions in the current step have answers

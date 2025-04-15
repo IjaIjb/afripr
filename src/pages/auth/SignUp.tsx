@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Navbar from "../../component/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-import { UserLiveApis } from "../../apis/live/userLive/userLiveApis";
+// import { UserLiveApis } from "../../apis/live/userLive/userLiveApis";
 import { UserApis } from "../../apis/userApi/userApi";
-import { useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { ToastContainer, toast } from "react-toastify";
+// import { useDispatch } from "react-redux";
+// import { Dispatch } from "redux";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login } from "../../reducer/loginSlice";
 const SignUp = () => {
-  const dispatch: Dispatch = useDispatch();
+  // const dispatch: Dispatch = useDispatch();
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

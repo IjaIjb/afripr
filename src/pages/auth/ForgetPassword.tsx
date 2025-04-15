@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
+// import { Dispatch } from "redux";
+// import { useDispatch } from "react-redux";
 import { UserApis } from "../../apis/userApi/userApi";
 import Navbar from "../../component/Navbar";
 
 const ForgetPassword = () => {
-  const dispatch: Dispatch = useDispatch();
+  // const dispatch: Dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     email: "",

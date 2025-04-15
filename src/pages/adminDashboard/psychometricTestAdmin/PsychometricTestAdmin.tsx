@@ -85,6 +85,27 @@ const PsychometricTestAdmin: React.FC = () => {
   useEffect(() => {
     fetchProgramTypes();
   }, []);
+  const fetchQuestions = async (): Promise<void> => {
+    setLoadingQuestions(true);
+    try {
+      const response = await AdminApis.getPsychometricQuestion();
+      console.log(response)
+      if (response?.data) {
+        // Filter questions by program type and subcategory
+        const filteredByProgram = response.data
+          .filter((q: Question) => q.category_id === activeProgramId)
+          .filter((q: Question) => q.sub_category_id === activeSubcategoryId);
+          
+        setQuestions(filteredByProgram);
+        setFilteredQuestions(filteredByProgram);
+      }
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+      toast.error("Failed to load questions");
+    } finally {
+      setLoadingQuestions(false);
+    }
+  };
   
   // Fetch questions when program type or subcategory changes
   useEffect(() => {
@@ -95,7 +116,7 @@ const PsychometricTestAdmin: React.FC = () => {
       setQuestions([]);
       setFilteredQuestions([]);
     }
-  }, [activeProgramId, activeSubcategoryId]);
+  }, [activeProgramId, activeSubcategoryId, fetchQuestions]);
   
   // Close program type menu when clicking outside
   useEffect(() => {
@@ -133,27 +154,7 @@ const PsychometricTestAdmin: React.FC = () => {
     }
   };
   
-  const fetchQuestions = async (): Promise<void> => {
-    setLoadingQuestions(true);
-    try {
-      const response = await AdminApis.getPsychometricQuestion();
-      console.log(response)
-      if (response?.data) {
-        // Filter questions by program type and subcategory
-        const filteredByProgram = response.data
-          .filter((q: Question) => q.category_id === activeProgramId)
-          .filter((q: Question) => q.sub_category_id === activeSubcategoryId);
-          
-        setQuestions(filteredByProgram);
-        setFilteredQuestions(filteredByProgram);
-      }
-    } catch (error) {
-      console.error("Error fetching questions:", error);
-      toast.error("Failed to load questions");
-    } finally {
-      setLoadingQuestions(false);
-    }
-  };
+
   
   // Program Type Functions
   const openAddProgramModal = (): void => {

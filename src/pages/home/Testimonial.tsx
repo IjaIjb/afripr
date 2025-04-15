@@ -1,20 +1,20 @@
 import React, { useRef, useState } from 'react'
-import { FaPlay } from "react-icons/fa";
+// import { FaPlay } from "react-icons/fa";
 
 const Testimonial = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  // const togglePlayPause = () => {
+  //   if (videoRef.current) {
+  //     if (isPlaying) {
+  //       videoRef.current.pause();
+  //     } else {
+  //       videoRef.current.play();
+  //     }
+  //     setIsPlaying(!isPlaying);
+  //   }
+  // };
 
   return (
     <div>

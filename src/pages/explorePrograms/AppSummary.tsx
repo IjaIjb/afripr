@@ -4,7 +4,7 @@ import Navbar from '../../component/Navbar'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AdminApis } from '../../apis/adminApi/adminApi';
 import { useSelector } from 'react-redux';
@@ -26,12 +26,12 @@ const AppSummary = () => {
             const id = location.state?.id;
             
                 const [program, setProgram] = useState<any>([]);
-                    const [isLoading, setIsLoading] = useState(false);
+                    // const [isLoading, setIsLoading] = useState(false);
                 
                     useEffect(() => {
                         const fetchCourseData = async () => {
                             try {
-                                setIsLoading(true);
+                                // setIsLoading(true);
                                 const response = await AdminApis.getCourseById(id);
                                 if (response?.data) {
                                     const courseData = response.data;
@@ -53,7 +53,7 @@ const AppSummary = () => {
                                 console.error('Error fetching course:', error);
                                 toast.error("Failed to load course data");
                             } finally {
-                                setIsLoading(false);
+                                // setIsLoading(false);
                             }
                         };
                         

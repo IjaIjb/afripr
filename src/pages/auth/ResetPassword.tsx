@@ -4,13 +4,13 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RiLockLine } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
+// import { Dispatch } from "redux";
+// import { useDispatch } from "react-redux";
 import { UserApis } from "../../apis/userApi/userApi";
 import Navbar from "../../component/Navbar";
 
 const ResetPassword = () => {
-  const dispatch: Dispatch = useDispatch();
+  // const dispatch: Dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 

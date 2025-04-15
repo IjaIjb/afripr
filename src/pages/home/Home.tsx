@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../component/Navbar";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Hero from "./Hero";
 import Gateway from "./Gateway";
 import AccelerateYourStudy from "./AccelerateYourStudy";

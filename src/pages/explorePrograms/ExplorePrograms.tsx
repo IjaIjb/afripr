@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../component/Navbar";
 import { FaSearch, FaFilter, FaRegBookmark } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AdminApis } from "../../apis/adminApi/adminApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ExplorePrograms = () => {
   const [showFilters, setShowFilters] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("Programs");
+  // const [activeFilter, setActiveFilter] = useState("Programs");
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
     const navigate = useNavigate();
   
@@ -27,11 +27,6 @@ const ExplorePrograms = () => {
     fetchCourses();
   }, []);
 
-  // Calculate stats whenever courses change
-  useEffect(() => {
-    calculateStats();
-  }, [courses]);
-
   const calculateStats = () => {
     // Get unique countries
     const countries = new Set(courses.map((course:any) => course.country));
@@ -41,6 +36,11 @@ const ExplorePrograms = () => {
     const universities = new Set(courses.map((course:any) => course.university));
     setUniqueUniversities(universities.size);
   };
+  // Calculate stats whenever courses change
+  useEffect(() => {
+    calculateStats();
+  }, [courses]);
+
 
   const fetchCourses = () => {
     setLoading(true);
