@@ -63,7 +63,7 @@ const ForgetPassword = () => {
               <div className="md:px-10">
                 <div className="flex justify-center mt-[100px]">
                   {/* Left Section */}
-                  <div className="w-1/2 bg-[#1DB459] flex flex-col flex-grow items-center justify-center text-white p-8 rounded-l-3xl">
+                  <div className="w-1/2 bg-[#1DB459] lg:flex hidden flex-col flex-grow items-center justify-center text-white p-8 rounded-l-3xl">
                     <Link to={"/"}>
                       <img src="/logo.svg" alt="Logo" />
                     </Link>
@@ -78,7 +78,7 @@ const ForgetPassword = () => {
                   </div>
 
                   {/* Right Section */}
-                  <div className="w-1/2 bg-white flex flex-col flex-grow px-12 py-10 rounded-r-3xl shadow-md">
+                  <div className="w-1/2 bg-white flex flex-col flex-grow md:px-12 px-7 py-10 rounded-r-3xl shadow-md">
                     <div className="max-w-md mx-auto w-full">
                       <h2 className="text-[28px] font-bold text-[#00AF4F] text-center">
                         Forgot password?

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AdminApis } from '../../../apis/adminApi/adminApi';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,7 +49,7 @@ const PsychometricTestAdmin: React.FC = () => {
   console.log(activeSubcategoryId)
   
   // State for questions
-  const [questions, setQuestions] = useState<Question[]>([]);
+  // const [questions, setQuestions] = useState<Question[]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState<boolean>(false);
   console.log(filteredQuestions)
@@ -85,7 +85,7 @@ const PsychometricTestAdmin: React.FC = () => {
   useEffect(() => {
     fetchProgramTypes();
   }, []);
-  const fetchQuestions = async (): Promise<void> => {
+  const fetchQuestions = useCallback(async (): Promise<void> => {
     setLoadingQuestions(true);
     try {
       const response = await AdminApis.getPsychometricQuestion();
@@ -96,7 +96,7 @@ const PsychometricTestAdmin: React.FC = () => {
           .filter((q: Question) => q.category_id === activeProgramId)
           .filter((q: Question) => q.sub_category_id === activeSubcategoryId);
           
-        setQuestions(filteredByProgram);
+        // setQuestions(filteredByProgram);
         setFilteredQuestions(filteredByProgram);
       }
     } catch (error) {
@@ -105,15 +105,14 @@ const PsychometricTestAdmin: React.FC = () => {
     } finally {
       setLoadingQuestions(false);
     }
-  };
+  }, [activeProgramId, activeSubcategoryId]);
   
   // Fetch questions when program type or subcategory changes
   useEffect(() => {
     if (activeProgramId && activeSubcategoryId) {
       fetchQuestions();
     } else if (activeProgramId) {
-      // If only program is selected but no subcategory, clear questions
-      setQuestions([]);
+      // setQuestions([]);
       setFilteredQuestions([]);
     }
   }, [activeProgramId, activeSubcategoryId, fetchQuestions]);
@@ -154,8 +153,6 @@ const PsychometricTestAdmin: React.FC = () => {
     }
   };
   
-
-  
   // Program Type Functions
   const openAddProgramModal = (): void => {
     setIsEditProgramMode(false);
@@ -163,9 +160,7 @@ const PsychometricTestAdmin: React.FC = () => {
     setNewProgramType("");
     setShowProgramModal(true);
   };
-  console.log(filteredQuestions)
-  console.log(questions)
-  
+ 
   const openEditProgramModal = (program: ProgramType): void => {
     setIsEditProgramMode(true);
     setEditingProgramId(program.id);
@@ -183,7 +178,6 @@ const PsychometricTestAdmin: React.FC = () => {
   const handleProgramTypeAction = (e: React.MouseEvent, programId: string): void => {
     e.preventDefault();
     e.stopPropagation();
-    
     // Toggle menu open state
     setProgramTypeMenuOpen(programTypeMenuOpen === programId ? null : programId);
   };
@@ -193,7 +187,6 @@ const PsychometricTestAdmin: React.FC = () => {
       toast.error("Program type cannot be empty");
       return;
     }
-    
     setAddingProgram(true);
     try {
       if (isEditProgramMode) {
@@ -202,10 +195,8 @@ const PsychometricTestAdmin: React.FC = () => {
           program_type: newProgramType.toLowerCase(),
           status: "active"
         });
-        
         if (response.data) {
-          toast.success("Program type updated successfully");
-          
+          toast.success("Program type updated successfully");    
           // Update active tab if the current active tab was updated
           if (editingProgramId === activeProgramId) {
             setActiveTab(newProgramType.toLowerCase());
@@ -216,13 +207,11 @@ const PsychometricTestAdmin: React.FC = () => {
         const response = await AdminApis.addProgramType({
           program_type: newProgramType.toLowerCase(),
           status: "active"
-        });
-        
+        }); 
         if (response.data) {
           toast.success("Program type added successfully");
         }
-      }
-      
+      }  
       fetchProgramTypes();
       setShowProgramModal(false);
       setNewProgramType("");
@@ -237,13 +226,11 @@ const PsychometricTestAdmin: React.FC = () => {
   };
   
   const confirmDeleteProgramType = async (): Promise<void> => {
-    if (!programToDelete) return;
-    
+    if (!programToDelete) return;   
     setDeletingProgram(true);
     try {
       await AdminApis.deleteProgramType(programToDelete);
-      toast.success("Program type deleted successfully");
-      
+      toast.success("Program type deleted successfully");    
       // If the deleted program was active, select the first available program
       if (programToDelete === activeProgramId) {
         const remainingPrograms = programTypes.filter(p => p.id !== programToDelete);
@@ -254,8 +241,7 @@ const PsychometricTestAdmin: React.FC = () => {
           setActiveTab("");
           setActiveProgramId("");
         }
-      }
-      
+      }  
       fetchProgramTypes();
       setShowDeleteProgramModal(false);
       setProgramToDelete("");
@@ -305,8 +291,7 @@ const PsychometricTestAdmin: React.FC = () => {
     const optionsWithTags = questionOptions.map(opt => ({
       ...opt,
       tags: [activeSubcategoryName.toLowerCase().replace(/\s+/g, '_')] // Use the subcategory as the tag
-    }));
-    
+    })); 
     setSubmittingQuestion(true);
     try {
       if (isEditMode) {
@@ -316,8 +301,7 @@ const PsychometricTestAdmin: React.FC = () => {
           category_id: activeProgramId,
           sub_category_id: activeSubcategoryId,
           questionoptions: optionsWithTags
-        });
-        
+        }); 
         if (response.data) {
           toast.success("Question updated successfully");
         }
@@ -328,13 +312,11 @@ const PsychometricTestAdmin: React.FC = () => {
           category_id: activeProgramId,
           sub_category_id: activeSubcategoryId,
           options: optionsWithTags
-        });
-        
+        });  
         if (response.data) {
           toast.success("Question added successfully");
         }
-      }
-      
+      }   
       // Reset form and close modal
       setShowQuestionModal(false);
       setQuestionText("");
@@ -385,8 +367,7 @@ const PsychometricTestAdmin: React.FC = () => {
   
   // Delete question handler
   const confirmDeleteQuestion = async (): Promise<void> => {
-    if (!questionToDelete) return;
-    
+    if (!questionToDelete) return; 
     setDeletingQuestion(true);
     try {
       await AdminApis.deletePsychometricQuestion(questionToDelete);
@@ -408,8 +389,7 @@ const PsychometricTestAdmin: React.FC = () => {
         <div className=" mx-auto">
           {/* Header with title and program type tabs */}
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-green-500">Psychometric Test Management</h1>
-            
+            <h1 className="text-2xl font-bold text-green-500">Psychometric Test Management</h1>    
             <div className="flex items-center">
               {/* Program Type Tabs */}
               <div className="border border-green-500 rounded-xl flex">
@@ -467,8 +447,7 @@ const PsychometricTestAdmin: React.FC = () => {
                     ))}
                   </>
                 )}
-              </div>
-              
+              </div>     
               {/* Add Program Type Button */}
               <button
                 className="ml-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full w-8 h-8 flex items-center justify-center"
@@ -478,8 +457,7 @@ const PsychometricTestAdmin: React.FC = () => {
                 <FaPlus className="h-3 w-3" />
               </button>
             </div>
-          </div>
-          
+          </div>  
           {/* Subcategory Management Component */}
           {activeProgramId && (
             <SubCategoryManagement 
@@ -511,8 +489,7 @@ const PsychometricTestAdmin: React.FC = () => {
           <div className="">
             <h2 className="text-xl font-medium mb-4">
               {activeSubcategoryName ? `Questions for ${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} - ${activeSubcategoryName}` : activeTab ? "Select a subcategory" : "Select a program type"}
-            </h2>
-            
+            </h2>    
             {loadingQuestions ? (
               <div className="flex justify-center py-8">
                <div className="text-center">

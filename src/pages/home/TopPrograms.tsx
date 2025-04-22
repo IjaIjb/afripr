@@ -54,12 +54,12 @@ const TopPrograms = () => {
          <section className=" py-12  ">
           <div className='md:flex justify-between'>
             <div className='flex md:justify-start justify-center'>
-          <h2 className="text-green-600 md:text-start text-center  leading-[60px] text-[56px] font-bold mb-6">Top programs</h2>
+          <h2 className="text-green-600 md:text-start text-center  leading-[60px] text-[24px] md:text-[56px] font-bold mb-6">Top programs</h2>
           </div>
           <div className="flex md:justify-end justify-center">
             <div>
-            <h4 className=' text-center pb-2'>Check out our latest available programs </h4>
-        <div className='flex md:justify-end'>
+            <h4 className='md:block hidden text-center pb-2'>Check out our latest available programs </h4>
+        <div className='md:flex hidden  md:justify-end'>
         <button className="bg-green-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-600">
           Check Programs →
         </button>
@@ -167,6 +167,11 @@ const TopPrograms = () => {
           >
             <IoIosArrowDropright className="text-primary w-8 h-8" />
           </button>
+        </div>
+        <div className='flex md:hidden  justify-center'>
+        <button className="bg-green-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-600">
+          Check Programs →
+        </button>
         </div>
           </section>
     </div>

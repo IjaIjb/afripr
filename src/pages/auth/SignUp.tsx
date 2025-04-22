@@ -7,7 +7,7 @@ import { UserApis } from "../../apis/userApi/userApi";
 // import { Dispatch } from "redux";
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { login } from "../../reducer/loginSlice";
+// import { login } from "../../reducer/loginSlice";
 const SignUp = () => {
   // const dispatch: Dispatch = useDispatch();
 
@@ -108,7 +108,7 @@ const SignUp = () => {
             <div className="md:px-10">
               <div className="flex h-screen mt-[100px]">
                 {/* Left Section */}
-                <div className="w-1/2 bg-[#1DB459] flex flex-col flex-grow items-center justify-center text-white p-8 rounded-l-3xl">
+                <div className="w-1/2 bg-[#1DB459] lg:flex hidden flex-col flex-grow items-center justify-center text-white p-8 rounded-l-3xl">
                   <Link to={"/"}>
                     <img src="/logo.svg" alt="Logo" />
                   </Link>
@@ -123,8 +123,8 @@ const SignUp = () => {
                 </div>
 
                 {/* Right Section */}
-                <div className="w-1/2 bg-white flex justify-center flex-col flex-grow px-12 py-6 rounded-r-3xl shadow-md">
-                  <h2 className="text-[24px] font-bold text-primary text-center">
+                <div className="w-1/2 bg-white flex justify-center flex-col flex-grow md:px-12 px-3 py-6 rounded-r-3xl shadow-md">
+                  <h2 className="text-[24px] pt-9 font-bold text-primary text-center">
                     Create your account
                   </h2>
                   <p className="text-[#494949] text-[12px] text-center mb-6">
@@ -132,7 +132,7 @@ const SignUp = () => {
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"
           name="first_name"
@@ -153,7 +153,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <input
           type="email"
           name="email"
@@ -174,7 +174,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <select
           name="gender"
           value={formData.gender}
@@ -197,7 +197,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <input
           type="password"
           name="password"
@@ -232,7 +232,7 @@ const SignUp = () => {
       </div>
     </form>
 
-                  <p className="text-center text-gray-600 mt-4">
+                  <p className="text-center md:pb-0 pb-20 text-gray-600 mt-4">
                     Already have an account?{" "}
                     <Link
                       to="/sign-in"

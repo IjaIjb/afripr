@@ -6,7 +6,7 @@ const ConsultationAndPartner = () => {
     <div>
         
 <section className='text-center'>
-<h4 className='text-[56px] font-bold text-[#262626]'>Book a <span className='text-primary'>Free Consultation</span></h4>
+<h4 className='md:text-[56px] text-[28px] font-bold text-[#262626]'>Book a <span className='text-primary'>Free Consultation</span></h4>
 <div className='flex justify-center'>
 <h5 className='text-center max-w-[668px]'>
 AfriProEdu offers free counseling sessions to help prospective students navigate their study-abroad plans. These sessions provide guidance on program selection, application processes, visa requirements, and adapting to life in Abroad

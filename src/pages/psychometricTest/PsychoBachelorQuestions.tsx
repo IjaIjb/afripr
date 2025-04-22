@@ -69,7 +69,7 @@ const PsychoBachelorQuestions = () => {
     try {
       // First, fetch subcategories for the selected program
       const subcategoriesResponse = await AdminApis.getSubCategory();
-      
+      // console.log(subcategoriesResponse)
       if (subcategoriesResponse?.data?.records) {
         // Filter subcategories by the program type
         const filteredSubcategories = subcategoriesResponse.data.records.filter(
@@ -80,12 +80,13 @@ const PsychoBachelorQuestions = () => {
         
         // Then fetch all questions
         const questionsResponse = await AdminApis.getPsychometricQuestion();
+      console.log(questionsResponse)
         
-        if (questionsResponse?.data?.records) {
+        if (questionsResponse?.data) {
           // Group questions by subcategory
           const groupedQuestions = filteredSubcategories.map((subcategory:any, index:any) => {
             // Filter questions for this subcategory
-            const subcategoryQuestions = questionsResponse.data.records
+            const subcategoryQuestions = questionsResponse.data
               .filter((q: Question) => 
                 q.category_id === programId && 
                 q.sub_category_id === subcategory.id
@@ -125,7 +126,7 @@ const PsychoBachelorQuestions = () => {
       toast.error("Program ID not found. Please go back and select a program.");
       setLoadingData(false);
     }
-  }, [programId, fetchSubcategoriesAndQuestions]);
+  }, [programId]);
 
   // Log when program results are ready
   useEffect(() => {
@@ -172,7 +173,7 @@ const PsychoBachelorQuestions = () => {
       }
     }
   };
-
+console.log(questionsGroupedBySubcategory)
   const handlePrevious = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);

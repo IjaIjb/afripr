@@ -10,7 +10,7 @@ const PsychometricTestHome = () => {
           <Navbar />
           <div className="flex md:flex-row flex-col justify-between md:mx-10 items-center gap-6 mt-[150px]">
             <div>
-              <h4 className="text-primary text-[38px] font-bold max-w-[598px] capitalize">
+              <h4 className="text-primary text-[18px] md:text-start text-center md:text-[38px] font-bold max-w-[598px] capitalize">
                 choose the right career path with our psychometric tests
               </h4>
               <h4 className="text-[#6C6C6C] text-[18px] max-w-[550px] mt-6">

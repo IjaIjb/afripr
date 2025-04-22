@@ -30,11 +30,11 @@ const Gateway = () => {
         <h3 className="text-green-600 text-center font-semibold text-sm">
           How do I get started?
         </h3>
-        <h2 className="text-2xl font-bold text-center text-gray-900 mt-2">
+        <h2 className="md:text-2xl text-[16px] font-bold text-center text-gray-900 mt-2">
           Your Gateway to Global Education
         </h2>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6  mx-auto">
+        <div className="md:mt-8  grid grid-cols-1 md:grid-cols-3 gap-6  mx-auto">
           {steps.map((step, index) => (
             <div
               key={step.id}

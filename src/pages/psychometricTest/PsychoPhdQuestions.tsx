@@ -81,11 +81,11 @@ const PsychoPhdQuestions = () => {
         // Then fetch all questions
         const questionsResponse = await AdminApis.getPsychometricQuestion();
         
-        if (questionsResponse?.data?.records) {
+        if (questionsResponse?.data) {
           // Group questions by subcategory
           const groupedQuestions = filteredSubcategories.map((subcategory:any, index:any) => {
             // Filter questions for this subcategory
-            const subcategoryQuestions = questionsResponse.data.records
+            const subcategoryQuestions = questionsResponse.data
               .filter((q: Question) => 
                 q.category_id === programId && 
                 q.sub_category_id === subcategory.id
@@ -125,7 +125,7 @@ const PsychoPhdQuestions = () => {
       toast.error("Program ID not found. Please go back and select a program.");
       setLoadingData(false);
     }
-  }, [programId, fetchSubcategoriesAndQuestions]);
+  }, [programId]);
 
   // Log when program results are ready
   useEffect(() => {

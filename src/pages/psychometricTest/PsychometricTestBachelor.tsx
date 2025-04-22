@@ -17,15 +17,25 @@ const PsychometricTestBachelor = () => {
           <Navbar />
 
           <div className=" mt-[140px] mb-8">
-            <div className="flex justify-between mb-4">
-              <button
+          <button
                 type="button"
                 onClick={handleBackClick}
-                className="flex items-center gap-1 text-gray-600 mb-4"
+                className="flex md:hidden items-center gap-1 text-gray-600 mb-4"
               >
                 <FaArrowLeft className="" />
                 <h4>Back</h4>
               </button>
+            <div className="flex justify-between mb-4">
+           <div>
+              <button
+                type="button"
+                onClick={handleBackClick}
+                className="md:flex hidden items-center gap-1 text-gray-600 mb-4"
+              >
+                <FaArrowLeft className="" />
+                <h4>Back</h4>
+              </button>
+              </div>
               <h5 className="text-primary text-[20px] md:text-[32px] font-semibold ">
                 Bachelor’s Degree Psychrometric Test
               </h5>

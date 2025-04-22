@@ -1,5 +1,5 @@
 "use client"; // Add this for client components in the Next.js app directory
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoIosInformationCircle } from "react-icons/io";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -11,17 +11,7 @@ import BreadscrumbDisplay from "./BreadscrumbDisplay";
 // import { useAppDispatch } from "@/store/redux/store";
 
 // Define the structure of user data
-interface UserData {
-    individual?: {
-      firstname: string;
-      avatar: string;
-    };
-    corporateBody?: {
-      companyName: string;
-      avatar: string;
-    };
-    status?: string;
-  }
+
   
 const Header = () => {
 
@@ -40,18 +30,20 @@ const Header = () => {
       onOpenModal(); // Open the modal
     };
 
-    const [userData, setUserData] = useState<UserData | null>(null);
-   
+  //   const [userData, setUserData] = useState<any>(null);
+  //  console.log(userData)
   
-    useEffect(() => {
+  //   useEffect(() => {
     
-          const storedUserData = localStorage.getItem("user");
-          if (storedUserData) {
-            setUserData(JSON.parse(storedUserData));
-          }
+  //         const storedUserData = localStorage.getItem("user");
+  //  console.log(storedUserData)
+         
+  //         if (storedUserData) {
+  //           setUserData(JSON.parse(storedUserData));
+  //         }
      
      
-    }, []);
+  //   }, []);
   
       
       // 
@@ -107,40 +99,10 @@ JO
       <div className=" lg:hidden ">
         <div className="flex justify-between">
         <div className="flex items-center gap-2">
-        {/* {userData?.individual?.avatar ? (
-    <div
-    className="rounded-full overflow-hidden bg-gray-200"
-    style={{ width: 40, height: 40 }}
-  >
-    <Image
-      src={userData.individual.avatar}
-      alt="person icon"
-      className="object-cover w-full h-full"
-      width={40}
-      height={40}
-    />
-  </div>
-) : userData?.corporateBody?.avatar ? (
-  <div
-  className="rounded-full overflow-hidden bg-gray-200"
-  style={{ width: 40, height: 40 }}
->
-  <Image
-    src={userData.corporateBody?.avatar}
-    alt="person icon"
-    className="object-cover w-full h-full"
-    width={40}
-    height={40}
-  />
-</div>
-) : 
-(
-  <div className="rounded-full bg-gray-200" style={{ width: 40, height: 40 }} />
-)} */}
           <div className="flex flex-col leading-[24px]">
             <h4 className="text-[#1A1A1A]  text-[18px] font-light ">Hello</h4>
             <h4 className="text-primary font-[400] text-[18px]">
-            {userData?.individual ? userData?.individual?.firstname : userData?.corporateBody?.companyName}
+            {/* {userData?.individual ? userData?.individual?.firstname : userData?.corporateBody?.companyName} */}
 
             </h4>
           </div>
@@ -166,7 +128,7 @@ JO
           </div>
 
         <div className="flex md:mt-0 mt-2  gap-4 items-center">
-        {userData?.status === "ACTIVE" ? (
+        {/* {userData?.status === "ACTIVE" ? (
  <div className="rounded-full w-full bg-[#6CC56C30]/[19%]  px-2 py-2  ">
  <div className="flex gap-2 items-center">
  <IoIosInformationCircle className="w-5 h-5 text-primary" />
@@ -176,7 +138,7 @@ JO
    </h5>
  </div>
 </div>
-        ) : (
+        ) : ( */}
           <div className="rounded-full w-full bg-[#F22D351A]/[10%]  px-2 py-2  ">
             <div className="flex gap-2 items-center">
                        <IoIosInformationCircle className="w-7 h-7 text-[primary]" />
@@ -186,7 +148,7 @@ JO
               </h5>
             </div>
           </div> 
-        )}
+        {/* )} */}
        
 
           {/* <div className="rounded-full w-full bg-[#F22D351A]/[10%]  px-2 py-2  ">
