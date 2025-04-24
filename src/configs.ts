@@ -1,6 +1,9 @@
 import { createBrowserHistory } from "history";
 
+//API CALL TYPE
+//const TYPE_LOCAL = "LOCAL";
 const TYPE_REST = "REST";
+
 const SOCKET_URL = "mqtt://senshost.com";
 
 export enum APILIST {
@@ -12,17 +15,7 @@ export enum APILIST {
   GET_ALL_USERS = "get-all-users"
 }
 
-// Determine API URL based on environment
-const getApiUrl = () => {
-  // For local development
-  if (process.env.NODE_ENV === 'development') {
-    return "https://app.afriproedu.com/api"; // Use your local API server URL
-  }
-  
-  // For production (Netlify)
-  return "https://app.afriproedu.com/api"; // Use HTTPS!
-};
-
+//CONFIG DATA (Please change here only)
 const configs = {
   delay: 500,
   dashbordRefreshRate: 1,
@@ -32,14 +25,14 @@ const configs = {
   tokenStorage: "TOKEN_PERSIST",
   socket: SOCKET_URL,
   type: TYPE_REST,
-  
-  // Use the function to get the appropriate API URL
-  context: getApiUrl(),
-  
+
+
+
+context: "https://io.afriproedu.com/api",
+
   history: createBrowserHistory(),
   requestTimeOut: 30000,
   apiList: APILIST,
   tablePageSize: 10,
 };
-
 export default configs;
