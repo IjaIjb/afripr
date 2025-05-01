@@ -287,7 +287,7 @@ const EditCourse = () => {
             if (response.data) {
                 toast.success(response.data.message || "Course updated successfully");
                 setTimeout(() => {
-                    navigate("/dashboard/courses");
+                    navigate("/admin/courses");
                 }, 2000);
             }
         } catch (error:any) {
@@ -337,7 +337,7 @@ const EditCourse = () => {
                             <h2 className="text-2xl font-bold text-primary">Edit Course</h2>
                             <button 
                                 type="button" 
-                                onClick={() => navigate('/dashboard/courses')}
+                                onClick={() => navigate('/admin/courses')}
                                 className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
                             >
                                 Cancel

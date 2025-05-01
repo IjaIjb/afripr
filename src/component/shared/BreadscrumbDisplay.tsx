@@ -15,7 +15,7 @@ const BreadscrumbDisplay = () => {
   return (
     <div>
     <div className="pb-2 text-[#121212] flex items-center gap-4">
-      {!pathname.includes("/dashboard/Overview") && (
+      {!pathname.includes("/admin/Overview") && (
         <div className="cursor-pointer" onClick={handleNavigateBack}>
           <FaArrowLeft />
         </div>
@@ -26,11 +26,11 @@ const BreadscrumbDisplay = () => {
           {lastPathname
             ? capitalizeFirstLetter(
                 lastPathname.split("%20").join(" ").toLowerCase() === "Overview"
-                  ? "dashboard"
+                  ? "admin"
                   : lastPathname.split("%20").join(" ")
               )
-            : "Dashboard"}{" "}
-          {/* Replace "Overview" with "Dashboard" */}
+            : "admin"}{" "}
+          {/* Replace "Overview" with "admin" */}
         </h1>
       </div>
     </div>

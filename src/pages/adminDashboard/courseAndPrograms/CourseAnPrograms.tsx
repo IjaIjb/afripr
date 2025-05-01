@@ -84,7 +84,7 @@ const CourseAnPrograms = () => {
     // Format the course name for URL (replace spaces with hyphens, make lowercase)
     const formattedCourseName = courseName.replace(/\s+/g, '-').toLowerCase();
     // Navigate to the edit page with course name in URL and id in state
-    navigate(`/dashboard/courses/edit/${formattedCourseName}`, { state: { id } });
+    navigate(`/admin/courses/edit/${formattedCourseName}`, { state: { id } });
   };
 
   const confirmDelete = async () => {
@@ -120,7 +120,7 @@ const CourseAnPrograms = () => {
             <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           </div>
           <button 
-            onClick={() => navigate('/dashboard/courses/upload-course')} 
+            onClick={() => navigate('/admin/courses/upload-course')} 
             className="bg-green-500 text-white px-3 py-2 rounded-md flex items-center text-sm gap-2 cursor-pointer">
           <img src='/images/adminDashboard/downloadArrowDown.svg' alt='' />
             Upload courses

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [moreExpanded, setMoreExpanded] = useState(false);
   const userLoginData = useSelector((state) => state.data.login.value);
-  console.log(userLoginData)
+  console.log(userLoginData);
   const username = userLoginData?.username?.split("@")[0] || "";
 
   return (
@@ -16,7 +16,25 @@ const Navbar = () => {
         <Link to={"/"}>
           <img src="/logo.svg" className="" alt="/" />
         </Link>
-        <div className="lg:hidden block lg:pl-1 pl-40 pr-8">
+        <div className="lg:hidden flex items-center lg:pl-1  pr-3">
+        {userLoginData.email !== "" ? (
+                  <div className="flex items-center gap-2">
+                    <img src="/images/avatar.svg" className="w-8 h-8" alt="User" />
+                    <div>
+                      <h5 className="font-medium text-gray-800">{username}</h5>
+                      <p className="text-xs text-gray-500">Signed in</p>
+                    </div>
+                  </div>
+                ) : (
+                  <Link to="/sign-up" className="flex items-center justify-center gap-1 bg-white text-[#333333] rounded-full py-1.5 px-4 shadow-md border border-gray-100">
+                    <span className="text-sm whitespace-nowrap font-medium">Apply now</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="10" fill="#1DB459"/>
+                      <path d="M9.41003 13.8832L13.2934 9.99986L9.41003 6.11652" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                )}
+                
           <button
             onClick={() => setIsOpen(!isOpen)}
             data-collapse-toggle="mobile-menu-2"
@@ -185,15 +203,18 @@ const Navbar = () => {
               <img src="/images/avatar.svg" className="w-7 h-7" alt="" />
             </Link>
           ) : (
-            <Link to="/sign-up" className="text-[#263238] flex gap-2 items-center hover:bg-green-100 bg-white rounded-full py-2 px-3">
-              <h5>Apply Now</h5>
-              <img src="/images/rightNav.svg" className="" alt="/" />
+            <Link to="/sign-up" className="flex items-center justify-center gap-1 bg-white text-[#333333] rounded-full py-1.5 px-4 shadow-md border border-gray-100">
+              <span className="text-sm font-medium">Apply now</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="10" fill="#1DB459"/>
+                <path d="M9.41003 13.8832L13.2934 9.99986L9.41003 6.11652" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
           )}
         </div>
       </nav>
 
-      {/* Mobile Menu - Updated to match the image */}
+      {/* Mobile Menu - Updated with Apply Button and Account Display */}
       <Transition
         show={isOpen}
         enter="transition ease-out duration-500 transform"
@@ -205,11 +226,14 @@ const Navbar = () => {
       >
         {(ref) => (
           <div
-            className="lg:hidden bg-white w-full h-screen rounded-lg shadow-lg px-6 py-4"
+            className="lg:hidden bg-white w-full h-screen overflow-y-auto rounded-lg shadow-lg px-6 py-4"
             id="mobile-menu"
           >
             <div ref={ref} className="space-y-4">
-              <div className="flex justify-end">
+              <div className="flex justify-end items-center sticky top-0 bg-white pt-2 pb-3 z-10">
+                {/* User Account or Apply Button */}
+            
+                {/* Close Button */}
                 <button onClick={() => setIsOpen(false)} className="text-green-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -219,6 +243,14 @@ const Navbar = () => {
                   </svg>
                 </button>
               </div>
+              
+              {/* Wishlist / Bookmark icon */}
+              <div className="flex items-center gap-2 py-2 mt-2">
+                <img src="/images/bookmark.svg" className="w-6 h-6" alt="Wishlist" />
+                <span className="text-green-500 font-medium">My Wishlist</span>
+              </div>
+              
+              <div className="border-b border-gray-200 my-2"></div>
               
               <Link to={"/"} className="block py-2">
                 <h5 className="text-green-500 font-medium text-lg">Home</h5>
@@ -240,10 +272,6 @@ const Navbar = () => {
                 <h5 className="text-green-500 font-medium text-lg">Study Loan</h5>
               </Link>
               
-              <Link to={"/wishlist"} className="block py-2">
-                <h5 className="text-green-500 font-medium text-lg">Wishlist</h5>
-              </Link>
-              
               <div className="py-2">
                 <div onClick={() => setMoreExpanded(!moreExpanded)} className="flex justify-between items-center cursor-pointer">
                   <h5 className="text-green-500 font-medium text-lg">More</h5>
@@ -253,7 +281,7 @@ const Navbar = () => {
                 </div>
                 
                 {moreExpanded && (
-                  <div className="pl-4 pt-2 space-y-4">
+                  <div className="pl-4 pt-2 space-y-4 max-h-[300px] overflow-y-auto pr-2">
                     <Link to={"/become-agent"} className="flex items-center gap-3 py-1">
                       <div className="w-6 h-6 flex items-center justify-center bg-pink-100 rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" className="text-pink-500">

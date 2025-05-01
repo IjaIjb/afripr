@@ -4,7 +4,7 @@ const BecomeAnAgent = () =>{
     return (
       <div>
         <section className="py-10  bg-white font-[\'Great Sailor\']">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="flex flex-col md:flex-row justify-between md:items-center gap-12">
             <div className="md:block hidden">
               <img
                 src="/images/home/agent.svg"
@@ -27,7 +27,7 @@ const BecomeAnAgent = () =>{
                Apply Now →
               </button>
             </div>
-            <div className="block md:hidden">
+            <div className="flex justify-center md:hidden">
               <img
                 src="/images/home/agent.svg"
                 alt="Study Abroad Illustration"

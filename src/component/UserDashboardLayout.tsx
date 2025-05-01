@@ -1,20 +1,17 @@
 
 import { ReactNode, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-// import SidebarPage from "./Sidebar";
-import Header from "./shared/Header";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { useRouter } from "next/navigation";
+// import Header from "./shared/Header";
 import "react-responsive-modal/styles.css";
-// import { useNavigate } from "react-router-dom";
-import SidebarPage from "./Sidebar";
+// import SidebarPage from "./Sidebar";
+import UserSidebarPage from "./UserSidebarPage";
+import UserHeader from "./shared/UserHeader";
 
 interface DashboardLayoutProps {
   children: ReactNode;
 }
 
-const AdminDashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+const UserDashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   // const router = useRouter();
   const [openDrawer, setOpenDrawer] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
@@ -51,7 +48,7 @@ const AdminDashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           openDrawer ? "w-0 xl:w-[310px]" : " hidden lg:block"
         } relative left-0 top-0 h-screen`}
       >
-        <SidebarPage
+        <UserSidebarPage
           toggle={toggleDrawer}
           DrawerOpen={openDrawer}
           open={open}
@@ -88,10 +85,10 @@ const AdminDashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         )}
       </button>
       <div className="lg:hidden relative w-full z-50 lg:px-[3%] pt-5 px-[1%]">
-        <Header />
+        <UserHeader />
       </div>
       <div className="hidden lg:block bg-white shadow relative z-50 lg:px-[3%] pt-5 pb-2 px-[1%]">
-        <Header />
+      <UserHeader />
       </div>
     </div>
   </div>
@@ -118,4 +115,4 @@ const AdminDashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   );
 };
 
-export default AdminDashboardLayout;
+export default UserDashboardLayout;

@@ -253,7 +253,7 @@ const UploadCourse = () => {
           if (response.data) {
             toast.success(response.data.message || "course created successfully")
             setLoader(true)
-            navigate("/dashboard/courses");
+            navigate("/admin/courses");
 
           }
           // Handle success (redirect, show message, etc.)

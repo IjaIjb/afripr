@@ -1,5 +1,143 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+// Custom Select Component
+const CustomSelect = ({ label, icon, options, placeholder }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <div className="flex gap-1 items-center">
+        <img src={icon} alt={label} className="w-4 h-4" />
+        <label className="lg:text-[20px] text-xs font-semibold text-primary">{label}</label>
+      </div>
+      
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-[150px] mt-1 px-4 py-2 bg-gray-50 border rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!selectedOption ? 'text-gray-400' : 'text-gray-800'}`}>
+          {selectedOption || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-primary/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Mobile version of Custom Select
+const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const dropdownRef:any = useRef(null);
+  
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <div className="flex items-center gap-1 mb-1">
+        <img src={icon} alt={label} className="w-4 h-4" />
+        <span className="text-primary font-semibold text-xs">{label}</span>
+      </div>
+      
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md cursor-pointer"
+      >
+        <span className={`text-xs truncate ${!selectedOption ? 'text-gray-400' : 'text-gray-700'}`}>
+          {selectedOption || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 fill-current text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-40 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-3 py-1.5 text-xs text-gray-700 cursor-pointer hover:bg-green-50 transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Hero = () => {
   const filterOptions = {
@@ -17,39 +155,39 @@ const Hero = () => {
       label: "Country",
       icon: "/images/home/countryFilterHero.svg",
       options: ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
-  "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia",
-  "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-  "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-  "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
-  "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria",
-  "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-  "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
-  "Colombia", "Comoros", "Congo", "Costa Rica", "Côte d'Ivoire", "Croatia",
-  "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica",
-  "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-  "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
-  "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada",
-  "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-  "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran",
-  "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
-  "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
-  "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
-  "Luxembourg", "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives",
-  "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco",
-  "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-  "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
-  "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
-  "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
-  "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
-  "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
-  "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-  "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
-  "South Africa", "South Korea", "Spain", "Sri Lanka", "Sudan", "Suriname",
-  "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania",
-  "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
-  "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
-  "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-  "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"],
+      "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia",
+      "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+      "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+      "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+      "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria",
+      "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde",
+      "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
+      "Colombia", "Comoros", "Congo", "Costa Rica", "Côte d'Ivoire", "Croatia",
+      "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica",
+      "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
+      "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
+      "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada",
+      "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+      "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran",
+      "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+      "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
+      "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
+      "Luxembourg", "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives",
+      "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco",
+      "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+      "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
+      "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
+      "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
+      "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+      "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
+      "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+      "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
+      "South Africa", "South Korea", "Spain", "Sri Lanka", "Sudan", "Suriname",
+      "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania",
+      "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
+      "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
+      "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+      "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"],
     },
     Budget: {
       label: "Budget",
@@ -165,30 +303,19 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Search Filters */}
+              {/* Search Filters - UPDATED with CustomSelect */}
               <div className="flex justify-center">
                 <div className="absolute bottom-0 mt-10 px-4">
                   <div className="bg-white rounded-lg shadow-md p-6 flex gap-5 items-center justify-between max-w-5xl mx-auto">
                     <div className="flex justify-between">
                       {Object.entries(filterOptions).map(([key, { label, icon, options }]) => (
                         <div key={key} className="flex-1 mx-2">
-                          <div className="flex gap-1 items-center">
-                            <img src={icon} alt={label} className="w-4 h-4" />
-                            <label className="text-[20px] font-semibold text-primary">{label}</label>
-                          </div>
-                          <select
-                            className="block w-full mt-1 px-4 py-2 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                            defaultValue=""
-                          >
-                            <option value="" disabled>
-                              Select {label.toLowerCase()}
-                            </option>
-                            {options.map((option) => (
-                              <option key={option} value={option}>
-                                {option}
-                              </option>
-                            ))}
-                          </select>
+                          <CustomSelect 
+                            label={label} 
+                            icon={icon} 
+                            options={options} 
+                            placeholder={`Select ${label.toLowerCase()}`}
+                          />
                         </div>
                       ))}
                     </div>
@@ -207,7 +334,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile Hero Section - Exact match to the design */}
+      {/* Mobile Hero Section - UPDATED with MobileCustomSelect */}
       <div className="block lg:hidden bg-white mt-[100px] min-h-screen relative">
         {/* Light green tag at top */}
         <div className="pt-4 pb-2 flex justify-center">
@@ -223,44 +350,40 @@ const Hero = () => {
               Make your study abroad dream a <span className="text-primary">reality</span>
               {/* Curve line next to "reality" */}
               <img 
-              src="/images/home/curveLine.svg"
-              alt=""
-              className="absolute -top-5 -right-[35px] w-[100px] h-[100px] transform -rotate-[15deg]"
-            />
+                src="/images/home/curveLine.svg"
+                alt=""
+                className="absolute -top-5 -right-[35px] w-[100px] h-[100px] transform -rotate-[15deg]"
+              />
             </h1>
-          
           </div>
           
           {/* Description text */}
-         <div className="flex justify-center">
-          <p className="text-gray-700 text-xs mt-2 max-w-[600px]  px-2">
-            Simplified access to over 10,000 courses in over 3000 schools across 45 countries globally. 
-            Afrivina supports aspiring students with resources to explore global education.
-          </p>
+          <div className="flex justify-center">
+            <p className="text-gray-700 text-xs mt-2 max-w-[600px] px-2">
+              Simplified access to over 10,000 courses in over 3000 schools across 45 countries globally. 
+              Afrivina supports aspiring students with resources to explore global education.
+            </p>
           </div>
         </div>
         
         {/* Student Image with circular border and decorative elements */}
         <div className="relative mx-auto w-full flex justify-center mb-6">
           <div className="relative flex justify-center items-center">
-
             {/* Student image */}
             <img
               src="/images/hero.svg"
               alt="Student"
-              className=" h-auto relative z-10"
+              className="h-auto relative z-10"
             />
-            
-          
           </div>
         </div>
         
         {/* Action Buttons */}
-        <div className=" grid grid-cols-2 gap-2  mb-4">
+        <div className="grid grid-cols-2 gap-2 mb-4">
           {/* Green "Explore Programs" button */}
           <Link
             to="/explore-programs"
-            className="bg-primary text-white py-2 px-2 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center gap-1  w-full"
+            className="bg-primary text-white py-2 px-2 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center gap-1 w-full"
           >
             Explore Programs
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -316,86 +439,54 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Filter Section */}
+        {/* Filter Section - UPDATED with MobileCustomSelect */}
         <div className="px-6">
           <div className="bg-white rounded-lg shadow-md p-4">
             {/* Filter grid with 2 columns */}
-            <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="grid grid-cols-2 gap-3 mb-4">
               {/* Program Filter */}
               <div>
-                <div className="flex items-center gap-1 mb-1">
-                  <img 
-                    src="/images/home/programFilterHero.svg" 
-                    alt="Program" 
-                    className="w-4 h-4"
-                  />
-                  <span className="text-primary font-semibold text-xs">Program</span>
-                </div>
-                <select className="w-full px-2 py-1.5 bg-gray-50 border rounded-md text-xs text-gray-500">
-                  <option value="" disabled selected>Select Program</option>
-                  {filterOptions.Program.options.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
+                <MobileCustomSelect 
+                  label="Program" 
+                  icon="/images/home/programFilterHero.svg" 
+                  options={filterOptions.Program.options} 
+                  placeholder="Select Program"
+                />
               </div>
               
               {/* Region Filter */}
               <div>
-                <div className="flex items-center gap-1 mb-1">
-                  <img 
-                    src="/images/home/regionFilterHero.svg" 
-                    alt="Region" 
-                    className="w-4 h-4"
-                  />
-                  <span className="text-primary font-semibold text-xs">Region</span>
-                </div>
-                <select className="w-full px-2 py-1.5 bg-gray-50 border rounded-md text-xs text-gray-500">
-                  <option value="" disabled selected>Select Region</option>
-                  {filterOptions.Region.options.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
+                <MobileCustomSelect 
+                  label="Region" 
+                  icon="/images/home/regionFilterHero.svg" 
+                  options={filterOptions.Region.options} 
+                  placeholder="Select Region"
+                />
               </div>
               
               {/* Country Filter */}
               <div>
-                <div className="flex items-center gap-1 mb-1">
-                  <img 
-                    src="/images/home/countryFilterHero.svg" 
-                    alt="Country" 
-                    className="w-4 h-4"
-                  />
-                  <span className="text-primary font-semibold text-xs">Country</span>
-                </div>
-                <select className="w-full px-2 py-1.5 bg-gray-50 border rounded-md text-xs text-gray-500">
-                  <option value="" disabled selected>Select Location</option>
-                  {filterOptions.Country.options.map((country) => (
-                    <option key={country} value={country}>{country}</option>
-                  ))}
-                </select>
+                <MobileCustomSelect 
+                  label="Country" 
+                  icon="/images/home/countryFilterHero.svg" 
+                  options={filterOptions.Country.options} 
+                  placeholder="Select Location"
+                />
               </div>
               
               {/* Budget Filter */}
               <div>
-                <div className="flex items-center gap-1 mb-1">
-                  <img 
-                    src="/images/home/budgetFilterHero.svg" 
-                    alt="Budget" 
-                    className="w-4 h-4"
-                  />
-                  <span className="text-primary font-semibold text-xs">Budget</span>
-                </div>
-                <select className="w-full px-2 py-1.5 bg-gray-50 border rounded-md text-xs text-gray-500">
-                  <option value="" disabled selected>Select Budget</option>
-                  {filterOptions.Budget.options.map((budget) => (
-                    <option key={budget} value={budget}>{budget}</option>
-                  ))}
-                </select>
+                <MobileCustomSelect 
+                  label="Budget" 
+                  icon="/images/home/budgetFilterHero.svg" 
+                  options={filterOptions.Budget.options} 
+                  placeholder="Select Budget"
+                />
               </div>
             </div>
             
             {/* Search Button */}
-            <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-full font-medium text-xs">
+            <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-full font-medium text-xs transition duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">
               Search
             </button>
           </div>
@@ -406,3 +497,23 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

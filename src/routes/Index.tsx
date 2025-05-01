@@ -49,6 +49,14 @@ const AdminDashboardBecomeAnAgentPage = lazy(() => import("../pages/adminDashboa
 const AdminDashboardConsultationBookingPage = lazy(() => import("../pages/adminDashboard/consultationBooking/ConsultationBooking"));
 const AdminDashboardNotificationPage = lazy(() => import("../pages/adminDashboard/notification/Notification"));
 
+// user dashboard
+const UserDashboardHomePage = lazy(() => import("../pages/userDashboard/dashboardHome/Dashboard"));
+const UserDashboardProfilePage = lazy(() => import("../pages/userDashboard/profile/Profile"));
+const UserDashboardApplicationsPage = lazy(() => import("../pages/userDashboard/appications/Applications"));
+const UserDashboardUpskillPage = lazy(() => import("../pages/userDashboard/upskill/Upskill"));
+const UserDashboardResidentPermitPage = lazy(() => import("../pages/userDashboard/resident-permit/ResidentPermit"));
+const UserDashboardNotificationPage = lazy(() => import("../pages/userDashboard/notification/Notification"));
+
 const routes = [
   {
     path: "/",
@@ -172,73 +180,104 @@ const routes = [
     component: WaecAndJambStartPage,
   },
   {
-    path: "/dashboard/overview",
+    path: "/admin/overview",
     component: AdminDashboardPage,
   },
   {
-    path: "/dashboard/courses",
+    path: "/admin/courses",
     component: AdminDashboardCoursePage,
   },
   {
-    path: "/dashboard/courses/upload-course",
+    path: "/admin/courses/upload-course",
     component: AdminDashboardUploadCoursePage,
   },
   {
-    path: "/dashboard/courses/edit/:id",
+    path: "/admin/courses/edit/:id",
     component: AdminDashboardEditCoursePage,
   },
   {
-    path: "/dashboard/admin-management",
+    path: "/admin/admin-management",
     component: AdminDashboardManagementPage,
   },
   {
-    path: "/dashboard/user-management",
+    path: "/admin/user-management",
     component: AdminDashboardUserPage,
   },
   {
-    path: "/dashboard/blog",
+    path: "/admin/blog",
     component: AdminDashboardBlogPage,
   },
   {
-    path: "/dashboard/testimonial",
+    path: "/admin/testimonial",
     component: AdminDashboardTestimonialPage,
   },
   {
-    path: "/dashboard/banner",
+    path: "/admin/banner",
     component: AdminDashboardBannerPage,
   },
   {
-    path: "/dashboard/psychometric-test",
+    path: "/admin/psychometric-test",
     component: AdminDashboardPsychometricTestPage,
   },
   {
-    path: "/dashboard/loan-application",
+    path: "/admin/loan-application",
     component: AdminDashboardLoanApplicationPage,
   },
   {
-    path: "/dashboard/payment",
+    path: "/admin/payment",
     component: AdminDashboardPaymentPage,
   },
   {
-    path: "/dashboard/waec-and-jamb",
+    path: "/admin/waec-and-jamb",
     component: AdminDashboardWaecAndJambPage,
   },
   {
-    path: "/dashboard/faq-management",
+    path: "/admin/faq-management",
     component: AdminDashboardFaqManagementPage,
   },
   {
-    path: "/dashboard/become-an-agent",
+    path: "/admin/become-an-agent",
     component: AdminDashboardBecomeAnAgentPage,
   },
   {
-    path: "/dashboard/consultation-booking",
+    path: "/admin/consultation-booking",
     component: AdminDashboardConsultationBookingPage,
   },
     {
-    path: "/dashboard/notification",
+    path: "/admin/notification",
     component: AdminDashboardNotificationPage,
   },
+  {
+    path: "/user/dashboard",
+    component: UserDashboardHomePage,
+  },
+
+  {
+    path: "/user/profile",
+    component: UserDashboardProfilePage,
+  },
+
+  {
+    path: "/user/aplications",
+    component: UserDashboardApplicationsPage,
+  },
+
+  {
+    path: "/user/resident-permit",
+    component: UserDashboardResidentPermitPage,
+  },
+
+  {
+    path: "/user/upskill",
+    component: UserDashboardUpskillPage,
+  },
+
+  {
+    path: "/user/notification",
+    component: UserDashboardNotificationPage,
+  },
+
+ 
 ];
 
 

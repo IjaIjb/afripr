@@ -57,10 +57,10 @@ const SidebarPage = (props: Props) => {
 
         <div className="mt-3 flex flex-col ">
           <div className="">
-              <Link to={"/dashboard/overview"} className="relative gap-1  ">
+              <Link to={"/admin/overview"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "overview"].every((ai) => pathnames.includes(ai))
+                    ["admin", "overview"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -68,7 +68,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "Overview"].every((ai) =>
+                      ["admin", "Overview"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/overview.svg"
@@ -85,10 +85,10 @@ const SidebarPage = (props: Props) => {
 
 
           <div className="">
-              <Link to={"/dashboard/courses"} className="relative gap-1  ">
+              <Link to={"/admin/courses"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "courses"].every((ai) => pathnames.includes(ai))
+                    ["admin", "courses"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -96,7 +96,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "courses"].every((ai) =>
+                      ["admin", "courses"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/courseSidebar.svg"
@@ -112,10 +112,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/admin-management"} className="relative gap-1  ">
+              <Link to={"/admin/admin-management"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "admin-management"].every((ai) => pathnames.includes(ai))
+                    ["admin", "admin-management"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -123,7 +123,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "admin-management"].every((ai) =>
+                      ["admin", "admin-management"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/adminMSidebar.svg"
@@ -140,10 +140,10 @@ const SidebarPage = (props: Props) => {
 
 
           <div className="">
-              <Link to={"/dashboard/user-management"} className="relative gap-1  ">
+              <Link to={"/admin/user-management"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "user-management"].every((ai) => pathnames.includes(ai))
+                    ["admin", "user-management"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -151,7 +151,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "user-management"].every((ai) =>
+                      ["admin", "user-management"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/userMSidebar.svg"
@@ -167,10 +167,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/blog"} className="relative gap-1  ">
+              <Link to={"/admin/blog"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "blog"].every((ai) => pathnames.includes(ai))
+                    ["admin", "blog"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -178,7 +178,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "blog"].every((ai) =>
+                      ["admin", "blog"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/blogSidebar.svg"
@@ -194,10 +194,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/testimonial"} className="relative gap-1  ">
+              <Link to={"/admin/testimonial"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "testimonial"].every((ai) => pathnames.includes(ai))
+                    ["admin", "testimonial"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -205,7 +205,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "testimonial"].every((ai) =>
+                      ["admin", "testimonial"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/testimonialSidebar.svg"
@@ -221,10 +221,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/banner"} className="relative gap-1  ">
+              <Link to={"/admin/banner"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "banner"].every((ai) => pathnames.includes(ai))
+                    ["admin", "banner"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -232,7 +232,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "banner"].every((ai) =>
+                      ["admin", "banner"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/bannerSidebar.svg"
@@ -248,10 +248,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/psychometric-test"} className="relative gap-1  ">
+              <Link to={"/admin/psychometric-test"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "psychometric-test"].every((ai) => pathnames.includes(ai))
+                    ["admin", "psychometric-test"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -259,7 +259,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "psychometric-test"].every((ai) =>
+                      ["admin", "psychometric-test"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/psychoSidebar.svg"
@@ -276,10 +276,10 @@ const SidebarPage = (props: Props) => {
 
      
           <div className="">
-              <Link to={"/dashboard/loan-application"} className="relative gap-1  ">
+              <Link to={"/admin/loan-application"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "loan-application"].every((ai) => pathnames.includes(ai))
+                    ["admin", "loan-application"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -287,7 +287,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "loan-application"].every((ai) =>
+                      ["admin", "loan-application"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/loanSidebar.svg"
@@ -303,10 +303,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/payment"} className="relative gap-1  ">
+              <Link to={"/admin/payment"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "payment"].every((ai) => pathnames.includes(ai))
+                    ["admin", "payment"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -314,7 +314,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "payment"].every((ai) =>
+                      ["admin", "payment"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/loanSidebar.svg"
@@ -332,10 +332,10 @@ const SidebarPage = (props: Props) => {
 
 
           <div className="">
-              <Link to={"/dashboard/waec-and-jamb"} className="relative gap-1  ">
+              <Link to={"/admin/waec-and-jamb"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "waec-and-jamb"].every((ai) => pathnames.includes(ai))
+                    ["admin", "waec-and-jamb"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -343,7 +343,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "waec-and-jamb"].every((ai) =>
+                      ["admin", "waec-and-jamb"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/waecAndJambSidebar.svg"
@@ -359,10 +359,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/faq-management"} className="relative gap-1  ">
+              <Link to={"/admin/faq-management"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "faq-management"].every((ai) => pathnames.includes(ai))
+                    ["admin", "faq-management"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -370,7 +370,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "faq-management"].every((ai) =>
+                      ["admin", "faq-management"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/faqSidebar.svg"
@@ -386,10 +386,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/become-an-agent"} className="relative gap-1  ">
+              <Link to={"/admin/become-an-agent"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "become-an-agent"].every((ai) => pathnames.includes(ai))
+                    ["admin", "become-an-agent"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -397,7 +397,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "become-an-agent"].every((ai) =>
+                      ["admin", "become-an-agent"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/becomeAnAgentSidebar.svg"
@@ -414,10 +414,10 @@ const SidebarPage = (props: Props) => {
 
 
           <div className="">
-              <Link to={"/dashboard/consultation-booking"} className="relative gap-1  ">
+              <Link to={"/admin/consultation-booking"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "consultation-booking"].every((ai) => pathnames.includes(ai))
+                    ["admin", "consultation-booking"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -425,7 +425,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "consultation-booking"].every((ai) =>
+                      ["admin", "consultation-booking"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/consultationBookingSidebar.svg"
@@ -441,10 +441,10 @@ const SidebarPage = (props: Props) => {
           </div>
 
           <div className="">
-              <Link to={"/dashboard/notification"} className="relative gap-1  ">
+              <Link to={"/admin/notification"} className="relative gap-1  ">
                 <div
                   className={`${
-                    ["dashboard", "notification"].every((ai) => pathnames.includes(ai))
+                    ["admin", "notification"].every((ai) => pathnames.includes(ai))
                       ? "bg-[#0C8B01] text-[#FFFFFF]"
                       : " text-[#FFFFFF]"
                   } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
@@ -452,7 +452,7 @@ const SidebarPage = (props: Props) => {
                   <img
                     aria-hidden
                     src={
-                      ["dashboard", "notification"].every((ai) =>
+                      ["admin", "notification"].every((ai) =>
                         pathnames.includes(ai)
                       )
                         ? "/images/adminDashboard/notificationSidebar.svg"
