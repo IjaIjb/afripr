@@ -1,16 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../../component/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-// import { UserLiveApis } from "../../apis/live/userLive/userLiveApis";
 import { UserApis } from "../../apis/userApi/userApi";
-// import { useDispatch } from "react-redux";
-// import { Dispatch } from "redux";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { login } from "../../reducer/loginSlice";
-const SignUp = () => {
-  // const dispatch: Dispatch = useDispatch();
 
+// Custom Select Component
+const CustomSelect = ({ name, options, placeholder, value, onChange }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    // Create a synthetic event object to match the onChange interface
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: option
+      }
+    };
+    onChange(syntheticEvent);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full mt-1 px-4 py-3 bg-white border border-[#D7F5DC] shadow-sm rounded-[16px] cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-primary/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     first_name: "",
@@ -27,16 +93,19 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Gender options for the custom select
+  const genderOptions = ["Male", "Female", "Other"];
+
   // Password validation function
-  const isPasswordStrong = (password: string) => {
+  const isPasswordStrong = (password:any) => {
     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -68,37 +137,21 @@ const SignUp = () => {
       console.log("Signup Success:", response);
 
       if (response?.data) {
-        // dispatch(
-        //   login({
-        //     username: formData.email,
-        //     // token: response.data.token,
-        //     // name: response.data.name,
-        //   })
-        // );
-        // console.log("Signup created:", response.data);
-
-        toast.success("Login Successful");
-      console.log("Signup Success:", response);
-
+        toast.success("Registration Successful");
+        console.log("Signup Success:", response);
         navigate("/verify-email");
       } else {
         toast.error(response);
-      console.log( response);
-
+        console.log(response);
       }
-      // setSuccess("Account created successfully!");
-      console.log("Signup Success:", response.data);
-      // Handle success (redirect or show message)
-    } catch (err: any) {
-      // setError(err.response?.data?.message || "Signup failed. Try again.");
+    } catch (err:any) {
       console.log(err);
       toast.error(err?.response?.data?.message || "Signup failed");
-
-    
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen w-full bg-gray-100">
       <div className="lg:p-3 p-2 min-h-screen bg-gray-100">
@@ -132,105 +185,103 @@ const SignUp = () => {
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-4">
-        <input
-          type="text"
-          name="first_name"
-          placeholder="First Name"
-          value={formData.first_name}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-        <input
-          type="text"
-          name="last_name"
-          placeholder="Last Name"
-          value={formData.last_name}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-      </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <input
+                        type="text"
+                        name="first_name"
+                        placeholder="First Name"
+                        value={formData.first_name}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                      <input
+                        type="text"
+                        name="last_name"
+                        placeholder="Last Name"
+                        value={formData.last_name}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                    </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="🇳🇬 Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-      </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="🇳🇬 Phone Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                    </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        >
-          <option value="">Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <input
-          type="text"
-          name="referral_code"
-          placeholder="Referral code (optional)"
-          value={formData.referral_code}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-        />
-      </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {/* Custom Select Component for Gender */}
+                      <div>
+                        <CustomSelect
+                          name="gender"
+                          options={genderOptions}
+                          placeholder="Gender"
+                          value={formData.gender}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <input
+                        type="text"
+                        name="referral_code"
+                        placeholder="Referral code (optional)"
+                        value={formData.referral_code}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                      />
+                    </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-        <input
-          type="password"
-          name="confirm_password"
-          placeholder="Confirm Password"
-          value={formData.confirm_password}
-          onChange={handleChange}
-          className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
-          required
-        />
-      </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                      <input
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm Password"
+                        value={formData.confirm_password}
+                        onChange={handleChange}
+                        className="border border-[#D7F5DC] shadow-sm rounded-[16px] p-3"
+                        required
+                      />
+                    </div>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-      {success && <p className="text-green-500 text-sm text-center">{success}</p>}
+                    {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+                    {success && <p className="text-green-500 text-sm text-center">{success}</p>}
 
-      <div className="flex justify-center">
-        <button
-          type="submit"
-          className="px-10 md:px-20 bg-primary text-white py-3 rounded-full hover:bg-green-700"
-          disabled={loading}
-        >
-          {loading ? "Creating Account..." : "Create Account"}
-        </button>
-      </div>
-    </form>
+                    <div className="flex justify-center">
+                      <button
+                        type="submit"
+                        className="px-10 md:px-20 bg-primary text-white py-3 rounded-full hover:bg-green-700"
+                        disabled={loading}
+                      >
+                        {loading ? "Creating Account..." : "Create Account"}
+                      </button>
+                    </div>
+                  </form>
 
                   <p className="text-center md:pb-0 pb-20 text-gray-600 mt-4">
                     Already have an account?{" "}

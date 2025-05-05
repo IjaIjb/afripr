@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../component/Navbar";
 import { UserApis } from "../../apis/userApi/userApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { login } from "../../reducer/loginSlice";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const SignIn = () => {
   const dispatch: Dispatch = useDispatch();
 
@@ -20,6 +21,23 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  // const [profileData, setProfileData] = useState<any>({});
+  const userLoginData = useSelector((state:any) => state.data.login.value);
+  console.log(userLoginData);
+  React.useEffect(() => {
+    UserApis.getUserById(userLoginData?.data?.id)
+      .then((response) => {
+        if (response?.data) {
+          console?.log(response);
+          console?.log(response?.data);
+        
+      
+        } else {
+          // dispatch(login([]))
+        }
+      })
+      .catch(function (error) {});
+  }, [userLoginData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,21 +58,51 @@ const SignIn = () => {
       console.log("Login Success:", response);
       if (response.data) {
         const token = response.data.token;
+        const user = response.data.user;
         toast.success(response?.data?.message);
 
         dispatch(
           login({
             username: formData.username,
             token: token,
-            // id: response.data.data.id,
-            // data: response?.data.data.user,
+            data: user,
           })
         );
-        navigate("/");
+
+        // Check KYC status after successful login
+        if (user?.id) {
+          try {
+            const kycResponse = await UserApis.kycgetUserProfileById(user.id);
+            console.log("KYC Profile Response:", kycResponse);
+            
+            if (kycResponse?.data) {
+              console.log("KYC Profile Data:", kycResponse.data);
+              
+              // Check if step_1_completed is true
+              if (kycResponse.data.step_1_completed === true) {
+                console.log("KYC Step 1 completed - routing to dashboard");
+                navigate("/user/dashboard");
+              } else {
+                console.log("KYC Step 1 not completed - routing to KYC");
+                navigate("/kyc");
+              }
+            } else {
+              // If no profile data found, route to KYC
+              console.log("No KYC data found - routing to KYC");
+              navigate("/kyc");
+            }
+          } catch (kycError) {
+            console.error("Error fetching KYC data:", kycError);
+            // On KYC fetch error, route to KYC page
+            navigate("/kyc");
+          }
+        } else {
+          // If no user ID, default to KYC
+          navigate("/kyc");
+        }
       } else {
         toast.error(response);
       }
-      // Handle success (store token, redirect, etc.)
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed. Try again.");
       console.log(err);
@@ -125,9 +173,8 @@ const SignIn = () => {
                               />
                               <button
                                 type="button"
-                                // role="button"
                                 aria-label="show password"
-                                title=" show password"
+                                title="show password"
                                 onClick={() =>
                                   setShowPassword(() => !showPassword)
                                 }
@@ -159,7 +206,7 @@ const SignIn = () => {
 
                         <p className="flex justify-end text-gray-600 mt-2">
                           <Link
-                          to="/forgot-password"
+                            to="/forgot-password"
                             className="text-[#0C8B01] text-[12px] font-semibold"
                           >
                             Forgot Password?

@@ -40,6 +40,70 @@ export class UserApis {
         }
     }
 
+    static kycAddUserProfile(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfile(data);
+        }
+    }
+
+    static kycgetUserProfileById(id:any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycgetUserProfileById(id);
+        }
+    }
+
+    static kycAddUserProfileEducational(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileEducational(data);
+        }
+    }
+
+    static kycAddUserProfileParent(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileParent(data);
+        }
+    }
+
+    static kycAddUserProfileSkillsCareer(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileSkillsCareer(data);
+        }
+    }
+
+    static kycAddUserProfileUniversityPreference(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileUniversityPreference(data);
+        }
+    }
+
+    static kycAddUserProfileFinancialInfo(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileFinancialInfo(data);
+        }
+    }
+
+    static kycAddUserProfileDocumentVerification(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.kycAddUserProfileDocumentVerification(data);
+        }
+    }
+
     static resetPassword(data: any): AxiosPromise<any> {
         if (configs.type === "LOCAL") {
             return {} as AxiosPromise;

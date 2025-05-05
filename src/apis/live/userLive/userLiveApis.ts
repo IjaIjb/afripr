@@ -41,6 +41,53 @@ export class UserLiveApis extends AxiosGlobal{
         return this.axios.post(`${configs.context}/auth/resetpassword`, data);
     }
 
+    kycAddUserProfile(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/userprofiles/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycgetUserProfileById(id:any): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/userprofiles/view/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+    kycAddUserProfileEducational(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/educationalrecords/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycAddUserProfileParent(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/parentguardians/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycAddUserProfileSkillsCareer(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/skillcareers/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycAddUserProfileUniversityPreference(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/universitypreferences/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycAddUserProfileFinancialInfo(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/financialinformations/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    kycAddUserProfileDocumentVerification(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/documentverifications/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
     
     logout(data:any): AxiosPromise<any> {
         return this.axios.post(`${configs.context}/logout`, data,{

@@ -42,7 +42,11 @@ const configs = {
 //   baseRedirect:'http://127.0.0.1:8000',
 
 
-context: "https://io.afriproedu.com/api",
+// context: "https://io.afriproedu.com/api",
+context: "https://dev.afriproedu.com/api",
+
+
+
 // context: "http://159.223.182.142/api",
 // contextAdmin: "http://localhost:8060/api",
 

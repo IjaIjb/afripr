@@ -7,6 +7,7 @@ const SignupPage = lazy(() => import("../pages/auth/SignUp"));
 const SigninPage = lazy(() => import("../pages/auth/SignIn"));
 const ForgotPasswordPage = lazy(() => import("../pages/auth/ForgetPassword"));
 const ResetPasswordPage = lazy(() => import("../pages/auth/ResetPassword"));
+const KycPage = lazy(() => import("../pages/auth/kyc/KycProfileCompletion"));
 const PsychometricTestPage = lazy(() => import("../pages/psychometricTest/PsychometricTestHome"));
 const PsychometricTestProgramsPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPrograms"));
 const PsychometricTestBachelorPage = lazy(() => import("../pages/psychometricTest/PsychometricTestBachelor"));
@@ -30,6 +31,9 @@ const EduPremiumPage = lazy(() => import("../pages/loan/eduPremium/EduPremium"))
 const EduPremiumSchoolProcessingPage = lazy(() => import("../pages/loan/eduPremium/PremiumSchoolProcessing"));
 const EduPremiumLoanProcessingPage = lazy(() => import("../pages/loan/eduPremium/PremumLoanProcessing"));
 const VerifyEmailPage = lazy(() => import("../pages/auth/VerifyEmail"));
+const VerifyEmailSuccessPage = lazy(() => import("../pages/auth/VerifyEmailSuccess"));
+
+// admin dashboard
 const VerifyPasswordPage = lazy(() => import("../pages/auth/VerifyPassword"));
 const AdminDashboardPage = lazy(() => import("../pages/adminDashboard/home/Home"));
 const AdminDashboardCoursePage = lazy(() => import("../pages/adminDashboard/courseAndPrograms/CourseAnPrograms"));
@@ -83,9 +87,18 @@ const routes = [
     path: "/verify-email",
     component: VerifyEmailPage,
   },
+  
+  {
+    path: "/auth/verify-email",
+    component: VerifyEmailSuccessPage,
+  },
   {
     path: "/verify",
     component: VerifyPasswordPage,
+  },
+  {
+    path: "/kyc",
+    component: KycPage,
   },
   {
     path: "/sign-in",
