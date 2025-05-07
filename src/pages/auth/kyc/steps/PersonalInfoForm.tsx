@@ -1,11 +1,113 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AdminApis } from "../../../../apis/adminApi/adminApi";
 import { UserApis } from "../../../../apis/userApi/userApi";
 import { toast } from "react-toastify";
 
+// Custom Select Component
+const CustomSelect = ({ name, options, placeholder, value, onChange }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    // Create a synthetic event object to match the onChange interface
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: option
+      }
+    };
+    onChange(syntheticEvent);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full mt-1 px-4 py-3 bg-white border border-[#D7F5DC] shadow-sm rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-[#1DB459]/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const PersonalInfoForm = ({ userData, handleInputChange, onSubmit, loading }:any) => {
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  // Define options for select fields
+  const genderOptions = ["Male", "Female", "Other"];
+  const employmentStatusOptions = ["Full-time", "Part-time", "Self-employed", "Student", "Unemployed", "Other"];
+  
+  // Nationality options (demonyms) - comprehensive list of nationalities
+  const nationalityOptions = [
+    "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguan", "Argentine", "Armenian", 
+    "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", 
+    "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Motswana", "Brazilian", 
+    "British", "Bruneian", "Bulgarian", "Burkinabe", "Burundian", "Cambodian", "Cameroonian", "Canadian", 
+    "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", 
+    "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", 
+    "Dutch", "Ecuadorian", "Egyptian", "Salvadoran", "Equatorial Guinean", "Eritrean", "Estonian", 
+    "Ethiopian", "Fijian", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", 
+    "Greek", "Grenadian", "Guatemalan", "Guinean", "Guyanese", "Haitian", "Honduran", "Hungarian", 
+    "Icelandic", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Jamaican", 
+    "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kiribati", "North Korean", "South Korean", "Kuwaiti", 
+    "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Mosotho", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", 
+    "Luxembourgish", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", 
+    "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", 
+    "Montenegrin", "Moroccan", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealand", "Nicaraguan", 
+    "Nigerian", "Nigerien", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", 
+    "Papua New Guinean", "Paraguayan", "Peruvian", "Filipino", "Polish", "Portuguese", "Qatari", "Romanian", 
+    "Russian", "Rwandan", "Saint Lucian", "Samoan", "Sammarinese", "Saudi Arabian", "Senegalese", "Serbian", 
+    "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", 
+    "South African", "South Sudanese", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swedish", 
+    "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Timorese", "Togolese", "Tongan", 
+    "Trinidadian", "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Emirati", 
+    "Uruguayan", "Uzbek", "Ni-Vanuatu", "Vatican", "Venezuelan", "Vietnamese", "Yemeni", "Zambian", "Zimbabwean"
+  ];
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
@@ -55,8 +157,6 @@ const PersonalInfoForm = ({ userData, handleInputChange, onSubmit, loading }:any
       }
     }
   };
-
-  console.log(userData)
   
   return (
     <div className="mb-8">
@@ -152,31 +252,25 @@ const PersonalInfoForm = ({ userData, handleInputChange, onSubmit, loading }:any
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
-            <select
+            <CustomSelect
               name="gender"
+              options={genderOptions}
+              placeholder="Select Gender"
               value={userData.gender}
               onChange={handleInputChange}
-              className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
+            />
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Nationality</label>
-            <input
-              type="text"
+            <CustomSelect
               name="nationality"
+              options={nationalityOptions}
+              placeholder="Select Nationality"
               value={userData.nationality}
               onChange={handleInputChange}
-              className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-              required
             />
           </div>
           <div>
@@ -242,21 +336,13 @@ const PersonalInfoForm = ({ userData, handleInputChange, onSubmit, loading }:any
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Employment Status</label>
-            <select
+            <CustomSelect
               name="employment_status"
+              options={employmentStatusOptions}
+              placeholder="Select Employment Status"
               value={userData.employment_status}
               onChange={handleInputChange}
-              className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-              required
-            >
-              <option value="">Select Employment Status</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Self-employed">Self-employed</option>
-              <option value="Student">Student</option>
-              <option value="Unemployed">Unemployed</option>
-              <option value="Other">Other</option>
-            </select>
+            />
           </div>
         </div>
 

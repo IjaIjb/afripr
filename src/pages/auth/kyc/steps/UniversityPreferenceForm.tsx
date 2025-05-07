@@ -1,6 +1,111 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+// Custom Select Component
+const CustomSelect = ({ name, options, placeholder, value, onChange }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    // Create a synthetic event object to match the onChange interface
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: option
+      }
+    };
+    onChange(syntheticEvent);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full mt-1 px-4 py-3 bg-white border border-[#D7F5DC] shadow-sm rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-[#1DB459]/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const UniversityPreferenceForm = ({ userData, handleInputChange, onSubmit, onSkip, loading }:any) => {
+  // Define options for select fields
+  const countryOptions = [
+    "United States",
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Germany",
+    "France",
+    "Netherlands",
+    "Sweden",
+    "Switzerland",
+    "Japan",
+    "Other"
+  ];
+  
+  const languageOptions = [
+    "English",
+    "French",
+    "German",
+    "Spanish",
+    "Other"
+  ];
+  
+  const studyModeOptions = [
+    "On-Campus",
+    "Online",
+    "Hybrid"
+  ];
+  
+  const yesNoOptions = [
+    "Yes",
+    "No"
+  ];
+
   const handleSubmit = (e:any) => {
     e.preventDefault();
     onSubmit();
@@ -14,25 +119,13 @@ const UniversityPreferenceForm = ({ userData, handleInputChange, onSubmit, onSki
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Country of Interest
           </label>
-          <select
+          <CustomSelect
             name="country_of_interest"
+            options={countryOptions}
+            placeholder="Select Country"
             value={userData.country_of_interest}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Country</option>
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="Germany">Germany</option>
-            <option value="France">France</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Japan">Japan</option>
-            <option value="Other">Other</option>
-          </select>
+          />
         </div>
 
         <div>
@@ -53,19 +146,13 @@ const UniversityPreferenceForm = ({ userData, handleInputChange, onSubmit, onSki
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Preferred Language of Instruction
           </label>
-          <select
+          <CustomSelect
             name="preferred_language"
+            options={languageOptions}
+            placeholder="Select Language"
             value={userData.preferred_language}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Language</option>
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="German">German</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Other">Other</option>
-          </select>
+          />
         </div>
 
         <div>
@@ -86,33 +173,26 @@ const UniversityPreferenceForm = ({ userData, handleInputChange, onSubmit, onSki
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Preferred Study Mode
           </label>
-          <select
+          <CustomSelect
             name="preferred_study_mode"
+            options={studyModeOptions}
+            placeholder="Select Mode"
             value={userData.preferred_study_mode}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Mode</option>
-            <option value="On-Campus">On-Campus</option>
-            <option value="Online">Online</option>
-            <option value="Hybrid">Hybrid</option>
-          </select>
+          />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Previous Visa Rejection?
           </label>
-          <select
+          <CustomSelect
             name="previous_visa_rejection"
+            options={yesNoOptions}
+            placeholder="Select an option"
             value={userData.previous_visa_rejection}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select an option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
+          />
         </div>
 
         <div className="flex justify-center space-x-4 mt-8">

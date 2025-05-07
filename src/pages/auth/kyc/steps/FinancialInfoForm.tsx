@@ -1,6 +1,113 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+// Custom Select Component
+const CustomSelect = ({ name, options, placeholder, value, onChange, required = false }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    // Create a synthetic event object to match the onChange interface
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: option
+      }
+    };
+    onChange(syntheticEvent);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full mt-1 px-4 py-3 bg-white border border-[#D7F5DC] shadow-sm rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-[#1DB459]/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const FinancialInfoForm = ({ userData, handleInputChange, onSubmit, onSkip, loading }:any) => {
+  // Define options for select fields
+  const fundingTypeOptions = [
+    "Self-funding",
+    "Family-sponsored",
+    "Government-sponsored",
+    "Organization-sponsored",
+    "Other"
+  ];
+  
+  const incomeRangeOptions = [
+    "Less than $10,000",
+    "$10,000 - $30,000",
+    "$30,000 - $50,000",
+    "$50,000 - $75,000",
+    "$75,000 - $100,000",
+    "Above $100,000",
+    "Prefer not to say"
+  ];
+  
+  const fundingPlanOptions = [
+    "Personal Savings",
+    "Family Support",
+    "Scholarship",
+    "Education Loan",
+    "Employer Sponsorship",
+    "Government Grant",
+    "Mixed Sources",
+    "Other"
+  ];
+  
+  const loanWillingnessOptions = [
+    "Yes",
+    "No",
+    "Maybe"
+  ];
+
   const handleSubmit = (e:any) => {
     e.preventDefault();
     onSubmit();
@@ -14,80 +121,53 @@ const FinancialInfoForm = ({ userData, handleInputChange, onSubmit, onSkip, load
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Self-financed or Sponsored?
           </label>
-          <select
+          <CustomSelect
             name="self_funding_or_sponsored"
+            options={fundingTypeOptions}
+            placeholder="Select an option"
             value={userData.self_funding_or_sponsored}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-            required
-          >
-            <option value="">Select an option</option>
-            <option value="Self-funding">Self-funding</option>
-            <option value="Family-sponsored">Family-sponsored</option>
-            <option value="Government-sponsored">Government-sponsored</option>
-            <option value="Organization-sponsored">Organization-sponsored</option>
-            <option value="Other">Other</option>
-          </select>
+            required={true}
+          />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Annual Family Income Range
           </label>
-          <select
+          <CustomSelect
             name="annual_family_income_range"
+            options={incomeRangeOptions}
+            placeholder="Select Income Range"
             value={userData.annual_family_income_range}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Income Range</option>
-            <option value="Less than $10,000">Less than $10,000</option>
-            <option value="$10,000 - $30,000">$10,000 - $30,000</option>
-            <option value="$30,000 - $50,000">$30,000 - $50,000</option>
-            <option value="$50,000 - $75,000">$50,000 - $75,000</option>
-            <option value="$75,000 - $100,000">$75,000 - $100,000</option>
-            <option value="Above $100,000">Above $100,000</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-          </select>
+          />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Funding Plan (Loan, Scholarship, Parent)
           </label>
-          <select
+          <CustomSelect
             name="funding_plan"
+            options={fundingPlanOptions}
+            placeholder="Select Funding Plan"
             value={userData.funding_plan}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Funding Plan</option>
-            <option value="Personal Savings">Personal Savings</option>
-            <option value="Family Support">Family Support</option>
-            <option value="Scholarship">Scholarship</option>
-            <option value="Education Loan">Education Loan</option>
-            <option value="Employer Sponsorship">Employer Sponsorship</option>
-            <option value="Government Grant">Government Grant</option>
-            <option value="Mixed Sources">Mixed Sources</option>
-            <option value="Other">Other</option>
-          </select>
+          />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Willing to take a student loan?
           </label>
-          <select
+          <CustomSelect
             name="willing_to_take_loan"
+            options={loanWillingnessOptions}
+            placeholder="Select an option"
             value={userData.willing_to_take_loan}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select an option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-            <option value="Maybe">Maybe</option>
-          </select>
+          />
         </div>
 
         <div className="flex justify-center space-x-4 mt-8">

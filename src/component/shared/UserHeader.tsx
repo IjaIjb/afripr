@@ -78,8 +78,8 @@ JO
 </div>
 
 <div className="flex flex-col">
-<h3 className="text-[#333333] text-[14px]">Thaywo47</h3>
-<h5 className="text-[#666666] text-[12px]">Super Admin</h5>
+<h3 className="text-[#333333] text-[14px]">Joseph</h3>
+<h5 className="text-[#666666] text-[12px]">User</h5>
 </div>
    </div>
         </div>

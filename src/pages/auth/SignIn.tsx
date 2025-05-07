@@ -21,22 +21,22 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // const [profileData, setProfileData] = useState<any>({});
   const userLoginData = useSelector((state:any) => state.data.login.value);
   console.log(userLoginData);
+  
   React.useEffect(() => {
-    UserApis.getUserById(userLoginData?.data?.id)
-      .then((response) => {
-        if (response?.data) {
-          console?.log(response);
-          console?.log(response?.data);
-        
-      
-        } else {
-          // dispatch(login([]))
-        }
-      })
-      .catch(function (error) {});
+    if (userLoginData?.data?.id) {
+      UserApis.getUserById(userLoginData.data.id)
+        .then((response) => {
+          if (response?.data) {
+            console.log(response);
+            console.log(response.data);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error fetching user data:", error);
+        });
+    }
   }, [userLoginData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +54,12 @@ const SignIn = () => {
         password: formData.password,
       });
 
-      console.log("Login Success:", response.data);
-      console.log("Login Success:", response);
       if (response.data) {
         const token = response.data.token;
         const user = response.data.user;
         toast.success(response?.data?.message);
 
+        // Dispatch login action
         dispatch(
           login({
             username: formData.username,
@@ -72,23 +71,15 @@ const SignIn = () => {
         // Check KYC status after successful login
         if (user?.id) {
           try {
-            const kycResponse = await UserApis.kycgetUserProfileById(user.id);
-            console.log("KYC Profile Response:", kycResponse);
+            const kycResponse = await UserApis.getUserById(user.id);
             
-            if (kycResponse?.data) {
-              console.log("KYC Profile Data:", kycResponse.data);
-              
-              // Check if step_1_completed is true
-              if (kycResponse.data.step_1_completed === true) {
-                console.log("KYC Step 1 completed - routing to dashboard");
-                navigate("/user/dashboard");
-              } else {
-                console.log("KYC Step 1 not completed - routing to KYC");
-                navigate("/kyc");
-              }
+            if (kycResponse?.data?.kyc_user_profile?.step_1_completed === true) {
+              // If KYC step 1 is completed, route to dashboard
+              console.log("KYC Step 1 completed - routing to dashboard", kycResponse.data);
+              navigate("/user/dashboard");
             } else {
-              // If no profile data found, route to KYC
-              console.log("No KYC data found - routing to KYC");
+              // If KYC step 1 is not completed, route to KYC
+              console.log("KYC Step 1 not completed - routing to KYC", kycResponse.data);
               navigate("/kyc");
             }
           } catch (kycError) {
@@ -105,7 +96,7 @@ const SignIn = () => {
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed. Try again.");
-      console.log(err);
+      console.error("Login error:", err);
     } finally {
       setLoading(false);
     }

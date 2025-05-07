@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHome, FaUser, FaDollarSign, FaChartPie, FaCog, FaQuestion, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import UserDashboardLayout from '../../../component/UserDashboardLayout';
+import { useSelector } from 'react-redux';
+import { UserApis } from '../../../apis/userApi/userApi';
 
 export default function Dashboard() {
   const [currentMonth, setCurrentMonth] = useState(1); // Feb
-  
+  const [userData, setUserData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   // Calendar data for February 2025
   const daysInMonth = 29; // February 2025 has 29 days (leap year)
   const firstDayOfMonth = 5; // Saturday (0-indexed where 0 is Sunday)
@@ -29,14 +32,50 @@ export default function Dashboard() {
   const moveMonth = (direction:any) => {
     setCurrentMonth(prev => prev + direction);
   };
-  
+  const userLoginData = useSelector((state: any) => state.data.login.value);
+  console.log(userLoginData)
+
+   // Fetch user data when component mounts
+   useEffect(() => {
+    const fetchUserData = async () => {
+      if (!userLoginData?.data?.id) {
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        setLoading(true);
+        const response = await UserApis.getUserById(userLoginData.data.id);
+        
+        if (response?.data) {
+          console.log("User data fetched successfully:", response.data);
+          setUserData(response.data);
+        } else {
+          console.log("No user data returned");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchUserData();
+  }, [userLoginData]);
+
+  // Get user's first name
+  const firstName = userData?.first_name || userLoginData?.data?.first_name || "Student";
+
   return (
     <UserDashboardLayout>
     <div className="flex flex-col h-screen ">
       {/* Header */}
-      <div className="bg-primary text-white py-4 px-6 rounded-lg">
-        <h1 className="text-[36px] font-bold">Hello, Adewuyi!</h1>
+      <div className="bg-primary mt-16 mb-10 relative text-white py-4 px-6 rounded-lg">
+        <h1 className="text-[36px] font-bold">Hello, {firstName}!</h1>
         <p className="text-[14px] max-w-[340px]">Welcome back to your student dashboard, Here are all the things you can do</p>
+  <div className='absolute -top-14 right-6 '>
+    <img src='/images/userDashboard/dashboardHero.svg' alt='' />
+      </div>
       </div>
       
       {/* Navigation Icons */}

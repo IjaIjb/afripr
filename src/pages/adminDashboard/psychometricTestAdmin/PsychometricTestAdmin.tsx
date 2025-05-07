@@ -118,12 +118,35 @@ const PsychometricTestAdmin: React.FC = () => {
   }, [activeProgramId, activeSubcategoryId, fetchQuestions]);
   
   // Close program type menu when clicking outside
+  // useEffect(() => {
+  //   const handleClickOutside = (e: MouseEvent) => {
+  //     // Don't close if clicking on the menu toggle button
+  //     if ((e.target as Element).closest('.program-menu-toggle')) {
+  //       return;
+  //     }
+  //     setProgramTypeMenuOpen(null);
+  //   };
+    
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Element;
+      
       // Don't close if clicking on the menu toggle button
-      if ((e.target as Element).closest('.program-menu-toggle')) {
+      if (target.closest('.program-menu-toggle')) {
         return;
       }
+      
+      // Don't close if clicking inside the dropdown menu
+      if (target.closest('.program-menu-dropdown')) {
+        return;
+      }
+      
+      // Close the menu
       setProgramTypeMenuOpen(null);
     };
     
@@ -422,10 +445,14 @@ const PsychometricTestAdmin: React.FC = () => {
                         
                         {/* Program Type Action Menu */}
                         {programTypeMenuOpen === program.id && (
-                          <div className="absolute right-0 top-8 w-36 bg-white shadow-lg rounded-md z-50 py-1 border border-gray-200">
+                          <div
+                          className="program-menu-dropdown absolute right-0 top-8 w-36 bg-white shadow-lg rounded-md z-50 py-1 border border-gray-200"
+                          onClick={(e) => e.stopPropagation()}
+                          >
                             <button
                               onClick={(e) => {
-                                e.stopPropagation();
+                                e.preventDefault(); // Add this
+        e.stopPropagation(); // Add this
                                 openEditProgramModal(program);
                               }}
                               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -434,7 +461,8 @@ const PsychometricTestAdmin: React.FC = () => {
                             </button>
                             <button
                               onClick={(e) => {
-                                e.stopPropagation();
+                                e.preventDefault(); // Add this
+                                e.stopPropagation(); // Add this
                                 openDeleteProgramConfirmation(program.id);
                               }}
                               className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"

@@ -1,11 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
+
+// Custom Select Component
+const CustomSelect = ({ name, options, placeholder, value, onChange }:any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef:any = useRef(null);
+  
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event:any) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  
+  const handleSelect = (option:any) => {
+    // Create a synthetic event object to match the onChange interface
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: option
+      }
+    };
+    onChange(syntheticEvent);
+    setIsOpen(false);
+  };
+  
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* Custom Select Button */}
+      <div 
+        onClick={toggleDropdown}
+        className="flex justify-between items-center w-full mt-1 px-4 py-3 bg-white border border-[#D7F5DC] shadow-sm rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
+      >
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+      
+      {/* Dropdown Options */}
+      {isOpen && (
+        <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {options.map((option:any) => (
+            <div
+              key={option}
+              onClick={() => handleSelect(option)}
+              className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-[#1DB459]/[60%] transition-colors"
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const SkillsCareerForm = ({ userData, handleInputChange, onSubmit, onSkip, loading }:any) => {
   const [uploadingCertificate, setUploadingCertificate] = useState(false);
   const [certificates, setCertificates] = useState<string[]>(
     userData?.certificate_earned ? JSON.parse(userData?.certificate_earned) : []
   );
+
+  // Define options for select fields
+  const jobRoleOptions = [
+    "Software Engineer",
+    "Data Scientist",
+    "Product Manager",
+    "UX/UI Designer",
+    "Business Analyst",
+    "Marketing Specialist",
+    "Financial Analyst",
+    "Doctor",
+    "Lawyer",
+    "Teacher",
+    "Researcher",
+    "Entrepreneur",
+    "Other"
+  ];
+  
+  const powerSupplyOptions = ["Yes", "No"];
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
@@ -132,27 +222,13 @@ const SkillsCareerForm = ({ userData, handleInputChange, onSubmit, onSkip, loadi
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Dream Job Role
           </label>
-          <select
+          <CustomSelect
             name="dream_job_role"
+            options={jobRoleOptions}
+            placeholder="Select Role"
             value={userData.dream_job_role}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select Role</option>
-            <option value="Software Engineer">Software Engineer</option>
-            <option value="Data Scientist">Data Scientist</option>
-            <option value="Product Manager">Product Manager</option>
-            <option value="UX/UI Designer">UX/UI Designer</option>
-            <option value="Business Analyst">Business Analyst</option>
-            <option value="Marketing Specialist">Marketing Specialist</option>
-            <option value="Financial Analyst">Financial Analyst</option>
-            <option value="Doctor">Doctor</option>
-            <option value="Lawyer">Lawyer</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Researcher">Researcher</option>
-            <option value="Entrepreneur">Entrepreneur</option>
-            <option value="Other">Other</option>
-          </select>
+          />
         </div>
 
         <div>
@@ -173,16 +249,13 @@ const SkillsCareerForm = ({ userData, handleInputChange, onSubmit, onSkip, loadi
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Do you have a laptop and regular power supply for your training programmes?
           </label>
-          <select
+          <CustomSelect
             name="regular_power"
+            options={powerSupplyOptions}
+            placeholder="Select an option"
             value={userData.regular_power}
             onChange={handleInputChange}
-            className="w-full border border-[#D7F5DC] shadow-sm rounded-lg p-3"
-          >
-            <option value="">Select an option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
+          />
         </div>
 
         <div>
