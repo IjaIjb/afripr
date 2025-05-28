@@ -28,7 +28,7 @@ const PsychometricTestHome = () => {
           </div>
 
           <Link
-            to="/psychometric-test/programs"
+            to="/psychometric-test/info"
             className="flex justify-center mt-5"
           >
             <button className="bg-primary  hover:bg-green-700 text-white py-2 px-5 rounded-full font-medium">

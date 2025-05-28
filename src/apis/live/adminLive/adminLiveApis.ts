@@ -51,6 +51,8 @@ export class AdminLiveApis extends AxiosGlobal{
         });
     }
 
+
+    // old psychometric
     addProgramType(data:any): AxiosPromise<any> {
         return this.axios.post(`${configs.context}/psychometricquestiontypes/add`, data,{
             headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
@@ -123,6 +125,69 @@ export class AdminLiveApis extends AxiosGlobal{
             headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
           });
     }
+
+
+    // new psychometric test
+        addSectionPsychometric(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/sections/add`, data,{
+            headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    getAllSectionPsychometric(): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/sections`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+       getSectionPsychometricById(id:any): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/sections/view/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+    updateSectionPsychometric(id:any, data:any): AxiosPromise<Array<any>> {
+        return this.axios.post(`${configs.context}/sections/edit/${id}`,  data,{
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+        deleteSectionPsychometric(id: any): AxiosPromise<Array<any>> {
+        return this.axios.delete(`${configs.context}/sections/delete/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+     addMoreQuestionsPsychometric(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/questions/create-full`, data,{
+            headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+    getAllQuestionsPsychometric(): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/newquestions`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+       getQuestionsPsychometricBySectionId(id:any): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/sections/${id}/questions`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+    updateQuestionsPsychometric(id:any, data:any): AxiosPromise<Array<any>> {
+        return this.axios.post(`${configs.context}/newquestions/edit/${id}`,  data,{
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+    deleteQuestionsPsychometric(id: any): AxiosPromise<Array<any>> {
+        return this.axios.delete(`${configs.context}/newquestions/delete/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
 
     createBlog(data:any): AxiosPromise<any> {
         return this.axios.post(`${configs.context}/blogs/add`, data,{

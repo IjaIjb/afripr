@@ -10,8 +10,10 @@ const ResetPasswordPage = lazy(() => import("../pages/auth/ResetPassword"));
 const KycPage = lazy(() => import("../pages/auth/kyc/KycProfileCompletion"));
 const PsychometricTestPage = lazy(() => import("../pages/psychometricTest/PsychometricTestHome"));
 const PsychometricTestProgramsPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPrograms"));
+const PsychometricTestGenInfo = lazy(() => import("../pages/psychometricTest/components/PsychometricTestGenInfo"));
 const PsychometricTestBachelorPage = lazy(() => import("../pages/psychometricTest/PsychometricTestBachelor"));
 const PsychometricTestBachelorQuestionsPage = lazy(() => import("../pages/psychometricTest/PsychoBachelorQuestions"));
+const PsychometricTestQuestionsPage = lazy(() => import("../pages/psychometricTest/components/PsychometricQuestions"));
 const PsychometricTestMastersPage = lazy(() => import("../pages/psychometricTest/PsychometricTestMasters"));
 const PsychometricTestMastersQuestionsPage = lazy(() => import("../pages/psychometricTest/PsychoMastersQuestions"));
 const PsychometricTestPhdPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPhd"));
@@ -119,6 +121,14 @@ const routes = [
   {
     path: "/psychometric-test/programs",
     component: PsychometricTestProgramsPage,
+  },
+    {
+    path: "/psychometric-test/info",
+    component: PsychometricTestGenInfo,
+  },
+   {
+    path: "/psychometric-test/questions",
+    component: PsychometricTestQuestionsPage,
   },
   {
     path: "/psychometric-test/bsc",
