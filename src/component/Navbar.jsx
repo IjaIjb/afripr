@@ -2,13 +2,32 @@ import { Menu, Transition } from "@headlessui/react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { UserApis } from "../apis/userApi/userApi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+    const [userData, setUserData] = useState([]);
   const [moreExpanded, setMoreExpanded] = useState(false);
   const userLoginData = useSelector((state) => state.data.login.value);
-  console.log(userLoginData);
-  const username = userLoginData?.username?.split("@")[0] || "";
+  console.log(userData);
+  // const username = userLoginData?.username?.split("@")[0] || "";
+
+       
+          React.useEffect(() => {
+            if (userLoginData?.data?.id) {
+              UserApis.getUserById(userLoginData.data.id)
+                .then((response) => {
+                  if (response?.data) {
+                    // console.log(response);
+                    console.log(response.data);
+                    setUserData(response?.data)
+                  }
+                })
+                .catch(function (error) {
+                  console.error("Error fetching user data:", error);
+                });
+            }
+          }, [userLoginData]);
 
   return (
     <div className="fixed lg:left-[50px] left-[5px] right-[5px] top-6 z-[100] lg:right-[50px]">
@@ -18,13 +37,15 @@ const Navbar = () => {
         </Link>
         <div className="lg:hidden flex items-center lg:pl-1  pr-3">
         {userLoginData.email !== "" ? (
-                  <div className="flex items-center gap-2">
-                    <img src="/images/avatar.svg" className="w-8 h-8" alt="User" />
-                    <div>
-                      <h5 className="font-medium text-gray-800">{username}</h5>
-                      <p className="text-xs text-gray-500">Signed in</p>
-                    </div>
-                  </div>
+                 <Link to="/sign-up" className="text-[#263238] flex gap-2 items-center hover:bg-green-100 bg-white rounded-full py-2 px-3">
+              <h5>{userData?.first_name}</h5>
+              {userData?.gender === "Male" ? (
+              <img src="/images/avatar.svg" className="w-7 h-7" alt="" />
+              ) : (
+              <img src="/images/avatar1.svg" className="w-7 h-7" alt="" />
+
+              )}
+            </Link>
                 ) : (
                   <Link to="/sign-up" className="flex items-center justify-center gap-1 bg-white text-[#333333] rounded-full py-1.5 px-4 shadow-md border border-gray-100">
                     <span className="text-sm whitespace-nowrap font-medium">Apply now</span>
@@ -199,8 +220,13 @@ const Navbar = () => {
           
           {userLoginData.email !== "" ? (
             <Link to="/sign-up" className="text-[#263238] flex gap-2 items-center hover:bg-green-100 bg-white rounded-full py-2 px-3">
-              <h5>{username}</h5>
+              <h5>{userData?.first_name}</h5>
+              {userData?.gender === "Male" ? (
               <img src="/images/avatar.svg" className="w-7 h-7" alt="" />
+              ) : (
+              <img src="/images/avatar1.svg" className="w-7 h-7" alt="" />
+
+              )}
             </Link>
           ) : (
             <Link to="/sign-up" className="flex items-center justify-center gap-1 bg-white text-[#333333] rounded-full py-1.5 px-4 shadow-md border border-gray-100">

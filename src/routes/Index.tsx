@@ -8,6 +8,7 @@ const SigninPage = lazy(() => import("../pages/auth/SignIn"));
 const ForgotPasswordPage = lazy(() => import("../pages/auth/ForgetPassword"));
 const ResetPasswordPage = lazy(() => import("../pages/auth/ResetPassword"));
 const KycPage = lazy(() => import("../pages/auth/kyc/KycProfileCompletion"));
+
 const PsychometricTestPage = lazy(() => import("../pages/psychometricTest/PsychometricTestHome"));
 const PsychometricTestProgramsPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPrograms"));
 const PsychometricTestGenInfo = lazy(() => import("../pages/psychometricTest/components/PsychometricTestGenInfo"));
@@ -19,13 +20,17 @@ const PsychometricTestMastersQuestionsPage = lazy(() => import("../pages/psychom
 const PsychometricTestPhdPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPhd"));
 const PsychometricTestPhdQuestionsPage = lazy(() => import("../pages/psychometricTest/PsychoPhdQuestions"));
 const PsychometricTestListOfProgramsPage = lazy(() => import("../pages/psychometricTest/ListOfPrograms"));
-const ExploreProgramsPage = lazy(() => import("../pages/explorePrograms/ExplorePrograms"));
+
 const BlogPage = lazy(() => import("../pages/blog/Blog"));
 const WaecAndJambPage = lazy(() => import("../pages/waecAndJamb/WaecAndJamb"));
 const WaecAndJambStartPage = lazy(() => import("../pages/waecAndJamb/WaecStart"));
 const BlogDetailPage = lazy(() => import("../pages/blog/BlogDetail"));
+
+const ExploreProgramsPage = lazy(() => import("../pages/explorePrograms/ExplorePrograms"));
 const ProgramOverviewPage = lazy(() => import("../pages/explorePrograms/ProgramOverview"));
 const AppSummaryPage = lazy(() => import("../pages/explorePrograms/AppSummary"));
+const DegreeApplicationFormPage = lazy(() => import("../pages/explorePrograms/DegreeApplicationForm"));
+
 const LoanHomePage = lazy(() => import("../pages/loan/LoanHome"));
 const EduSilverPage = lazy(() => import("../pages/loan/EduSilver"));
 const EduGoldPage = lazy(() => import("../pages/loan/eduGold/EduGold"));
@@ -47,6 +52,9 @@ const AdminDashboardBlogPage = lazy(() => import("../pages/adminDashboard/blog/B
 const AdminDashboardTestimonialPage = lazy(() => import("../pages/adminDashboard/testimonials/Testimonials"));
 const AdminDashboardBannerPage = lazy(() => import("../pages/adminDashboard/banner/Banner"));
 const AdminDashboardPsychometricTestPage = lazy(() => import("../pages/adminDashboard/psychometricTestAdmin/PsychometricTestAdmin"));
+const AdminDashboardPsychometricTestCoursePage = lazy(() => import("../pages/adminDashboard/psychometricTestCourseAdmin/PsychometricTestCourseHome"));
+const AdminDashboardAddPsychometricTestCoursePage = lazy(() => import("../pages/adminDashboard/psychometricTestCourseAdmin/PsychometricTestCourseAdmin"));
+const AdminDashboardEditPsychometricTestCoursePage = lazy(() => import("../pages/adminDashboard/psychometricTestCourseAdmin/EditPsychometricTestCourse"));
 const AdminDashboardLoanApplicationPage = lazy(() => import("../pages/adminDashboard/loanApplication/LoanApplication"));
 const AdminDashboardPaymentPage = lazy(() => import("../pages/adminDashboard/payment/Payment"));
 const AdminDashboardWaecAndJambPage = lazy(() => import("../pages/adminDashboard/waecAndJamb/WaecAndJamb"));
@@ -170,6 +178,12 @@ const routes = [
     path: "/application-summary/:course",
     component: AppSummaryPage,
   },
+
+    {
+    path: "/degree-application-form/:course",
+    component: DegreeApplicationFormPage,
+  },
+
   {
     path: "/loan",
     component: LoanHomePage,
@@ -241,6 +255,18 @@ const routes = [
   {
     path: "/admin/psychometric-test",
     component: AdminDashboardPsychometricTestPage,
+  },
+    {
+    path: "/admin/psychometric-test-course",
+    component: AdminDashboardPsychometricTestCoursePage,
+  },
+     {
+    path: "admin/psychometric-courses/create",
+    component: AdminDashboardAddPsychometricTestCoursePage,
+  },
+       {
+    path: "/admin/psychometric-courses/edit/:id",
+    component: AdminDashboardEditPsychometricTestCoursePage,
   },
   {
     path: "/admin/loan-application",

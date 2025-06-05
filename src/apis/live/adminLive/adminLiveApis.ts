@@ -128,6 +128,42 @@ export class AdminLiveApis extends AxiosGlobal{
 
 
     // new psychometric test
+        getAllTags(): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/tags`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+    
+        addPsychometricTestCourse(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/courses/add`, data,{
+            headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
+
+        getAllPsychometricTestCourse(): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/courses`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+           getPsychometricTestCourseById(id:any): AxiosPromise<Array<any>> {
+        return this.axios.get(`${configs.context}/courses/view/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+    updatePsychometricTestCourse(id:any, data:any): AxiosPromise<Array<any>> {
+        return this.axios.post(`${configs.context}/courses/edit/${id}`,  data,{
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
+        deletePsychometricTestCourse(id: any): AxiosPromise<Array<any>> {
+        return this.axios.delete(`${configs.context}/courses/delete/${id}`, {
+            headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
+        });
+    }
+
         addSectionPsychometric(data:any): AxiosPromise<any> {
         return this.axios.post(`${configs.context}/sections/add`, data,{
             headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
@@ -186,6 +222,12 @@ export class AdminLiveApis extends AxiosGlobal{
         return this.axios.delete(`${configs.context}/newquestions/delete/${id}`, {
             headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": `Bearer ${store.getState().data.login.value.token}`, "Access-Control-Allow-Origin": "*" },
         });
+    }
+
+        answerPsychometricQuestion(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/test/submit`, data,{
+            headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
     }
 
 

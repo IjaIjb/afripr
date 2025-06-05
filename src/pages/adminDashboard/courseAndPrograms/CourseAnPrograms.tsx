@@ -168,9 +168,9 @@ const CourseAnPrograms = () => {
                 <tr key={course.id} className="border-b my-1 rounded-xl bg-white px-2 border-gray-200 hover:bg-gray-100">
                   <td className="py-4 pl-3">
                     <div className="flex items-center">
-                      <div className=''>
+                      {/* <div className=''>
                       <img src={course?.school_logo} className='mr-3 w-8 h-8' alt='/'/>
-                      </div>
+                      </div> */}
                       <span className="text-green-500 font-medium">{course.course}</span>
                     </div>
                   </td>

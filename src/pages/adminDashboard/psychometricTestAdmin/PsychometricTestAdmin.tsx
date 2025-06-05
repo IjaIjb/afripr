@@ -4,9 +4,18 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from '../../../component/UI/LoadingSpinner';
 import AdminDashboardLayout from '../../../component/AdminDashboardLayout';
-import { FaPlus, FaTrash, FaTimes, FaExclamationTriangle, FaEdit, FaEllipsisV, FaGripVertical, FaQuestionCircle, FaListUl, FaPuzzlePiece } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaTimes, FaExclamationTriangle, FaEdit, FaEllipsisV, FaGripVertical, FaQuestionCircle, FaListUl, FaPuzzlePiece, FaTags } from 'react-icons/fa';
 
 // Define interfaces for TypeScript
+interface Tag {
+  id: string;
+  code: string;
+  name: string;
+  description: string;
+  created_at: string | null;
+  updated_at: string | null;
+}
+
 interface Section {
   id: string;
   title: string;
@@ -14,11 +23,18 @@ interface Section {
   updated_at: string | null;
 }
 
+interface OptionTag {
+  code: string;
+  name: string;
+  description: string;
+}
+
 interface Option {
   id?: string;
   option_letter?: string;
   option_text: string;
   question_id?: string;
+  tags?: OptionTag[];
   created_at?: string | null;
   updated_at?: string | null;
 }
@@ -45,10 +61,14 @@ const PsychometricTestAdmin: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState<boolean>(false);
   
+  // State for tags
+  const [availableTags, setAvailableTags] = useState<Tag[]>([]);
+  const [loadingTags, setLoadingTags] = useState<boolean>(false);
+  
   // State for adding and editing questions
   const [showQuestionModal, setShowQuestionModal] = useState<boolean>(false);
   const [questionText, setQuestionText] = useState<string>("");
-  const [questionOptions, setQuestionOptions] = useState<Option[]>([{ option_text: "" }]);
+  const [questionOptions, setQuestionOptions] = useState<Option[]>([{ option_text: "", tags: [] }]);
   const [submittingQuestion, setSubmittingQuestion] = useState<boolean>(false);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [editingQuestionId, setEditingQuestionId] = useState<string>("");
@@ -74,10 +94,31 @@ const PsychometricTestAdmin: React.FC = () => {
   const [sectionToDelete, setSectionToDelete] = useState<string>("");
   const [deletingSection, setDeletingSection] = useState<boolean>(false);
 
-  // Fetch sections on component mount
+  // State for tag selection modal
+  const [showTagModal, setShowTagModal] = useState<boolean>(false);
+  const [currentOptionIndex, setCurrentOptionIndex] = useState<number>(-1);
+
+  // Fetch sections and tags on component mount
   useEffect(() => {
     fetchSections();
+    fetchAllTags();
   }, []);
+
+  const fetchAllTags = async (): Promise<void> => {
+    setLoadingTags(true);
+    try {
+      const response = await AdminApis.getAllTags();
+      console.log(response.data);
+      if (response?.data?.records) {
+        setAvailableTags(response.data.records);
+      }
+    } catch (error) {
+      console.error("Error fetching tags:", error);
+      toast.error("Failed to load tags");
+    } finally {
+      setLoadingTags(false);
+    }
+  };
 
   // Fetch questions when section changes
   const fetchQuestions = useCallback(async (): Promise<void> => {
@@ -93,7 +134,6 @@ const PsychometricTestAdmin: React.FC = () => {
       if (response?.data?.questions) {
         setQuestions(response.data.questions);
       } else if (response?.data) {
-        // Handle if the response structure is different
         setQuestions(Array.isArray(response.data) ? response.data : []);
       }
     } catch (error) {
@@ -115,17 +155,14 @@ const PsychometricTestAdmin: React.FC = () => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Element;
       
-      // Don't close if clicking on the menu toggle button
       if (target.closest('.section-menu-toggle')) {
         return;
       }
       
-      // Don't close if clicking inside the dropdown menu
       if (target.closest('.section-menu-dropdown')) {
         return;
       }
       
-      // Close the menu
       setSectionMenuOpen(null);
     };
     
@@ -141,7 +178,6 @@ const PsychometricTestAdmin: React.FC = () => {
       const response = await AdminApis.getAllSectionPsychometric();
       if (response?.data?.records) {
         setSections(response.data.records);
-        // Set the first section as active if exists
         if (response.data.records.length > 0) {
           setActiveTab(response.data.records[0].title);
           setActiveSectionId(response.data.records[0].id);
@@ -186,11 +222,10 @@ const PsychometricTestAdmin: React.FC = () => {
       return;
     }
     
-    // Calculate position for the dropdown
     const buttonRect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     setMenuPosition({
       top: buttonRect.bottom + 8,
-      left: buttonRect.right - 192 // 192px is the width of the dropdown (w-48)
+      left: buttonRect.right - 192
     });
     
     setSectionMenuOpen(sectionId);
@@ -205,19 +240,16 @@ const PsychometricTestAdmin: React.FC = () => {
     setAddingSection(true);
     try {
       if (isEditSectionMode) {
-        // Update existing section
         const response = await AdminApis.updateSectionPsychometric(editingSectionId, {
           title: newSectionTitle
         });
         if (response.data) {
           toast.success("Section updated successfully");    
-          // Update active tab if the current active section was updated
           if (editingSectionId === activeSectionId) {
             setActiveTab(newSectionTitle);
           }
         }
       } else {
-        // Add new section
         const response = await AdminApis.addSectionPsychometric({
           title: newSectionTitle
         }); 
@@ -246,7 +278,6 @@ const PsychometricTestAdmin: React.FC = () => {
       await AdminApis.deleteSectionPsychometric(sectionToDelete);
       toast.success("Section deleted successfully");    
       
-      // If the deleted section was active, select the first available section
       if (sectionToDelete === activeSectionId) {
         const remainingSections = sections.filter(s => s.id !== sectionToDelete);
         if (remainingSections.length > 0) {
@@ -271,7 +302,7 @@ const PsychometricTestAdmin: React.FC = () => {
   
   // Question Functions
   const handleAddOption = (): void => {
-    setQuestionOptions([...questionOptions, { option_text: "" }]);
+    setQuestionOptions([...questionOptions, { option_text: "", tags: [] }]);
   };
   
   const handleRemoveOption = (index: number): void => {
@@ -284,6 +315,42 @@ const PsychometricTestAdmin: React.FC = () => {
     const updatedOptions = [...questionOptions];
     updatedOptions[index].option_text = value;
     setQuestionOptions(updatedOptions);
+  };
+
+  // Tag Functions
+  const openTagModal = (optionIndex: number): void => {
+    setCurrentOptionIndex(optionIndex);
+    setShowTagModal(true);
+  };
+
+  const handleTagToggle = (tag: Tag): void => {
+    if (currentOptionIndex === -1) return;
+
+    const updatedOptions = [...questionOptions];
+    const currentTags = updatedOptions[currentOptionIndex].tags || [];
+    
+    const existingTagIndex = currentTags.findIndex(t => t.code === tag.code);
+    
+    if (existingTagIndex > -1) {
+      // Remove tag
+      currentTags.splice(existingTagIndex, 1);
+    } else {
+      // Add tag
+      currentTags.push({
+        code: tag.code,
+        name: tag.name,
+        description: tag.description
+      });
+    }
+    
+    updatedOptions[currentOptionIndex].tags = currentTags;
+    setQuestionOptions(updatedOptions);
+  };
+
+  const isTagSelected = (tag: Tag): boolean => {
+    if (currentOptionIndex === -1) return false;
+    const currentTags = questionOptions[currentOptionIndex]?.tags || [];
+    return currentTags.some(t => t.code === tag.code);
   };
   
   const handleSubmitQuestion = async (): Promise<void> => {
@@ -305,23 +372,28 @@ const PsychometricTestAdmin: React.FC = () => {
     
     setSubmittingQuestion(true);
     try {
+      // Format options with auto-generated letters and tags
+      const formattedOptions = questionOptions.map((option, index) => ({
+        option_letter: String.fromCharCode(97 + index), // a, b, c, d...
+        option_text: option.option_text,
+        tags: option.tags || []
+      }));
+
+      const payload = {
+        section_id: activeSectionId,
+        question_text: questionText,
+        options: formattedOptions
+      };
+
+      console.log('Submitting question payload:', payload);
+
       if (isEditMode) {
-        // Update existing question
-        const response = await AdminApis.updateQuestionsPsychometric(editingQuestionId, {
-          question_text: questionText,
-          section_id: activeSectionId,
-          options: questionOptions
-        }); 
+        const response = await AdminApis.updateQuestionsPsychometric(editingQuestionId, payload); 
         if (response.data) {
           toast.success("Question updated successfully");
         }
       } else {
-        // Create new question
-        const response = await AdminApis.addMoreQuestionsPsychometric({
-          question_text: questionText,
-          section_id: activeSectionId,
-          options: questionOptions
-        });  
+        const response = await AdminApis.addMoreQuestionsPsychometric(payload);  
         if (response.data) {
           toast.success("Question added successfully");
         }
@@ -330,7 +402,7 @@ const PsychometricTestAdmin: React.FC = () => {
       // Reset form and close modal
       setShowQuestionModal(false);
       setQuestionText("");
-      setQuestionOptions([{ option_text: "" }]);
+      setQuestionOptions([{ option_text: "", tags: [] }]);
       setIsEditMode(false);
       setEditingQuestionId("");
       fetchQuestions();
@@ -347,25 +419,23 @@ const PsychometricTestAdmin: React.FC = () => {
     setActiveSectionId(sectionId);
   };
   
-  // Open delete confirmation modal
   const openDeleteConfirmation = (questionId: string): void => {
     setQuestionToDelete(questionId);
     setShowDeleteModal(true);
   };
   
-  // Open edit question modal
   const openEditQuestion = (question: Question): void => {
     setIsEditMode(true);
     setEditingQuestionId(question.id);
     setQuestionText(question.question_text);
     setQuestionOptions(question.options?.map((opt: Option) => ({
       ...opt,
-      option_text: opt.option_text || ""
-    })) || [{ option_text: "" }]);
+      option_text: opt.option_text || "",
+      tags: opt.tags || []
+    })) || [{ option_text: "", tags: [] }]);
     setShowQuestionModal(true);
   };
   
-  // Delete question handler
   const confirmDeleteQuestion = async (): Promise<void> => {
     if (!questionToDelete) return; 
     
@@ -386,7 +456,7 @@ const PsychometricTestAdmin: React.FC = () => {
 
   return (
     <AdminDashboardLayout>
-      <div className="min-h-screen ">
+      <div className="min-h-screen">
         <style dangerouslySetInnerHTML={{
           __html: `
             .scrollbar-hide {
@@ -413,14 +483,11 @@ const PsychometricTestAdmin: React.FC = () => {
             }
           `
         }} />
-        <div className="max-w-5xl mx-auto  pb-8">
+        <div className="max-w-5xl mx-auto pb-8">
           {/* Header Section */}
           <div className="mb-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                {/* <div className="bg-gradient-to-r from-emerald-500 to-primary p-3 rounded-xl shadow-lg">
-                  <FaPuzzlePiece className="h-8 w-8 text-white" />
-                </div> */}
                 <div>
                   <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-primary bg-clip-text text-transparent">
                     Psychometric Test Management
@@ -428,7 +495,6 @@ const PsychometricTestAdmin: React.FC = () => {
                   <p className="text-gray-600 mt-1">Manage test sections and questions</p>
                 </div>
               </div>
-              
               
               <button
                 onClick={openAddSectionModal}
@@ -491,7 +557,6 @@ const PsychometricTestAdmin: React.FC = () => {
 
           {/* Content Area */}
           <div className="bg-white rounded-2xl shadow-lg border border-gray-200">
-            {/* Content Header */}
             <div className="px-8 py-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
@@ -511,7 +576,7 @@ const PsychometricTestAdmin: React.FC = () => {
                     setIsEditMode(false);
                     setEditingQuestionId("");
                     setQuestionText("");
-                    setQuestionOptions([{ option_text: "" }]);
+                    setQuestionOptions([{ option_text: "", tags: [] }]);
                     setShowQuestionModal(true);
                   }}
                   disabled={!activeSectionId}
@@ -540,14 +605,12 @@ const PsychometricTestAdmin: React.FC = () => {
                     <div key={question.id} className="bg-gray-50 rounded-xl border border-gray-200 hover:shadow-md transition-all duration-200">
                       <div className="p-6">
                         <div className="flex items-start space-x-4">
-                          {/* Question Number */}
                           <div className="flex-shrink-0">
                             <div className="bg-gradient-to-r from-emerald-500 to-primary text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm">
                               {question.display_order || index + 1}
                             </div>
                           </div>
                           
-                          {/* Question Content */}
                           <div className="flex-1 min-w-0">
                             <div className="bg-white rounded-lg p-4 mb-4 border border-gray-200">
                               <h3 className="text-lg font-medium text-gray-900 leading-relaxed">
@@ -555,25 +618,42 @@ const PsychometricTestAdmin: React.FC = () => {
                               </h3>
                             </div>
                             
-                            {/* Options */}
+                            {/* Options with Tags */}
                             <div className="ml-4 space-y-3">
                               {question.options?.map((option, optIndex) => (
-                                <div key={option.id || optIndex} className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-gray-100">
-                                  <div className="w-4 h-4 border-2 border-gray-300 rounded-full mt-0.5 flex-shrink-0"></div>
-                                  <span className="text-gray-700 leading-relaxed">
-                                    {option.option_letter && (
-                                      <span className="font-semibold text-emerald-600 mr-2">
-                                        {option.option_letter.trim()}
-                                      </span>
-                                    )}
-                                    {option.option_text}
-                                  </span>
+                                <div key={option.id || optIndex} className="p-3 bg-white rounded-lg border border-gray-100">
+                                  <div className="flex items-start space-x-3 mb-2">
+                                    <div className="w-4 h-4 border-2 border-gray-300 rounded-full mt-0.5 flex-shrink-0"></div>
+                                    <span className="text-gray-700 leading-relaxed flex-1">
+                                      {option.option_letter && (
+                                        <span className="font-semibold text-emerald-600 mr-2">
+                                          {option.option_letter.trim()}
+                                        </span>
+                                      )}
+                                      {option.option_text}
+                                    </span>
+                                  </div>
+                                  
+                                  {/* Tags Display */}
+                                  {option.tags && option.tags.length > 0 && (
+                                    <div className="ml-7 flex flex-wrap gap-1 mt-2">
+                                      {option.tags.map((tag, tagIndex) => (
+                                        <span 
+                                          key={tagIndex}
+                                          className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800"
+                                          title={tag.description}
+                                        >
+                                          <FaTags className="h-2 w-2 mr-1" />
+                                          {tag.name}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </div>
                           </div>
                           
-                          {/* Action Buttons */}
                           <div className="flex-shrink-0">
                             <div className="flex items-center space-x-2">
                               <button 
@@ -615,7 +695,7 @@ const PsychometricTestAdmin: React.FC = () => {
                         setIsEditMode(false);
                         setEditingQuestionId("");
                         setQuestionText("");
-                        setQuestionOptions([{ option_text: "" }]);
+                        setQuestionOptions([{ option_text: "", tags: [] }]);
                         setShowQuestionModal(true);
                       }}
                       className="bg-gradient-to-r from-emerald-500 to-primary hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-3 rounded-xl flex items-center space-x-2 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
@@ -675,7 +755,7 @@ const PsychometricTestAdmin: React.FC = () => {
         
         {/* Add/Edit Section Modal */}
         {showSectionModal && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="fixed inset-0 bg-black/60 w-full backdrop-blur-sm flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full transform transition-all duration-300">
               <div className="px-6 py-4 border-b border-gray-200">
                 <div className="flex items-center justify-between">
@@ -730,7 +810,7 @@ const PsychometricTestAdmin: React.FC = () => {
         {/* Add/Edit Question Modal */}
         {showQuestionModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300">
               <div className="px-6 py-4 border-b border-gray-200 sticky top-0 bg-white">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -773,30 +853,65 @@ const PsychometricTestAdmin: React.FC = () => {
                     </button>
                   </div>
                   
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {questionOptions?.map((opt, index) => (
-                      <div key={index} className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                        <div className="w-4 h-4 border-2 border-gray-400 rounded-full flex-shrink-0"></div>
-                        <span className="text-sm font-medium text-gray-500 w-8">
-                          {String.fromCharCode(97 + index)}
-                        </span>
-                        <input
-                          type="text"
-                          value={opt.option_text}
-                          onChange={(e) => handleOptionChange(index, e.target.value)}
-                          className="flex-grow px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
-                          placeholder={`Option ${index + 1}`}
-                        />
-                        {questionOptions.length > 1 && (
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveOption(index)}
-                            className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200"
-                            title="Remove Option"
-                          >
-                            <FaTrash className="h-4 w-4" />
-                          </button>
-                        )}
+                      <div key={index} className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                        <div className="flex items-center space-x-3 mb-3">
+                          <div className="w-4 h-4 border-2 border-gray-400 rounded-full flex-shrink-0"></div>
+                          <span className="text-sm font-medium text-gray-500 w-8">
+                            {String.fromCharCode(97 + index)}
+                          </span>
+                          <input
+                            type="text"
+                            value={opt.option_text}
+                            onChange={(e) => handleOptionChange(index, e.target.value)}
+                            className="flex-grow px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors duration-200"
+                            placeholder={`Option ${index + 1}`}
+                          />
+                          {questionOptions.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveOption(index)}
+                              className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                              title="Remove Option"
+                            >
+                              <FaTrash className="h-4 w-4" />
+                            </button>
+                          )}
+                        </div>
+                        
+                        {/* Tags Section for Each Option */}
+                        <div className="ml-7">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-medium text-gray-600">Tags for this option:</span>
+                            <button
+                              type="button"
+                              onClick={() => openTagModal(index)}
+                              className="inline-flex items-center space-x-1 text-xs font-medium text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-2 py-1 rounded-md transition-colors duration-200"
+                            >
+                              <FaTags className="h-3 w-3" />
+                              <span>Manage Tags</span>
+                            </button>
+                          </div>
+                          
+                          {/* Display Selected Tags */}
+                          <div className="flex flex-wrap gap-1">
+                            {opt.tags && opt.tags.length > 0 ? (
+                              opt.tags.map((tag, tagIndex) => (
+                                <span 
+                                  key={tagIndex}
+                                  className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-800"
+                                  title={tag.description}
+                                >
+                                  <FaTags className="h-2 w-2 mr-1" />
+                                  {tag.name}
+                                </span>
+                              ))
+                            ) : (
+                              <span className="text-xs text-gray-400 italic">No tags selected</span>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -816,6 +931,88 @@ const PsychometricTestAdmin: React.FC = () => {
                   >
                     {submittingQuestion ? <LoadingSpinner /> : null}
                     <span>{isEditMode ? "Update Question" : "Save Question"}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tag Selection Modal */}
+        {showTagModal && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto transform transition-all duration-300">
+              <div className="px-6 py-4 border-b border-gray-200 sticky top-0 bg-white">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Select Tags for Option {currentOptionIndex !== -1 ? String.fromCharCode(97 + currentOptionIndex) : ''}
+                  </h3>
+                  <button
+                    onClick={() => {
+                      setShowTagModal(false);
+                      setCurrentOptionIndex(-1);
+                    }}
+                    className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                  >
+                    <FaTimes className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                {loadingTags ? (
+                  <div className="flex items-center justify-center py-8">
+                    <LoadingSpinner />
+                    <span className="ml-2">Loading tags...</span>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {availableTags.map((tag) => (
+                      <div
+                        key={tag.id}
+                        onClick={() => handleTagToggle(tag)}
+                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                          isTagSelected(tag)
+                            ? 'border-emerald-500 bg-emerald-50 shadow-md'
+                            : 'border-gray-200 hover:border-emerald-300 hover:bg-emerald-25'
+                        }`}
+                      >
+                        <div className="flex items-start space-x-3">
+                          <div className={`w-5 h-5 rounded border-2 flex items-center justify-center mt-0.5 ${
+                            isTagSelected(tag)
+                              ? 'border-emerald-500 bg-emerald-500'
+                              : 'border-gray-300'
+                          }`}>
+                            {isTagSelected(tag) && (
+                              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center space-x-2 mb-1">
+                              <span className="font-medium text-gray-900">{tag.name}</span>
+                              <span className="text-xs font-mono text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                                {tag.code}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-600">{tag.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200 mt-6">
+                  <button
+                    onClick={() => {
+                      setShowTagModal(false);
+                      setCurrentOptionIndex(-1);
+                    }}
+                    className="px-6 py-3 bg-emerald-100 text-emerald-700 rounded-xl hover:bg-emerald-200 transition-colors duration-200 font-medium"
+                  >
+                    Done
                   </button>
                 </div>
               </div>

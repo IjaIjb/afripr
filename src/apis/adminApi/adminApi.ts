@@ -161,6 +161,54 @@ export class AdminApis {
     }
 
     // new psychometric
+        static getAllTags(): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.getAllTags();
+        }
+    }
+
+    static addPsychometricTestCourse(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.addPsychometricTestCourse(data);
+        }
+    }
+
+        static getAllPsychometricTestCourse(): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.getAllPsychometricTestCourse();
+        }
+    }
+
+           static getPsychometricTestCourseById(id:any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.getPsychometricTestCourseById(id);
+        }
+    } 
+
+    static updatePsychometricTestCourse(id:any, data:any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.updatePsychometricTestCourse(id, data);
+        }
+    } 
+
+    static deletePsychometricTestCourse(id:any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.deletePsychometricTestCourse(id);
+        }
+    } 
+
         static addSectionPsychometric(data: any): AxiosPromise<any> {
         if (configs.type === "LOCAL") {
             return {} as AxiosPromise;
@@ -240,13 +288,22 @@ export class AdminApis {
             return this.adminLiveApis.deleteQuestionsPsychometric(id);
         }
     } 
-    static createBlog(data: any): AxiosPromise<any> {
+    static answerPsychometricQuestion(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.adminLiveApis.answerPsychometricQuestion(data);
+        }
+    }
+
+        static createBlog(data: any): AxiosPromise<any> {
         if (configs.type === "LOCAL") {
             return {} as AxiosPromise;
         } else {
             return this.adminLiveApis.createBlog(data);
         }
     }
+    
 
     static getAllBlogs(): AxiosPromise<any> {
         if (configs.type === "LOCAL") {

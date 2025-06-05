@@ -12,6 +12,7 @@ import {
 import UserDashboardLayout from "../../../component/UserDashboardLayout";
 import { useSelector } from "react-redux";
 import { UserApis } from "../../../apis/userApi/userApi";
+import LatestUpdatesUpskillSection from "./LatestUpdatesUpskillSection";
 
 export default function Dashboard() {
   const [currentMonth, setCurrentMonth] = useState(1); // Feb
@@ -198,8 +199,9 @@ Next Payment Amount
       </div>
     </div>
         </div>
+        <LatestUpdatesUpskillSection />
         {/* Calendar */}
-        <div className="mx-4 mt-4 mb-4 bg-white rounded-lg p-4 shadow flex-grow">
+        {/* <div className=" mt-4 mb-4 bg-white rounded-lg p-4 shadow flex-grow">
           <div className="flex justify-between items-center mb-2">
             <h2 className="font-semibold text-gray-700">February 2025</h2>
             <div className="flex space-x-2">
@@ -261,7 +263,7 @@ Next Payment Amount
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </UserDashboardLayout>
   );

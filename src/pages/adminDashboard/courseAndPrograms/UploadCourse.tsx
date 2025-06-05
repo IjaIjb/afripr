@@ -252,14 +252,14 @@ const UploadCourse = () => {
           console.log('Course added successfully:', response);
           if (response.data) {
             toast.success(response.data.message || "course created successfully")
-            setLoader(true)
+            setLoader(false)
             navigate("/admin/courses");
 
           }
           // Handle success (redirect, show message, etc.)
         } catch (error:any) {
           toast.error(error.message || "An error occured")
-          setLoader(true)
+          setLoader(false)
           
           console.error('Error adding course:', error);
           // Handle error

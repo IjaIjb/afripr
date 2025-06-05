@@ -26,7 +26,8 @@ const SidebarPage = (props: Props) => {
     <aside
       className={`${
         props.DrawerOpen ? "" : ""
-      } relative w-[305px] z-[100] bg-primary scrollbar-hide overflow-y-auto pl-3 pb-8 border-r border-[#ECEDEF] h-screen`}
+      } relative w-[305px] bg-primary scrollbar-hide overflow-y-auto pl-3 pb-8 border-r border-[#ECEDEF] h-screen`}
+      // } relative w-[305px] z-[100] bg-primary scrollbar-hide overflow-y-auto pl-3 pb-8 border-r border-[#ECEDEF] h-screen`}
     >
       <div className="flex items-center justify-between px-2 md:px-4">
         {/* <div></div> */}
@@ -274,6 +275,32 @@ const SidebarPage = (props: Props) => {
               </Link>
           </div>
 
+          <div className="">
+              <Link to={"/admin/psychometric-test-course"} className="relative gap-1  ">
+                <div
+                  className={`${
+                    ["admin", "psychometric-test-course"].every((ai) => pathnames.includes(ai))
+                      ? "bg-[#0C8B01] text-[#FFFFFF]"
+                      : " text-[#FFFFFF]"
+                  } gap-x-3 flex items-center px-6  rounded-l-lg py-[18px] `}
+                >
+                  <img
+                    aria-hidden
+                    src={
+                      ["admin", "psychometric-test-course"].every((ai) =>
+                        pathnames.includes(ai)
+                      )
+                        ? "/images/adminDashboard/psychoSidebar.svg"
+                        : "/images/adminDashboard/psychoSidebar.svg"
+                    }
+                    alt="Window icon"
+                    width={16}
+                    height={16}
+                  />
+                  <h5 className="text-[16px] font-[500]  ">Psychometric Test Course</h5>
+                </div>
+              </Link>
+          </div>
      
           <div className="">
               <Link to={"/admin/loan-application"} className="relative gap-1  ">

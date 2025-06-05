@@ -53,7 +53,7 @@ const SignIn = () => {
         username: formData.username,
         password: formData.password,
       });
-
+console.log(response)
       if (response.data) {
         const token = response.data.token;
         const user = response.data.user;
