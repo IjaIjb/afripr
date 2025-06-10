@@ -94,6 +94,12 @@ export class UserLiveApis extends AxiosGlobal{
             headers: { "Content-Type": "application/json","Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
           });
     }
+
+        degreeCourseApplication(data:any): AxiosPromise<any> {
+        return this.axios.post(`${configs.context}/degreeapplications/add`, data,{
+            headers: { "Content-Type": "application/json", "Accept":"application/json","Authorization":`Bearer ${store.getState().data.login.value.token}`,"Access-Control-Allow-Origin":"*" },
+          });
+    }
     
     applyEduSilver(data:any): AxiosPromise<any> {
         return this.axios.post(`${configs.context}/edusilverplans/add`, data,{

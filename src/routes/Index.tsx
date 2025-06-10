@@ -65,6 +65,7 @@ const AdminDashboardNotificationPage = lazy(() => import("../pages/adminDashboar
 
 // user dashboard
 const UserDashboardHomePage = lazy(() => import("../pages/userDashboard/dashboardHome/Dashboard"));
+const UserDashboardExploreCoursesHomePage = lazy(() => import("../pages/userDashboard/dashboardHome/UserExploreCourses/UserExploreCourses"));
 const UserDashboardProfilePage = lazy(() => import("../pages/userDashboard/profile/Profile"));
 const UserDashboardApplicationsPage = lazy(() => import("../pages/userDashboard/appications/Applications"));
 const UserDashboardUpskillPage = lazy(() => import("../pages/userDashboard/upskill/Upskill"));
@@ -300,7 +301,10 @@ const routes = [
     path: "/user/dashboard",
     component: UserDashboardHomePage,
   },
-
+  {
+    path: "/user/dashboard/explore-programs",
+    component: UserDashboardExploreCoursesHomePage,
+  },
   {
     path: "/user/profile",
     component: UserDashboardProfilePage,

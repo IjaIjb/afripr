@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "../../component/Navbar";
 import { FaSearch, FaFilter, FaRegBookmark } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
-import { AdminApis } from "../../apis/adminApi/adminApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AdminApis } from "../../../../apis/adminApi/adminApi";
+import UserDashboardLayout from "../../../../component/UserDashboardLayout";
 
 // Custom Select Component (styled to match original design)
 const CustomSelect = ({ icon, options, placeholder, value, onChange }: any) => {
@@ -153,7 +153,7 @@ const MobileCustomSelect = ({ label, icon, options, placeholder, value, onChange
   );
 };
 
-const ExplorePrograms = () => {
+const UserExploreCourses = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const navigate = useNavigate();
@@ -350,7 +350,7 @@ const ExplorePrograms = () => {
     if (selectedCountry) params.append('selectedCountry', selectedCountry);
     if (selectedBudget) params.append('selectedBudget', selectedBudget);
     
-    const newUrl = `/explore-programs${params.toString() ? `?${params.toString()}` : ''}`;
+    const newUrl = `/user/dashboard/explore-programs${params.toString() ? `?${params.toString()}` : ''}`;
     
     // Only update URL if it's different from current
     if (window.location.pathname + window.location.search !== newUrl) {
@@ -413,25 +413,29 @@ const ExplorePrograms = () => {
   }));
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <Navbar />
+    <UserDashboardLayout>
+   
+   <div className=" min-h-screen">
+
       <div className="pt-[80px] sm:pt-[100px] pb-8 sm:pb-16">
-        <div className="max-w-[2000px] relative mx-auto px-3 sm:px-6 lg:px-14">
+        <div className="relative mx-auto ">
           
-          {/* Title */}
-          <h4 className="text-center text-primary text-2xl sm:text-3xl lg:text-[40px] font-bold pb-4 sm:pb-6">
-            Explore Programs
-          </h4>
+        
           
-          <div className="max-w-[1200px] relative mx-auto bg-white p-4 sm:p-6 rounded-[20px] sm:rounded-[31px] shadow">
+          <div className="relative mx-auto ">
             
+            <div className="bg-white rounded-xl py-5">
             {/* Header Section */}
             <div className="flex gap-2 sm:gap-3 mb-4 sm:mb-6">
               <img src="/images/psycho/badge.svg" alt="/" className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
-              <h2 className="text-lg sm:text-xl lg:text-[36px] max-w-[200px] sm:max-w-[250px] leading-6 sm:leading-[30px] lg:leading-[40px] lg:max-w-[400px] font-semibold text-[#262626]">
+              {/* <h2 className="text-lg sm:text-xl lg:text-[36px] max-w-[200px] sm:max-w-[250px] leading-6 sm:leading-[30px] lg:leading-[40px] lg:max-w-[400px] font-semibold text-[#262626]">
                 Prepare a list of{" "}
                 <span className="text-primary">programs</span> that fits you
-              </h2>
+              </h2> */}
+                {/* Title */}
+          <h4 className="text-center text-primary text-2xl sm:text-3xl lg:text-[40px] font-bold ">
+            Explore Programs
+          </h4>
             </div>
             
             {/* Desktop Search Bar - Maintaining Original UI */}
@@ -619,6 +623,7 @@ const ExplorePrograms = () => {
                 </div>
               )}
             </div>
+</div>
 
             {/* Filter Results Section */}
             {showFilters && (
@@ -678,7 +683,7 @@ const ExplorePrograms = () => {
                 filteredCourses.map((program: any, index: any) => (
                   <div
                     key={index}
-                    className="p-4 border border-[#D7F5DC] rounded-[21px] shadow-sm flex justify-between items-center hover:shadow-md transition-shadow"
+                    className="p-4 bg-white border border-[#D7F5DC] rounded-[21px] shadow-sm flex justify-between items-center hover:shadow-md transition-shadow"
                   >
                     <div className="flex-1">
                       <div className="flex gap-3">
@@ -818,7 +823,8 @@ const ExplorePrograms = () => {
       </div>
       <ToastContainer position="bottom-center" autoClose={3000} />
     </div>
+    </UserDashboardLayout>
   );
 };
 
-export default ExplorePrograms;
+export default UserExploreCourses;

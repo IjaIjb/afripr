@@ -9,7 +9,7 @@ const Navbar = () => {
     const [userData, setUserData] = useState([]);
   const [moreExpanded, setMoreExpanded] = useState(false);
   const userLoginData = useSelector((state) => state.data.login.value);
-  console.log(userData);
+  // console.log(userData);s
   // const username = userLoginData?.username?.split("@")[0] || "";
 
        
@@ -19,7 +19,7 @@ const Navbar = () => {
                 .then((response) => {
                   if (response?.data) {
                     // console.log(response);
-                    console.log(response.data);
+                    // console.log(response.data);
                     setUserData(response?.data)
                   }
                 })

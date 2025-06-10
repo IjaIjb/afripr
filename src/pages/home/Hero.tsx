@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AdminApis } from "../../apis/adminApi/adminApi";
 
 // Custom Select Component
-const CustomSelect = ({ label, icon, options, placeholder }:any) => {
+const CustomSelect = ({ label, icon, options, placeholder, value, onChange }: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const dropdownRef:any = useRef(null);
+  const dropdownRef: any = useRef(null);
   
   // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event:any) => {
+    const handleClickOutside = (event: any) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
@@ -23,8 +23,8 @@ const CustomSelect = ({ label, icon, options, placeholder }:any) => {
   
   const toggleDropdown = () => setIsOpen(!isOpen);
   
-  const handleSelect = (option:any) => {
-    setSelectedOption(option);
+  const handleSelect = (option: any) => {
+    onChange(option);
     setIsOpen(false);
   };
   
@@ -40,8 +40,8 @@ const CustomSelect = ({ label, icon, options, placeholder }:any) => {
         onClick={toggleDropdown}
         className="flex justify-between items-center w-[150px] mt-1 px-4 py-2 bg-gray-50 border rounded-lg cursor-pointer focus:outline-none hover:border-primary transition-colors"
       >
-        <span className={`text-sm truncate ${!selectedOption ? 'text-gray-400' : 'text-gray-800'}`}>
-          {selectedOption || placeholder}
+        <span className={`text-sm truncate ${!value ? 'text-gray-400' : 'text-gray-800'}`}>
+          {value || placeholder}
         </span>
         <svg 
           className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
@@ -56,13 +56,20 @@ const CustomSelect = ({ label, icon, options, placeholder }:any) => {
       {/* Dropdown Options */}
       {isOpen && (
         <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
-          {options.map((option:any) => (
+          {/* Clear selection option */}
+          <div
+            onClick={() => handleSelect("")}
+            className="px-4 py-2 text-sm text-gray-500 cursor-pointer hover:text-white w-full hover:bg-gray-400 transition-colors border-b"
+          >
+            Clear selection
+          </div>
+          {options.map((option: any) => (
             <div
-              key={option}
-              onClick={() => handleSelect(option)}
+              key={option.value || option}
+              onClick={() => handleSelect(option.value || option)}
               className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-white w-full hover:bg-primary/[60%] transition-colors"
             >
-              {option}
+              {option.label || option}
             </div>
           ))}
         </div>
@@ -72,13 +79,12 @@ const CustomSelect = ({ label, icon, options, placeholder }:any) => {
 };
 
 // Mobile version of Custom Select
-const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
+const MobileCustomSelect = ({ label, icon, options, placeholder, value, onChange }: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const dropdownRef:any = useRef(null);
+  const dropdownRef: any = useRef(null);
   
   useEffect(() => {
-    const handleClickOutside = (event:any) => {
+    const handleClickOutside = (event: any) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
@@ -92,8 +98,8 @@ const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
   
   const toggleDropdown = () => setIsOpen(!isOpen);
   
-  const handleSelect = (option:any) => {
-    setSelectedOption(option);
+  const handleSelect = (option: any) => {
+    onChange(option);
     setIsOpen(false);
   };
   
@@ -109,8 +115,8 @@ const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
         onClick={toggleDropdown}
         className="flex justify-between items-center w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md cursor-pointer"
       >
-        <span className={`text-xs truncate ${!selectedOption ? 'text-gray-400' : 'text-gray-700'}`}>
-          {selectedOption || placeholder}
+        <span className={`text-xs truncate ${!value ? 'text-gray-400' : 'text-gray-700'}`}>
+          {value || placeholder}
         </span>
         <svg 
           className={`h-4 w-4 fill-current text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
@@ -124,13 +130,20 @@ const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
       {/* Dropdown Options */}
       {isOpen && (
         <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-40 overflow-y-auto">
-          {options.map((option:any) => (
+          {/* Clear selection option */}
+          <div
+            onClick={() => handleSelect("")}
+            className="px-3 py-1.5 text-xs text-gray-500 cursor-pointer hover:bg-gray-100 transition-colors border-b"
+          >
+            Clear selection
+          </div>
+          {options.map((option: any) => (
             <div
-              key={option}
-              onClick={() => handleSelect(option)}
+              key={option.value || option}
+              onClick={() => handleSelect(option.value || option)}
               className="px-3 py-1.5 text-xs text-gray-700 cursor-pointer hover:bg-green-50 transition-colors"
             >
-              {option}
+              {option.label || option}
             </div>
           ))}
         </div>
@@ -140,67 +153,160 @@ const MobileCustomSelect = ({ label, icon, options, placeholder }:any) => {
 };
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
+  // Filter state
+  const [filters, setFilters] = useState({
+    program: "",
+    region: "",
+    country: "",
+    budget: ""
+  });
+
+  // Data states for dynamic options
+  const [programTypes, setProgramTypes] = useState<any>([]);
+  const [uniqueCountries, setUniqueCountries] = useState<string[]>([]);
+  const [uniqueRegions, setUniqueRegions] = useState<string[]>([]);
+
+  // Budget ranges matching ExplorePrograms
+  const budgetRanges = [
+    "Under €5,000",
+    "€5,000 - €10,000", 
+    "€10,000 - €15,000",
+    "€15,000 - €20,000",
+    "Over €20,000"
+  ];
+
+  // Region mapping matching ExplorePrograms
+  const regionMapping: {[key: string]: string} = {
+    'Finland': 'Europe',
+    'Germany': 'Europe',
+    'France': 'Europe',
+    'Spain': 'Europe',
+    'Italy': 'Europe',
+    'Netherlands': 'Europe',
+    'Sweden': 'Europe',
+    'Norway': 'Europe',
+    'Denmark': 'Europe',
+    'USA': 'North America',
+    'Canada': 'North America',
+    'Australia': 'Oceania',
+    'New Zealand': 'Oceania',
+    'Japan': 'Asia',
+    'South Korea': 'Asia',
+    'Singapore': 'Asia',
+    'China': 'Asia',
+    'India': 'Asia'
+  };
+
+  // Fetch program types and courses to populate filter options
+  const fetchFilterData = async () => {
+    try {
+      // Fetch program types
+      const programResponse = await AdminApis.getProgramType();
+      if (programResponse?.data?.records) {
+        setProgramTypes(programResponse.data.records);
+      }
+
+      // Fetch courses to extract countries and regions
+      const coursesResponse = await AdminApis.getCourses();
+      if (coursesResponse?.data?.records) {
+        const courseData = coursesResponse.data.records;
+        
+        // Extract unique countries
+        const countries:any = Array.from(new Set(courseData.map((course: any) => course.country))).filter(Boolean);
+        setUniqueCountries(countries);
+        
+        // Extract regions based on countries
+        const regions:any = Array.from(new Set(countries.map((country: any) => regionMapping[country] || 'Other')));
+        setUniqueRegions(regions);
+      }
+    } catch (error) {
+      console.error("Error fetching filter data:", error);
+    }
+  };
+
+  // Initialize filter data on component mount
+  useEffect(() => {
+    fetchFilterData();
+  }, []);
+
+  // Prepare filter options
   const filterOptions = {
     Program: {
       label: "Program",
       icon: "/images/home/programFilterHero.svg",
-      options: ["Bachelors", "Masters", "PhD"],
+      options: programTypes.map((type: any) => ({
+        value: type.id,
+        label: type.program_type.toUpperCase()
+      })),
     },
     Region: {
       label: "Region",
       icon: "/images/home/regionFilterHero.svg",
-      options: ["Asia", "Europe", "North America", "Africa"],
+      options: uniqueRegions,
     },
     Country: {
       label: "Country",
       icon: "/images/home/countryFilterHero.svg",
-      options: ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
-      "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia",
-      "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-      "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-      "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
-      "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria",
-      "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-      "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
-      "Colombia", "Comoros", "Congo", "Costa Rica", "Côte d'Ivoire", "Croatia",
-      "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica",
-      "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-      "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
-      "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada",
-      "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-      "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran",
-      "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
-      "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
-      "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
-      "Luxembourg", "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives",
-      "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco",
-      "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-      "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
-      "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
-      "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
-      "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
-      "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
-      "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-      "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
-      "South Africa", "South Korea", "Spain", "Sri Lanka", "Sudan", "Suriname",
-      "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania",
-      "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
-      "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
-      "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-      "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"],
+      options: uniqueCountries,
     },
     Budget: {
       label: "Budget",
       icon: "/images/home/budgetFilterHero.svg",
-      options: ["$1,000", "$2,000", "$3,000", "$4,000", "$5,000", "above $5,000"],
+      options: budgetRanges,
     },
+  };
+
+  // Handle filter changes
+  const handleFilterChange = (filterType: string, value: string) => {
+    setFilters(prev => ({
+      ...prev,
+      [filterType.toLowerCase()]: value
+    }));
+  };
+
+  // Get display value for selected options
+  const getDisplayValue = (filterType: string, value: string) => {
+    if (!value) return value;
+    
+    switch(filterType.toLowerCase()) {
+      case 'program':
+        const programType = programTypes.find((type: any) => type.id === value);
+        return programType ? programType.program_type.toUpperCase() : value;
+      default:
+        return value;
+    }
+  };
+
+  // Handle search with filters
+  const handleSearch = () => {
+    // Create query parameters from selected filters
+    const queryParams = new URLSearchParams();
+    
+    // Map the filter values to match ExplorePrograms expectations
+    if (filters.program) {
+      queryParams.append('selectedProgram', filters.program);
+    }
+    if (filters.region) {
+      queryParams.append('selectedRegion', filters.region);
+    }
+    if (filters.country) {
+      queryParams.append('selectedCountry', filters.country);
+    }
+    if (filters.budget) {
+      queryParams.append('selectedBudget', filters.budget);
+    }
+
+    // Navigate to explore programs with filters
+    const queryString = queryParams.toString();
+    navigate(`/explore-programs${queryString ? `?${queryString}` : ''}`);
   };
 
   return (
     <div>
       {/* Desktop Hero Section */}
       <div className="relative w-full hidden lg:block mt-[40px]">
-        {/* Your existing desktop code */}
         <div className="relative flex justify-center w-full">
           <div className="w-full hidden absolute top-[130px] inset-0 md:flex justify-center">
             <img
@@ -288,7 +394,7 @@ const Hero = () => {
                         className=""
                       />
                       <span className="text-[#494949] text-[14px]">
-                        Become an agent
+                        Support 800+ courses and internships
                       </span>
                     </div>
                   </div>
@@ -303,29 +409,59 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Search Filters - UPDATED with CustomSelect */}
+              {/* Search Filters - UPDATED with integrated filter state */}
               <div className="flex justify-center">
                 <div className="absolute bottom-0 mt-10 px-4">
                   <div className="bg-white rounded-lg shadow-md p-6 flex gap-5 items-center justify-between max-w-5xl mx-auto">
                     <div className="flex justify-between">
-                      {Object.entries(filterOptions).map(([key, { label, icon, options }]) => (
-                        <div key={key} className="flex-1 mx-2">
-                          <CustomSelect 
-                            label={label} 
-                            icon={icon} 
-                            options={options} 
-                            placeholder={`Select ${label.toLowerCase()}`}
-                          />
-                        </div>
-                      ))}
+                      <div className="flex-1 mx-2">
+                        <CustomSelect 
+                          label="Program" 
+                          icon="/images/home/programFilterHero.svg" 
+                          options={filterOptions.Program.options} 
+                          placeholder="Select program"
+                          value={getDisplayValue('program', filters.program)}
+                          onChange={(value: string) => handleFilterChange('program', value)}
+                        />
+                      </div>
+                      <div className="flex-1 mx-2">
+                        <CustomSelect 
+                          label="Region" 
+                          icon="/images/home/regionFilterHero.svg" 
+                          options={filterOptions.Region.options} 
+                          placeholder="Select region"
+                          value={filters.region}
+                          onChange={(value: string) => handleFilterChange('region', value)}
+                        />
+                      </div>
+                      <div className="flex-1 mx-2">
+                        <CustomSelect 
+                          label="Country" 
+                          icon="/images/home/countryFilterHero.svg" 
+                          options={filterOptions.Country.options} 
+                          placeholder="Select country"
+                          value={filters.country}
+                          onChange={(value: string) => handleFilterChange('country', value)}
+                        />
+                      </div>
+                      <div className="flex-1 mx-2">
+                        <CustomSelect 
+                          label="Budget" 
+                          icon="/images/home/budgetFilterHero.svg" 
+                          options={filterOptions.Budget.options} 
+                          placeholder="Select budget"
+                          value={filters.budget}
+                          onChange={(value: string) => handleFilterChange('budget', value)}
+                        />
+                      </div>
                     </div>
                     {/* Search Button */}
-                    <Link
-                      to="/explore-programs"
+                    <button
+                      onClick={handleSearch}
                       className="bg-green-600 text-center hover:bg-green-700 text-white px-8 py-3 rounded-full font-medium"
                     >
                       Search
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -334,7 +470,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile Hero Section - UPDATED with MobileCustomSelect */}
+      {/* Mobile Hero Section - UPDATED with integrated filter state */}
       <div className="block lg:hidden bg-white mt-[100px] min-h-screen relative">
         {/* Light green tag at top */}
         <div className="pt-4 pb-2 flex justify-center">
@@ -366,10 +502,9 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Student Image with circular border and decorative elements */}
+        {/* Student Image */}
         <div className="relative mx-auto w-full flex justify-center mb-6">
           <div className="relative flex justify-center items-center">
-            {/* Student image */}
             <img
               src="/images/hero.svg"
               alt="Student"
@@ -380,7 +515,6 @@ const Hero = () => {
         
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2 mb-4">
-          {/* Green "Explore Programs" button */}
           <Link
             to="/explore-programs"
             className="bg-primary text-white py-2 px-2 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center gap-1 w-full"
@@ -391,7 +525,6 @@ const Hero = () => {
             </svg>
           </Link>
           
-          {/* Outlined "Psychometric Test" button */}
           <Link
             to="/psychometric-test"
             className="bg-white text-[#1DB459] border border-[#1DB459] py-0 px-2 rounded-full font-semibold text-[10px] uppercase flex items-center justify-center gap-1 w-full"
@@ -439,54 +572,59 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Filter Section - UPDATED with MobileCustomSelect */}
+        {/* Filter Section - UPDATED with integrated filter state */}
         <div className="px-6">
           <div className="bg-white rounded-lg shadow-md p-4">
-            {/* Filter grid with 2 columns */}
             <div className="grid grid-cols-2 gap-3 mb-4">
-              {/* Program Filter */}
               <div>
                 <MobileCustomSelect 
                   label="Program" 
                   icon="/images/home/programFilterHero.svg" 
                   options={filterOptions.Program.options} 
                   placeholder="Select Program"
+                  value={getDisplayValue('program', filters.program)}
+                  onChange={(value: string) => handleFilterChange('program', value)}
                 />
               </div>
               
-              {/* Region Filter */}
               <div>
                 <MobileCustomSelect 
                   label="Region" 
                   icon="/images/home/regionFilterHero.svg" 
                   options={filterOptions.Region.options} 
                   placeholder="Select Region"
+                  value={filters.region}
+                  onChange={(value: string) => handleFilterChange('region', value)}
                 />
               </div>
               
-              {/* Country Filter */}
               <div>
                 <MobileCustomSelect 
                   label="Country" 
                   icon="/images/home/countryFilterHero.svg" 
                   options={filterOptions.Country.options} 
                   placeholder="Select Location"
+                  value={filters.country}
+                  onChange={(value: string) => handleFilterChange('country', value)}
                 />
               </div>
               
-              {/* Budget Filter */}
               <div>
                 <MobileCustomSelect 
                   label="Budget" 
                   icon="/images/home/budgetFilterHero.svg" 
                   options={filterOptions.Budget.options} 
                   placeholder="Select Budget"
+                  value={filters.budget}
+                  onChange={(value: string) => handleFilterChange('budget', value)}
                 />
               </div>
             </div>
             
-            {/* Search Button */}
-            <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-full font-medium text-xs transition duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">
+            <button 
+              onClick={handleSearch}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-full font-medium text-xs transition duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+            >
               Search
             </button>
           </div>
@@ -497,23 +635,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,29 +9,31 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import UserDashboardLayout from "../../../component/UserDashboardLayout";
 import { useSelector } from "react-redux";
 import { UserApis } from "../../../apis/userApi/userApi";
 import LatestUpdatesUpskillSection from "./LatestUpdatesUpskillSection";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [currentMonth, setCurrentMonth] = useState(1); // Feb
   const [userData, setUserData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  const TimerDigit = ({ value, label }: any) => {
+    return (
+      <div className="flex flex-col items-center font-[share Tech]">
+        <span className="text-white text-[45px] ">{value}</span>
+        <span className="text-[#48B774] text-[12px] mt-1">{label}</span>
+      </div>
+    );
+  };
 
-const TimerDigit = ({ value, label }:any) => {
-  return (
-    <div className="flex flex-col items-center font-[share Tech]">
-      <span className="text-white text-[45px] ">{value}</span>
-      <span className="text-[#48B774] text-[12px] mt-1">{label}</span>
-    </div>
-  );
-};
+  const Separator = () => {
+    return <span className="text-[#48B774] text-[45px] mb-6 font-bold mx-2">:</span>;
+  };
 
-const Separator = () => {
-  return <span className="text-[#48B774] text-[45px] mb-6 font-bold mx-2">:</span>;
-};
   // Calendar data for February 2025
   const daysInMonth = 29; // February 2025 has 29 days (leap year)
   const firstDayOfMonth = 5; // Saturday (0-indexed where 0 is Sunday)
@@ -56,6 +58,7 @@ const Separator = () => {
   const moveMonth = (direction: any) => {
     setCurrentMonth((prev) => prev + direction);
   };
+  
   const userLoginData = useSelector((state: any) => state.data.login.value);
   console.log(userLoginData);
 
@@ -91,6 +94,11 @@ const Separator = () => {
   const firstName =
     userData?.first_name || userLoginData?.data?.first_name || "Student";
 
+  // Navigation handler for NavItems
+  const handleNavigation = (route: string) => {
+    navigate(route);
+  };
+
   return (
     <UserDashboardLayout>
       <div className="flex flex-col h-screen ">
@@ -110,19 +118,35 @@ const Separator = () => {
         <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-4  mt-6">
           <NavItem
             icon="/images/userDashboard/homedash.svg"
-            text="Home"
-            active
+            text="Explore Courses"
+            route="/user/dashboard/explore-programs"
+            // active
+            onClick={handleNavigation}
           />
           <NavItem
             icon="/images/userDashboard/loanhome.svg"
             text="Loan Application"
+            route="/user/loan-application"
+            onClick={handleNavigation}
           />
-          <NavItem icon="/images/userDashboard/waec.svg" text="Make Payment" />
+          <NavItem 
+            icon="/images/userDashboard/waec.svg" 
+            text="WAEC & JAMB"
+            route="/user/waec-jamb"
+            onClick={handleNavigation}
+          />
           <NavItem
             icon="/images/userDashboard/psycho.svg"
-            text="Transaction Log"
+            text="Psychometric Test"
+            route="/psychometric-test"
+            onClick={handleNavigation}
           />
-          <NavItem icon="/images/userDashboard/consult.svg" text="Settings" />
+          <NavItem 
+            icon="/images/userDashboard/consult.svg" 
+            text="Consultation"
+            route="/user/consultation"
+            onClick={handleNavigation}
+          />
         </div>
 
         <div className="grid lg:grid-cols-3  mt-4 md:grid-cols-2 gap-3">
@@ -163,7 +187,7 @@ const Separator = () => {
           {/* Payment Amount */}
           <div className=" w-full bg-white flex flex-col justify-between rounded-lg p-4 shadow">
             <h2 className="font-medium text-medium text-center text-[#01002E]">
-Next Payment Amount
+              Next Payment Amount
             </h2>
             <div className="flex w-full gap-2 items-end">
               <img
@@ -172,7 +196,7 @@ Next Payment Amount
                 alt=""
               />
               <div className="w-full">
-           <h4 className="text-[#01002E] text-[36px] font-bold">$1,031.25</h4>
+                <h4 className="text-[#01002E] text-[36px] font-bold">$1,031.25</h4>
 
                 <div className=" ">
                   <span className="text-[11px] text-gray-600">
@@ -184,20 +208,20 @@ Next Payment Amount
           </div>
 
           {/* Payment Due Date */}
-   <div className="bg-green-900 rounded-lg p-6 shadow-lg" style={{ backgroundColor: '#05401C' }}>
-      <h2 className="text-white text-[18px] font-semibold mb-4">
-        Next Payment Due Date
-      </h2>
-      <div className="flex items-center justify-center">
-        <TimerDigit value="10" label="DAYS" />
-        <Separator />
-        <TimerDigit value="23" label="HOURS" />
-        <Separator />
-        <TimerDigit value="15" label="MINUTES" />
-        <Separator />
-        <TimerDigit value="05" label="SECONDS" />
-      </div>
-    </div>
+          <div className="bg-green-900 rounded-lg p-6 shadow-lg" style={{ backgroundColor: '#05401C' }}>
+            <h2 className="text-white text-[18px] font-semibold mb-4">
+              Next Payment Due Date
+            </h2>
+            <div className="flex items-center justify-center">
+              <TimerDigit value="10" label="DAYS" />
+              <Separator />
+              <TimerDigit value="23" label="HOURS" />
+              <Separator />
+              <TimerDigit value="15" label="MINUTES" />
+              <Separator />
+              <TimerDigit value="05" label="SECONDS" />
+            </div>
+          </div>
         </div>
         <LatestUpdatesUpskillSection />
         {/* Calendar */}
@@ -269,9 +293,12 @@ Next Payment Amount
   );
 }
 
-function NavItem({ icon, text, active }: any) {
+function NavItem({ icon, text, route, active, onClick }: any) {
   return (
-    <div className="flex flex-col items-center justify-between bg-white rounded-lg p-5">
+    <div 
+      className="flex flex-col items-center justify-between bg-white rounded-lg p-5 cursor-pointer hover:shadow-lg transition-shadow duration-200"
+      onClick={() => onClick(route)}
+    >
       <div className={` rounded-lg mb-1 relative `}>
         <img src={icon} alt="" />
         {/* {active && (

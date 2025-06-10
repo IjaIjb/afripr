@@ -120,6 +120,14 @@ export class UserApis {
         }
     }
 
+      static degreeCourseApplication(data: any): AxiosPromise<any> {
+        if (configs.type === "LOCAL") {
+            return {} as AxiosPromise;
+        } else {
+            return this.authLiveApis.degreeCourseApplication(data);
+        }
+    }
+
     static getAllEduSilver(): AxiosPromise<any> {
         if (configs.type === "LOCAL") {
             return {} as AxiosPromise;
