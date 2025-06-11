@@ -1,9 +1,11 @@
 "use client"; // Add this for client components in the Next.js app directory
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosInformationCircle } from "react-icons/io";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import BreadscrumbDisplay from "./BreadscrumbDisplay";
+import { UserApis } from "../../apis/userApi/userApi";
+import { useSelector } from "react-redux";
 
   
 const UserHeader = () => {
@@ -22,6 +24,48 @@ const UserHeader = () => {
     const handleDetails = () => {
       onOpenModal(); // Open the modal
     };
+
+      const [userData, setUserData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   const storedUserData = localStorage.getItem("user");
+  //   if (storedUserData) {
+  //     setUserData(JSON.parse(storedUserData));
+  //   }
+  // }, []);
+  // ;
+ const userLoginData = useSelector((state: any) => state.data.login.value);
+  console.log(userLoginData);
+
+  // Fetch user data when component mounts
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (!userLoginData?.data?.id) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const response = await UserApis.getUserById(userLoginData.data.id);
+
+        if (response?.data) {
+          console.log("User data fetched successfully:", response.data);
+          setUserData(response.data);
+        } else {
+          console.log("No user data returned");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [userLoginData]);
+
+
 
   //   const [userData, setUserData] = useState<any>(null);
   //  console.log(userData)
@@ -73,12 +117,12 @@ const UserHeader = () => {
    </div>
 
    <div className="flex gap-3">
-<div className="bg-[#F8F8F8] w-10 h-10 rounded-full items-center flex justify-center">
+{/* <div className="bg-[#F8F8F8] w-10 h-10 rounded-full items-center flex justify-center">
 JO
-</div>
+</div> */}
 
 <div className="flex flex-col">
-<h3 className="text-[#333333] text-[14px]">Joseph</h3>
+<h3 className="text-[#333333] text-[14px]">{userData?.first_name}</h3>
 <h5 className="text-[#666666] text-[12px]">User</h5>
 </div>
    </div>
@@ -103,13 +147,7 @@ JO
 <div className="flex gap-3">
         <div className="bg-white relative flex justify-center rounded-full h-9 w-9">
             <div className="h-[8px] w-[8px]  absolute rounded-full left-1 -top-[0.5px] bg-primary"></div>
-            {/* <Image
-              src="/dashboard/bell-alt.svg"
-              alt="person icon"
-              className="rounded-full"
-              width={30}
-              height={30}
-            /> */}
+           
           </div>
           <div   onClick={handleDetails} className="cursor-pointer rounded-full h-9 w-9 flex justify-center items-center bg-[#FF4848]">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,38 +159,10 @@ JO
           </div>
 
         <div className="flex md:mt-0 mt-2  gap-4 items-center">
-        {/* {userData?.status === "ACTIVE" ? (
- <div className="rounded-full w-full bg-[#6CC56C30]/[19%]  px-2 py-2  ">
- <div className="flex gap-2 items-center">
- <IoIosInformationCircle className="w-5 h-5 text-primary" />
-
-   <h5 className="text-primary text-[14px] font-light">
-     Account has been Verified
-   </h5>
- </div>
-</div>
-        ) : ( */}
-          <div className="rounded-full w-full bg-[#F22D351A]/[10%]  px-2 py-2  ">
-            <div className="flex gap-2 items-center">
-                       <IoIosInformationCircle className="w-7 h-7 text-[primary]" />
-
-              <h5 className="text-[#FF4848] text-[14px] font-light">
-                Account is yet to be Approved
-              </h5>
-            </div>
-          </div> 
+  
+         
         {/* )} */}
        
-
-          {/* <div className="rounded-full w-full bg-[#F22D351A]/[10%]  px-2 py-2  ">
-            <div className="flex gap-2 items-center">
-                       <IoIosInformationCircle className="w-7 h-7 text-[primary]" />
-
-              <h5 className="text-[#FF4848] text-[14px] font-light">
-                Account is yet to be Approved
-              </h5>
-            </div>
-          </div> */}
 
        
         </div>

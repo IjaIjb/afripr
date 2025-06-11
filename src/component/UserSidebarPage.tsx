@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { useSelector } from "react-redux";
 // import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { UserApis } from "../apis/userApi/userApi";
 
 type Props = {
   toggle: () => void;
@@ -13,7 +16,8 @@ const UserSidebarPage = (props: Props) => {
   const { pathname } = url;
   const pathnames = pathname.split("/").filter((x: any) => x);
 // const [userData, setUserData] = useState<any>(null);
-
+  const [userData, setUserData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   // useEffect(() => {
   //   const storedUserData = localStorage.getItem("user");
   //   if (storedUserData) {
@@ -21,12 +25,46 @@ const UserSidebarPage = (props: Props) => {
   //   }
   // }, []);
   // ;
+ const userLoginData = useSelector((state: any) => state.data.login.value);
+  console.log(userLoginData);
+
+  // Fetch user data when component mounts
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (!userLoginData?.data?.id) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        const response = await UserApis.getUserById(userLoginData.data.id);
+
+        if (response?.data) {
+          console.log("User data fetched successfully:", response.data);
+          setUserData(response.data);
+        } else {
+          console.log("No user data returned");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [userLoginData]);
+
+  // Get user's first name
+  const firstName =
+    userData?.first_name || userLoginData?.data?.first_name || "Student";
 
   return (
     <aside
       className={`${
         props.DrawerOpen ? "" : ""
-      } relative w-[295px] z-[100]  scrollbar-hide overflow-y-auto pl-3 pb-8 border-r border-[#ECEDEF] h-screen`}
+      } relative w-[295px] z-[100] bg-white  scrollbar-hide overflow-y-auto pl-3 pb-8 border-r border-[#ECEDEF] h-screen`}
     >
       <div className="flex items-center justify-between px-2 md:px-4">
         {/* <div></div> */}
@@ -49,7 +87,7 @@ const UserSidebarPage = (props: Props) => {
           className=""
         >
           {props.DrawerOpen ? (
-            <AiOutlineClose className="w-4 h-4 md:w-6 md:h-6 font-bold text-white " />
+            <AiOutlineClose className="w-4 h-4 md:w-6 md:h-6 font-bold  " />
           ) : (
             <AiOutlineMenu className="w-4 h-4 md:w-6 md:h-6  font-bold hidden " />
           )}
@@ -64,9 +102,9 @@ const UserSidebarPage = (props: Props) => {
               alt="Window icon"
             />
             <div className="flex flex-col justify-center items-center ">
-<h4 className="text-[#555555] text-[14px] font-medium">John Doe</h4>
-<h6 className="text-[#777777] text-[10px] ">Johndoe@gmail.com</h6>
-<h3 className="text-[#555555] text-[12px] font-medium">AFP-2023-5124</h3>
+<h4 className="text-[#555555] text-[14px] font-medium">{userData?.first_name + " " + userData?.last_name}</h4>
+<h6 className="text-[#777777] text-[10px] ">{userData?.email}</h6>
+{/* <h3 className="text-[#555555] text-[12px] font-medium">AFP-2023-5124</h3> */}
             </div>
             </div>
 
@@ -98,7 +136,7 @@ const UserSidebarPage = (props: Props) => {
               </Link>
           </div>
 
-          <div className="">
+          {/* <div className="">
               <Link to={"/user/profile"} className="relative gap-1  ">
                 <div
                   className={`${
@@ -123,7 +161,7 @@ const UserSidebarPage = (props: Props) => {
                   <h5 className="text-[16px] font-[500]  ">Profile</h5>
                 </div>
               </Link>
-          </div>
+          </div> */}
 
           <div className="">
               <Link to={"/user/aplications"} className="relative gap-1  ">
@@ -230,7 +268,7 @@ const UserSidebarPage = (props: Props) => {
                     // width={16}
                     // height={16}
                   />
-                  <h5 className="text-[16px] font-[500]  ">Notifications</h5>
+                  <h5 className="text-[16px] font-[500]  ">Settings</h5>
                 </div>
               </Link>
           </div>

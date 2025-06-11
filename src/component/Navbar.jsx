@@ -96,11 +96,11 @@ const Navbar = () => {
         </div>
         <div className="lg:flex hidden z-50 gap-6">
           <Link
-            to={"/"}
+            to={"/about-us"}
             className="relative z-50"
           >
             <h5 className="text-white cursor-pointer font-semibold text-[14px]">
-            Home
+          About Us
             </h5>
           </Link>
 
@@ -278,8 +278,8 @@ const Navbar = () => {
               
               <div className="border-b border-gray-200 my-2"></div>
               
-              <Link to={"/"} className="block py-2">
-                <h5 className="text-green-500 font-medium text-lg">Home</h5>
+              <Link to={"/about-us"} className="block py-2">
+                <h5 className="text-green-500 font-medium text-lg">About Us</h5>
               </Link>
               
               <Link to={"/explore-programs"} className="block py-2">

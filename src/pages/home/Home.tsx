@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../component/Navbar";
 // import { Link } from "react-router-dom";
 import Hero from "./Hero";
@@ -13,8 +13,20 @@ import Testimonial from "./Testimonial";
 import ConsultationAndPartner from "./ConsultationAndPartner";
 import Footer from "../../component/Footer";
 import TopPrograms from "./TopPrograms";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import ProgramHomeModal from "./modal/ProgramHomeModal";
+import MoveToFinland from "./MoveToFinland";
 
 const Home = () => {
+    const [openSession, setOpenSession] = useState(false);
+
+  const onOpenModalSession = () => setOpenSession(true);
+  const onCloseModalSession = () => setOpenSession(false);
+
+  React.useEffect(() => {
+    onOpenModalSession();
+  }, []);
   return (
     <div className=" h-full">
       <div className="relative">
@@ -43,6 +55,7 @@ const Home = () => {
            <Hero />
            <Testimonial />
            <TopPrograms />
+           <MoveToFinland />
            <Gateway />
            <AccelerateYourStudy />
            <Upskill />
@@ -56,6 +69,9 @@ const Home = () => {
             </div>
             {/* </div> */}
           </div>
+                <Modal open={openSession} onClose={onCloseModalSession} center>
+     <ProgramHomeModal />
+      </Modal>
         </div>
         <Footer />
 

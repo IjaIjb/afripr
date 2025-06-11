@@ -9,6 +9,17 @@ const ForgotPasswordPage = lazy(() => import("../pages/auth/ForgetPassword"));
 const ResetPasswordPage = lazy(() => import("../pages/auth/ResetPassword"));
 const KycPage = lazy(() => import("../pages/auth/kyc/KycProfileCompletion"));
 
+const StudyInFinnishPage = lazy(() => import("../pages/studyInFinnish/StudyInFinnish"));
+const EasyGoEduPage = lazy(() => import("../pages/studyInFinnish/easyGoEdu/EasyGoEdu"));
+
+const AboutUsPage = lazy(() => import("../pages/aboutUs/AboutUs"));
+const GalleryPage = lazy(() => import("../pages/gallery/Gallery"));
+const ConsultationPage = lazy(() => import("../pages/consultation/Consultation"));
+const ContactUsPage = lazy(() => import("../pages/contactUs/ContactUs"));
+const FaqPage = lazy(() => import("../pages/faq/FaqPage"));
+const BecomeAnAgentPage = lazy(() => import("../pages/becomeAnAgent/BecomeAnAgent"));
+const TermsAndConditionPage = lazy(() => import("../pages/termsAndCondition/TermsAndCondition"));
+
 const PsychometricTestPage = lazy(() => import("../pages/psychometricTest/PsychometricTestHome"));
 const PsychometricTestProgramsPage = lazy(() => import("../pages/psychometricTest/PsychometricTestPrograms"));
 const PsychometricTestGenInfo = lazy(() => import("../pages/psychometricTest/components/PsychometricTestGenInfo"));
@@ -114,6 +125,42 @@ const routes = [
   {
     path: "/sign-in",
     component: SigninPage,
+  },
+   {
+    path: "/study-in-finnish",
+    component: StudyInFinnishPage,
+  },
+     {
+    path: "/easygoedu-with-afriproedu",
+    component: EasyGoEduPage,
+  },
+     {
+    path: "/about-us",
+    component: AboutUsPage,
+  },
+    {
+    path: "/gallery",
+    component: GalleryPage,
+  },
+      {
+    path: "/consultation",
+    component: ConsultationPage,
+  },
+    {
+    path: "/contact-us",
+    component: ContactUsPage,
+  },
+  {
+    path: "/faq",
+    component: FaqPage,
+  },
+    {
+    path: "/become-agent",
+    component: BecomeAnAgentPage,
+  },
+   {
+    path: "/terms-condition",
+    component: TermsAndConditionPage,
   },
   {
     path: "/psychometric-test",
