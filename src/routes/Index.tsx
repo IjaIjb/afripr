@@ -12,6 +12,8 @@ const KycPage = lazy(() => import("../pages/auth/kyc/KycProfileCompletion"));
 const StudyInFinnishPage = lazy(() => import("../pages/studyInFinnish/StudyInFinnish"));
 const EasyGoEduPage = lazy(() => import("../pages/studyInFinnish/easyGoEdu/EasyGoEdu"));
 
+const StudyInEnglishPage = lazy(() => import("../pages/studyInEnglish/StudyInEnglish"));
+
 const AboutUsPage = lazy(() => import("../pages/aboutUs/AboutUs"));
 const GalleryPage = lazy(() => import("../pages/gallery/Gallery"));
 const ConsultationPage = lazy(() => import("../pages/consultation/Consultation"));
@@ -130,6 +132,10 @@ const routes = [
     path: "/study-in-finnish",
     component: StudyInFinnishPage,
   },
+    {
+    path: "/study-in-english",
+    component: StudyInEnglishPage,
+  },
      {
     path: "/easygoedu-with-afriproedu",
     component: EasyGoEduPage,
@@ -219,16 +225,16 @@ const routes = [
     component: ExploreProgramsPage,
   },
   {
-    path: "/program-overview/:course",
+    path: "/program-overview/:course/:id",
     component: ProgramOverviewPage,
   },
   {
-    path: "/application-summary/:course",
+    path: "/application-summary/:course/:id",
     component: AppSummaryPage,
   },
 
     {
-    path: "/degree-application-form/:course",
+    path: "/degree-application-form/:course/:id",
     component: DegreeApplicationFormPage,
   },
 

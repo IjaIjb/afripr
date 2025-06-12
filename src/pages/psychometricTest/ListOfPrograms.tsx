@@ -302,7 +302,9 @@ const ListOfPrograms = () => {
                   <div className="mt-4 lg:block hidden space-y-4">
                     {filteredCourses && filteredCourses.length > 0 ? (
                       filteredCourses.map((course, index) => (
-                        <div
+                        <a
+                        href={course?.course_url}
+                        target="_blank"
                           key={course.id}
                           className="p-4 border border-[#D7F5DC] rounded-[21px] shadow-sm flex justify-between items-center"
                         >
@@ -338,25 +340,7 @@ const ListOfPrograms = () => {
                                 </div>
                               </div>
                             </div>
-                            {/* <div className="flex gap-6 mt-4">
-                              <p className="text-gray-500 text-sm">
-                                {course.duration}
-                              </p>
-                              <p className="text-gray-500 text-sm">
-                                Starting: {new Date(course.start_date).toLocaleDateString()}
-                              </p>
-                              {course.skills_covered && course.skills_covered.length > 0 && (
-                                <p className="text-gray-500 text-sm">
-                                  Skills: {course.skills_covered.slice(0, 2).join(", ")}
-                                  {course.skills_covered.length > 2 && "..."}
-                                </p>
-                              )}
-                            </div>
-                            {course.course_description && (
-                              <p className="text-gray-600 text-sm mt-2 line-clamp-2">
-                                {course.course_description}
-                              </p>
-                            )} */}
+                          
                           </div>
                           <div className="text-right">
                             <div className="flex items-center justify-end mb-2">
@@ -381,7 +365,7 @@ const ListOfPrograms = () => {
                               </button>
                             </div> */}
                           </div>
-                        </div>
+                        </a>
                       ))
                     ) : (
                       <div className="text-center py-12">
@@ -394,7 +378,9 @@ const ListOfPrograms = () => {
                   <div className="mt-4 block lg:hidden space-y-4">
                     {filteredCourses && filteredCourses.length > 0 ? (
                       filteredCourses.map((course, index) => (
-                        <div
+                       <a
+                        href={course?.course_url}
+                        target="_blank"
                           key={course.id}
                           className="p-4 border border-[#D7F5DC] rounded-[21px] shadow-sm"
                         >
@@ -465,7 +451,7 @@ const ListOfPrograms = () => {
                               </button> */}
                             </div>
                           </div>
-                        </div>
+                        </a>
                       ))
                     ) : (
                       <div className="text-center py-12">

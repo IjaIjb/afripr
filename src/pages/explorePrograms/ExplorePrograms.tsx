@@ -390,9 +390,11 @@ const ExplorePrograms = () => {
   };
 console.log(userLoginData)
   // Handle apply navigation
-  const handleApply = (id: string, courseName: string) => {
+
+  // Updated handleApply function to pass ID in URL
+const handleApply = (id: string, courseName: string) => {
   // Check if user is logged in
-  if (!userLoginData || !userLoginData.token ) {
+  if (!userLoginData || !userLoginData.token) {
     // User is not logged in, show toast and redirect to sign-in page after delay
     toast.info("Please sign in to apply for programs");
     setTimeout(() => {
@@ -402,10 +404,9 @@ console.log(userLoginData)
   }
   
   // User is logged in, proceed with application
-    const formattedCourseName = courseName.replace(/\s+/g, '-').toLowerCase();
-    navigate(`/program-overview/${formattedCourseName}`, { state: { id } });
-  };
-
+  const formattedCourseName = courseName.replace(/\s+/g, '-').toLowerCase();
+  navigate(`/program-overview/${formattedCourseName}/${id}`, { state: { id } });
+};
   // Get display text for filter
   const getFilterDisplayText = (filterType: string, value: string) => {
     if (!value) return filterType;

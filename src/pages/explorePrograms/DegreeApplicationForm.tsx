@@ -20,8 +20,10 @@ function LUTApplicationForm() {
   const params: any = useParams();
   let details: string = decodeURIComponent(params?.course); // Decode the URL parameter
   const location = useLocation();
-  const programId = location.state?.programId;
+   const urlId = params?.id; // Get ID from URL params
   
+// Get programId from URL params first, fallback to location state
+  const programId = urlId || location.state?.programId;
   // Now you can use programId in your component
   console.log("Program ID:", programId);
   console.log(details);
@@ -218,7 +220,7 @@ function LUTApplicationForm() {
           <h3 className="text-[16px] font-semibold mb-2 mt-2">
                 Further instructions:
               </h3>
-              <ul className=" space-y-1 text-gray-500 list-disc list-outside pl-4">
+              <ul className="text-justify space-y-1 text-gray-500 list-disc list-outside pl-4">
                 <li>
                   You will receive a confirmation email after you have submitted
                   your application. There will be a link in the email if you

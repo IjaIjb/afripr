@@ -6,28 +6,24 @@ import { UserApis } from "../apis/userApi/userApi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-    const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState([]);
   const [moreExpanded, setMoreExpanded] = useState(false);
+  const [studyProgramsExpanded, setStudyProgramsExpanded] = useState(false);
   const userLoginData = useSelector((state) => state.data.login.value);
-  // console.log(userData);s
-  // const username = userLoginData?.username?.split("@")[0] || "";
 
-       
-          React.useEffect(() => {
-            if (userLoginData?.data?.id) {
-              UserApis.getUserById(userLoginData.data.id)
-                .then((response) => {
-                  if (response?.data) {
-                    // console.log(response);
-                    // console.log(response.data);
-                    setUserData(response?.data)
-                  }
-                })
-                .catch(function (error) {
-                  console.error("Error fetching user data:", error);
-                });
-            }
-          }, [userLoginData]);
+  React.useEffect(() => {
+    if (userLoginData?.data?.id) {
+      UserApis.getUserById(userLoginData.data.id)
+        .then((response) => {
+          if (response?.data) {
+            setUserData(response?.data)
+          }
+        })
+        .catch(function (error) {
+          console.error("Error fetching user data:", error);
+        });
+    }
+  }, [userLoginData]);
 
   return (
     <div className="fixed lg:left-[50px] left-[5px] right-[5px] top-6 z-[100] lg:right-[50px]">
@@ -104,14 +100,72 @@ const Navbar = () => {
             </h5>
           </Link>
 
-          <Link
-            to={"/explore-programs"}
-            className="relative"
-          >
-            <h5 className="text-white cursor-pointer font-semibold text-[14px]">
-           Study Programs
-            </h5>
-          </Link>
+          {/* Study Programs Dropdown */}
+          <Menu as="div" className="relative inline-block text-left">
+            <div>
+              <Menu.Button
+                className="flex items-center space-x-1 text-white cursor-pointer text-[14px]"
+              >
+                <h5 className="cursor-pointer font-semibold text-[14px]">Study Programs</h5>
+                <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Menu.Button>
+            </div>
+
+            <Transition
+              as={React.Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items
+                className="absolute left-0 mt-2 w-80 bg-white text-gray-800 shadow-lg rounded-lg py-2 overflow-hidden"
+              >
+                <div className="space-y-2 p-2">
+                  <Link to="/study-in-finnish" className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg">
+                    <div className="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" className="text-blue-500">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h6 className="text-gray-800 font-semibold text-[14px]">Study in Finnish</h6>
+                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                        Learn the Finnish language and study in Finland for free (18+).
+                      </p>
+                    </div>
+                  </Link>
+                  
+                  <Link to="/study-in-english" className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg">
+                    <div className="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" className="text-green-500">
+                        <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h6 className="text-gray-800 font-semibold text-[14px]">Study in English</h6>
+                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                        Study in English in Finland. This pathway entails paying Tuition fees.
+                      </p>
+                    </div>
+                  </Link>
+
+                  {/* <div className="border-t border-gray-100 mt-2 pt-2">
+                    <Link to="/explore-programs" className="flex items-center gap-2 p-3 hover:bg-gray-50 rounded-lg text-center justify-center">
+                      <span className="text-primary font-medium text-[14px]">View All Programs</span>
+                      <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </Link>
+                  </div> */}
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
 
           <Link
             to={"/"}
@@ -240,7 +294,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu - Updated with Apply Button and Account Display */}
+      {/* Mobile Menu - Updated with Study Programs Dropdown */}
       <Transition
         show={isOpen}
         enter="transition ease-out duration-500 transform"
@@ -257,8 +311,6 @@ const Navbar = () => {
           >
             <div ref={ref} className="space-y-4">
               <div className="flex justify-end items-center sticky top-0 bg-white pt-2 pb-3 z-10">
-                {/* User Account or Apply Button */}
-            
                 {/* Close Button */}
                 <button onClick={() => setIsOpen(false)} className="text-green-500">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -282,9 +334,50 @@ const Navbar = () => {
                 <h5 className="text-green-500 font-medium text-lg">About Us</h5>
               </Link>
               
-              <Link to={"/explore-programs"} className="block py-2">
-                <h5 className="text-green-500 font-medium text-lg">Study Programs</h5>
-              </Link>
+              {/* Mobile Study Programs Dropdown */}
+              <div className="py-2">
+                <div onClick={() => setStudyProgramsExpanded(!studyProgramsExpanded)} className="flex justify-between items-center cursor-pointer">
+                  <h5 className="text-green-500 font-medium text-lg">Study Programs</h5>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={`text-green-500 transform ${studyProgramsExpanded ? 'rotate-180' : ''}`}>
+                    <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+                  </svg>
+                </div>
+                
+                {studyProgramsExpanded && (
+                  <div className="pl-4 pt-2 space-y-4 max-h-[300px] overflow-y-auto pr-2">
+                    <Link to={"/study-in-finnish"} className="flex items-start gap-3 py-2">
+                      <div className="w-6 h-6 flex items-center justify-center bg-blue-100 rounded-full flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" className="text-blue-500">
+                          <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h6 className="text-gray-800 font-medium">Study in Finnish</h6>
+                        <p className="text-xs text-gray-500">Learn the Finnish language and study in Finland for free (18+).</p>
+                      </div>
+                    </Link>
+                    
+                    <Link to={"/study-in-english"} className="flex items-start gap-3 py-2">
+                      <div className="w-6 h-6 flex items-center justify-center bg-green-100 rounded-full flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" className="text-green-500">
+                          <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <h6 className="text-gray-800 font-medium">Study in English</h6>
+                        <p className="text-xs text-gray-500">Study in English in Finland. This pathway entails paying Tuition fees.</p>
+                      </div>
+                    </Link>
+
+                    <Link to={"/explore-programs"} className="flex items-center gap-2 py-2 justify-center border-t border-gray-100 pt-3">
+                      <span className="text-primary font-medium">View All Programs</span>
+                      <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </Link>
+                  </div>
+                )}
+              </div>
               
               <Link to={"/"} className="block py-2">
                 <h5 className="text-green-500 font-medium text-lg">Upskill</h5>
