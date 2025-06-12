@@ -388,11 +388,11 @@ const ExplorePrograms = () => {
     setSelectedCountry("");
     setSelectedBudget("");
   };
-
+console.log(userLoginData)
   // Handle apply navigation
   const handleApply = (id: string, courseName: string) => {
   // Check if user is logged in
-  if (!userLoginData || !userLoginData.token || !userLoginData.id) {
+  if (!userLoginData || !userLoginData.token ) {
     // User is not logged in, show toast and redirect to sign-in page after delay
     toast.info("Please sign in to apply for programs");
     setTimeout(() => {
