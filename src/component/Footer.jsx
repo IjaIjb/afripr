@@ -74,8 +74,8 @@ function Footer() {
               <h4 className='text-[#1DB459] font-medium mb-2'>Products</h4>
               <Link to='/study-in-finnish'> <h3>Learn in Finnish</h3></Link>
               {/* <Link to='/high-school'> <h3>High School</h3></Link> */}
-              {/* <Link to='/apply-loan'> <h3>Loans</h3></Link> */}
-              <Link to='/study-in-english'> <h3>Learn in English</h3></Link>
+              <Link to="/explore-programs"> <h3>Explore Programs</h3></Link>
+              {/* <Link to='/study-in-english'> <h3>Learn in English</h3></Link> */}
             </div>
 
             <div className=' col-span-2'>

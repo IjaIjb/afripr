@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { AdminApis } from "../../apis/adminApi/adminApi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 // Custom Select Component (styled to match original design)
 const CustomSelect = ({ icon, options, placeholder, value, onChange }: any) => {
@@ -158,7 +159,8 @@ const ExplorePrograms = () => {
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  
+   const userLoginData = useSelector((state:any) => state.data.login.value);
+    console.log(userLoginData);
   // Data states
   const [courses, setCourses] = useState<any>([]);
   const [filteredCourses, setFilteredCourses] = useState<any>([]);
@@ -389,6 +391,17 @@ const ExplorePrograms = () => {
 
   // Handle apply navigation
   const handleApply = (id: string, courseName: string) => {
+  // Check if user is logged in
+  if (!userLoginData || !userLoginData.token || !userLoginData.id) {
+    // User is not logged in, show toast and redirect to sign-in page after delay
+    toast.info("Please sign in to apply for programs");
+    setTimeout(() => {
+      navigate('/sign-in');
+    }, 1500); // Wait 1.5 seconds for toast to be visible
+    return;
+  }
+  
+  // User is logged in, proceed with application
     const formattedCourseName = courseName.replace(/\s+/g, '-').toLowerCase();
     navigate(`/program-overview/${formattedCourseName}`, { state: { id } });
   };
@@ -816,7 +829,7 @@ const ExplorePrograms = () => {
           </div>
         </div>
       </div>
-      <ToastContainer position="bottom-center" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

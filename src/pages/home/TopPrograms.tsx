@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { AdminApis } from '../../apis/adminApi/adminApi';
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const TopPrograms = () => {
    const [banner, setBanner] = React.useState<any>([]);
@@ -60,9 +61,12 @@ const TopPrograms = () => {
             <div>
             <h4 className='md:block hidden text-center pb-2'>Check out our latest available programs </h4>
         <div className='md:flex hidden  md:justify-end'>
+        <Link
+                            to="/explore-programs">
         <button className="bg-green-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-600">
           Check Programs →
         </button>
+</Link>
         </div>
         </div>
       </div>
@@ -169,9 +173,12 @@ const TopPrograms = () => {
           </button>
         </div>
         <div className='flex md:hidden  justify-center'>
+        <Link
+                            to="/explore-programs">
         <button className="bg-green-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-600">
           Check Programs →
         </button>
+        </Link>
         </div>
           </section>
     </div>

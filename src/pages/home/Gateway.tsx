@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Gateway = () => {
   const steps = [
@@ -57,10 +58,13 @@ const Gateway = () => {
         </div>
 
         <div className="flex justify-center">
+            <Link
+                                to="/explore-programs">
           <button className="mt-6 bg-primary text-white font-medium py-2 px-6 rounded-full flex items-center gap-2 hover:bg-green-700 transition">
             Explore Courses
             <span className="text-xl">&#8594;</span>
           </button>
+          </Link>
         </div>
       </section>
     </div>

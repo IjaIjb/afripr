@@ -5,9 +5,11 @@ const Upskill = () => {
     <div>
                 <section className="py-10  bg-white font-[\'Great Sailor\']">
       <div className="flex flex-col md:flex-row justify-between md:items-center gap-12">
-    
+      <div className="md:block hidden ">
+          <img src="/images/home/upskill.svg" alt="Study Abroad Illustration" className="" />
+        </div>
       <div className='relative'>
-      <h4 className="absolute text-[#000227]/[5%] md:text-[250px] text-[150px] font-[\'Great Sailor\'] -top-10">02</h4>
+      {/* <h4 className="absolute text-[#000227]/[5%] md:text-[250px] text-[150px] font-[\'Great Sailor\'] -top-10">02</h4> */}
         <p className="text-[#000227]/[50%] text-  text-[20px]">Features</p>
         <h3 className="md:text-[36px] text-[20px] font-bold text-primary">Upskill Tech Courses</h3>
         <p className="text-[#333333] text-[14px] mt-4 max-w-[419px]">
@@ -17,7 +19,7 @@ const Upskill = () => {
           Explore Tech Courses →
         </button>
       </div>
-      <div className="flex items-center justify-center ">
+      <div className="flex justify-center md:hidden ">
           <img src="/images/home/upskill.svg" alt="Study Abroad Illustration" className="" />
         </div>
       </div>

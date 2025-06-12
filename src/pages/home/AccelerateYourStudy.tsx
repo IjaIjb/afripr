@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AccelerateYourStudy = () => {
   return (
@@ -10,15 +11,18 @@ const AccelerateYourStudy = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
       <div className='relative'>
-        <h4 className="absolute text-[#000227]/[5%] md:text-[250px] text-[150px] font-[\'Great Sailor\'] -top-10">01</h4>
+        {/* <h4 className="absolute text-[#000227]/[5%] md:text-[250px] text-[150px] font-[\'Great Sailor\'] -top-10">01</h4> */}
         <p className="text-[#000227]/[50%]  text-[20px]">Features</p>
         <h3 className="md:text-[36px] text-[20px] font-bold text-primary">Explore Global Institution</h3>
         <p className="text-[#333333] text-[14px] mt-4 max-w-[430px]">
         Discover endless possibilities with Afriproedu’s by exploring global Institutions. We help you find and connect with top schools worldwide, making your dream of studying abroad simpler and more achievable.
         </p>
+         <Link
+                      to="/explore-programs">
         <button className="mt-6 bg-primary text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-primary/[70%]">
           Explore Courses →
         </button>
+        </Link>
       </div>
         <div className="flex justify-center">
           <img src="/images/home/explore.svg" alt="Study Abroad Illustration" className="" />

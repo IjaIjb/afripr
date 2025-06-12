@@ -6,9 +6,11 @@ import { AdminApis } from '../../../apis/adminApi/adminApi';
 
 const ProgramHomeModal = () => {
    const [banner, setBanner] = React.useState<any>([]);
+   const [loading, setLoading] = React.useState<boolean>(true);
    const carouselRefTwo = useRef<any>(null);
  
    React.useEffect(() => {
+     setLoading(true);
      AdminApis.getBanner()
        .then((response) => {
          if (response?.data) {
@@ -18,7 +20,12 @@ const ProgramHomeModal = () => {
            // dispatch(login([]))
          }
        })
-       .catch(function (error) {});
+       .catch(function (error) {
+         console.error('Error fetching banner data:', error);
+       })
+       .finally(() => {
+         setLoading(false);
+       });
    }, []);
 
    // Function to determine the route based on title and id
@@ -93,6 +100,15 @@ const ProgramHomeModal = () => {
         }))
       : staticCarouselItems;
 
+    // Loading component
+    const LoadingSpinner = () => (
+        <div className="md:w-[900px] w-[300px] body-font font-poppins">
+      <div className="flex md:max-w-lg max-w-[300px] items-center justify-center md:h-[500px] h-[300px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1DB459]"></div>
+      </div>
+      </div>
+    );
+
   return (
     <div>
         <div className="md:max-w-lg max-w-[300px] w-full  body-font font-poppins">
@@ -100,7 +116,14 @@ const ProgramHomeModal = () => {
           <h2 className="text-center text-[#1DB459] font-bold md:text-[20px] text-[18px] leading-8">
      Discover Your Path
             </h2>
-            <Carousel
+            
+            {loading ? (
+        <div className="md:max-w-lg max-w-[300px] w-full  body-font font-poppins">
+
+              <LoadingSpinner />
+              </div>
+            ) : (
+              <Carousel
                 // ref={carouselRefTwo}
                 swipeable={true}
                 draggable={true}
@@ -154,7 +177,8 @@ const ProgramHomeModal = () => {
     </div>
   </div>
 ))}
-            </Carousel>
+              </Carousel>
+            )}
           </div>
         </div>
     </div>

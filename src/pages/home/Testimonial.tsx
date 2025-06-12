@@ -24,12 +24,12 @@ const Testimonial = () => {
           <h2 className="text-green-600 md:text-start text-center md:max-w-[270px] leading-[60px] text-[40px] font-bold mb-6">Are you still in doubt?</h2>
           </div>
           <div className="flex md:justify-end justify-center">
-            <div>
+            {/* <div>
             <h4 className='max-w-[200px] text-center'>Here are some testimonials from our students</h4>
         <button className="bg-green-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-green-600">
           See more reviews →
         </button>
-        </div>
+        </div> */}
       </div>
           </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">

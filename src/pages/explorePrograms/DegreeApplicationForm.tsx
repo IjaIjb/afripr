@@ -1446,8 +1446,86 @@ function LUTApplicationForm() {
             </div>
           </div>
         </Modal>
+<Modal
+  open={openPaymentProof}
+  onClose={onClosePaymentProofModal}
+  center
+  styles={{
+    modal: {
+      borderRadius: "15px", // Add border-radius here
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Optional: Add shadow
+    },
+  }}
+>
+  <div className="md:w-[350px] w-[300px]">
+    <div className=" flex justify-start mt-7">
+      <h4 className="tex-[#000000] md:text-[18px] text-[14px] font-bold">
+        Payment Information
+      </h4>
+    </div>
+    <div className="flex  mt-5">
+      <p className="text-[14px] text-[#898989] ">
+        Thanks for your interest in AfriproEdu.
+      </p>
+    </div>
+    <p className="text-[14px] text-[#898989] mt-3">
+      Our online payment system is undergoing a brief update related to currency conversion. To ensure a seamless experience, please reach out to our customer service team, and they'll gladly provide you with payment instructions and dedicated support.
+    </p>
+    
+    <div className="mt-5">
+      <p className="text-[14px] font-semibold text-[#000000] mb-3">WhatsApp Only</p>
+      
+      <div className="flex gap-2">
+        <TbBrandWhatsapp size={20} />
+        <a
+          href="https://api.whatsapp.com/send?phone=2348131470992"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="underline underline-offset-2 text-[14px]">
+            +234 813 147 0992
+          </span>
+        </a>
+      </div>
 
-        <Modal
+      <div className="flex gap-2 mt-2">
+        <TbBrandWhatsapp size={20} />
+        <a
+          href="https://api.whatsapp.com/send?phone=2347012330629"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="underline underline-offset-2 text-[14px]">
+            +234 701 233 0629
+          </span>
+        </a>
+      </div>
+
+      <div className="flex gap-2 mt-4">
+        <MdOutlineMail size={20} />
+        <a
+          href="mailto:hello@afriproedu.com"
+          className="underline underline-offset-2 text-[14px]"
+        >
+          hello@afriproedu.com
+        </a>
+      </div>
+    </div>
+    
+    <div>
+      <div className="mt-5 flex justify-center">
+        <button
+          onClick={onClosePaymentProofModal}
+          className="w-full bg-[#00B07B] text-white py-3 rounded-lg hover:bg-emerald-600 transition-colors"
+        >
+          Got it
+        </button>
+      </div>
+    </div>
+  </div>
+</Modal>
+
+        {/* <Modal
           open={openPaymentProof}
           onClose={onClosePaymentProofModal}
           center
@@ -1523,7 +1601,7 @@ function LUTApplicationForm() {
               </div>
             </div>
           </div>
-        </Modal>
+        </Modal> */}
       </section>
 
       <ToastContainer
